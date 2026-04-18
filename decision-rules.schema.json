@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Synaxion Decision Rules",
+  "description": "도메인·연합 판단 규칙 묶음. 코어는 스키마+예시만 두고, 프로젝트 인스턴스에 decision-rules.json을 두는 것을 권장한다.",
+  "type": "object",
+  "required": ["version", "rules"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "description": { "type": "string" },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "when", "outcome", "requiredDimensions"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "규칙 식별자 (kebab-case)"
+          },
+          "title": { "type": "string", "minLength": 1 },
+          "when": {
+            "type": "string",
+            "minLength": 1,
+            "description": "적용 조건(사람·기계가 읽을 수 있는 서술). ERIC 차원 참조 권장."
+          },
+          "requiredDimensions": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "enum": ["entity", "relation", "context", "impact"] },
+            "uniqueItems": true,
+            "description": "이 규칙이 의존하는 ERIC 차원(최소 1개). 전체 판단에 네 차원이 모두 필요하지 않아도, 규칙이 읽는 축을 명시한다."
+          },
+          "outcome": {
+            "type": "string",
+            "description": "JUDGMENT_OUTPUT_TYPE.md 와 judgment-output.schema.json 과 동일 enum",
+            "enum": [
+              "ALLOW",
+              "DENY",
+              "HOLD",
+              "INSUFFICIENT_DATA",
+              "CONFLICTING_SOURCES",
+              "DEGRADED_CONFIDENCE",
+              "ESCALATE_TO_HUMAN"
+            ]
+          },
+          "rationaleDoc": {
+            "type": "string",
+            "description": "근거 문서 경로·URL·한 줄 요약"
+          },
+          "match": {
+            "type": "object",
+            "description": "얕은 DSL(~70%). matcherRef 와 동시 사용 금지. 상세: packages/lib/core/judgment/declarative-match.ts"
+          },
+          "matcherRef": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9.-]*\\.[a-zA-Z][a-zA-Z0-9.-]*$",
+            "description": "escape hatch(~30%). allowlist: packages/lib/core/judgment/escape-matcher-registry.ts 의 JUDGMENT_MATCHER_REF_ALLOWLIST"
+          },
+          "matcherRefReason": {
+            "type": "string",
+            "minLength": 1,
+            "description": "matcherRef 사용 이유(권장). DSL 대신 코드 경로를 택한 근거 — 감사·남용 감시·리팩터링 우선순위"
+          },
+          "implementationNote": {
+            "type": "string",
+            "minLength": 1,
+            "description": "규칙 의도·실험 메모(선택). match 규칙에도 사용 가능"
+          }
+        }
+      }
+    }
+  }
+}

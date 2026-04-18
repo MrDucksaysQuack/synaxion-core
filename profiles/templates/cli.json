@@ -1,0 +1,27 @@
+{
+  "id": "cli",
+  "description": "CLI 도구 (Node.js, ESM)",
+  "dirs": [
+    "src",
+    "bin",
+    "docs/constitution"
+  ],
+  "files": [
+    {
+      "path": "package.json",
+      "content": "{\n  \"name\": \"{{name}}\",\n  \"version\": \"0.0.1\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"bin\": {\n    \"{{name}}\": \"./bin/cli.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node bin/cli.js\",\n    \"check:constitution-version\": \"tsx docs/constitution/scripts/check-constitution-version.ts\"\n  },\n  \"constitutionVersion\": \"{{constitutionVersion}}\"\n}\n"
+    },
+    {
+      "path": "bin/cli.js",
+      "content": "#!/usr/bin/env node\nimport { main } from '../src/index.js';\nmain(process.argv.slice(2)).catch((err) => {\n  console.error(err);\n  process.exit(1);\n});\n"
+    },
+    {
+      "path": "src/index.js",
+      "content": "export async function main(args) {\n  console.log('{{name}}', args);\n}\n"
+    },
+    {
+      "path": "README.md",
+      "content": "# {{name}}\n\nConstitution(cli) 기반 CLI. `docs/constitution/`을 채운 뒤 검증 스크립트 실행.\n"
+    }
+  ]
+}

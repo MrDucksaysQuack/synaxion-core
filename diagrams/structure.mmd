@@ -1,0 +1,35 @@
+%% 레이어 경계 (Constitution)
+%% 자동 생성: scripts/generate-structure-diagram.ts
+
+flowchart TB
+  subgraph Frontend["Frontend (app/, components/)"]
+    F[UI · 훅 · 페이지]
+  end
+
+  subgraph API["API Layer (app/api/)"]
+    A[라우트 · 핸들러]
+  end
+
+  subgraph Domain["Domain Layer (packages/lib/domain/)"]
+    D[비즈니스 로직]
+  end
+
+  subgraph Engine["Engine Layer (packages/lib/engines/)"]
+    E[파서 · 검증 · 매칭 등 재사용 로직]
+  end
+
+  subgraph Core["Core Layer (packages/lib/core/)"]
+    C[타입 · 정책 · 로거 · 인증]
+  end
+
+  F -->|"HTTP / Domain 호출"| A
+  A -->|"import"| D
+  D -->|"선택"| E
+  D -->|"import"| C
+  E -->|"import"| C
+
+  style Frontend fill:#e1f5fe
+  style API fill:#fff3e0
+  style Domain fill:#e8f5e9
+  style Engine fill:#fff8e1
+  style Core fill:#f3e5f5

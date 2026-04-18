@@ -1,0 +1,23 @@
+{
+  "id": "express-api",
+  "description": "Express API 서버 (단일 서비스)",
+  "dirs": [
+    "src",
+    "src/routes",
+    "docs/constitution"
+  ],
+  "files": [
+    {
+      "path": "package.json",
+      "content": "{\n  \"name\": \"{{name}}\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"start\": \"node src/index.js\",\n    \"check:constitution-version\": \"tsx docs/constitution/scripts/check-constitution-version.ts\"\n  },\n  \"constitutionVersion\": \"{{constitutionVersion}}\"\n}\n"
+    },
+    {
+      "path": "src/index.js",
+      "content": "import express from 'express';\nconst app = express();\napp.use(express.json());\napp.get('/health', (req, res) => res.json({ status: 'ok' }));\nconst port = process.env.PORT ?? 3000;\napp.listen(port, () => console.log(`{{name}} listening on ${port}`));\n"
+    },
+    {
+      "path": "README.md",
+      "content": "# {{name}}\n\nConstitution(express-api) 기반 API. `docs/constitution/`을 채운 뒤 검증 스크립트 실행.\n"
+    }
+  ]
+}

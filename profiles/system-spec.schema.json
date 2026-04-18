@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://constitution.example/system-spec.schema.json",
+  "title": "SystemSpec",
+  "description": "시스템 한 개를 설명하는 최소 명세. AI·생성기·검증이 이 스키마를 따르는 인스턴스를 소비한다.",
+  "type": "object",
+  "required": ["name", "profile"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "시스템 식별 이름 (예: itemwiki, my-api-service)"
+    },
+    "profile": {
+      "type": "string",
+      "description": "시스템 유형. profiles/ 아래 프로파일 ID와 일치.",
+      "examples": ["nextjs-monorepo", "express-api", "cli"]
+    },
+    "constitutionVersion": {
+      "type": "string",
+      "description": "사용하는 Constitution 버전 (선택). VERSION과 맞추면 check:constitution-version 통과"
+    },
+    "decisionIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "이 시스템이 사용하는 결정 ID 목록. 비어 있으면 프로파일 기본값 또는 레지스트리 전체"
+    },
+    "layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "이 시스템의 계층 목록. check:layer-boundaries 등에서 사용"
+    },
+    "paths": {
+      "type": "object",
+      "description": "프로젝트 내 경로 오버라이드 (선택)",
+      "properties": {
+        "packages": { "type": "string" },
+        "app": { "type": "string" },
+        "constitution": { "type": "string" }
+      }
+    }
+  }
+}

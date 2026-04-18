@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Synaxion JudgmentResult",
+  "description": "판단 엔진·API가 반환하는 최소 공통 출력. judgmentVersion은 스펙 개정 시 올린다.",
+  "type": "object",
+  "required": ["outcome", "judgmentVersion"],
+  "properties": {
+    "judgmentVersion": {
+      "type": "string",
+      "const": "1.0",
+      "description": "JUDGMENT_OUTPUT_TYPE.md 및 본 스키마와 동기"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "ALLOW",
+        "DENY",
+        "HOLD",
+        "INSUFFICIENT_DATA",
+        "CONFLICTING_SOURCES",
+        "DEGRADED_CONFIDENCE",
+        "ESCALATE_TO_HUMAN"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "1차 표준. 수치와 병행 시 불일치는 enum 우선(감사 로그에 둘 다 남김)."
+    },
+    "confidenceScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "선택. 인스턴스 확장."
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "원칙적 필수. 비우려면 evidenceWaivedReason."
+    },
+    "evidenceWaivedReason": {
+      "type": "string",
+      "minLength": 1,
+      "description": "evidenceIds 없이 판단할 때만 허용(팀 정책으로 제한)."
+    },
+    "appliedRuleIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "nextAction": {
+      "type": "string",
+      "description": "NONE | RETRY_LATER | FETCH_MORE | SHOW_DEGRADED | OPEN_HUMAN_QUEUE 등 구현체 합의 토큰"
+    },
+    "policyVersion": { "type": "string" },
+    "rulesetFingerprint": { "type": "string" },
+    "ingestionId": { "type": "string" },
+    "alternatives": {
+      "type": "array",
+      "description": "후보+랭킹(Examhub/Synaptree 등). 대표 outcome은 상위 1개와 정렬 권장.",
+      "items": {
+        "type": "object",
+        "required": ["outcome"],
+        "properties": {
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "ALLOW",
+              "DENY",
+              "HOLD",
+              "INSUFFICIENT_DATA",
+              "CONFLICTING_SOURCES",
+              "DEGRADED_CONFIDENCE",
+              "ESCALATE_TO_HUMAN"
+            ]
+          },
+          "score": { "type": "number" },
+          "evidenceIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

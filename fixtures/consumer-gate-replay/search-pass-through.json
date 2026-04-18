@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "consumer.gate.replay.fixture.v1",
+  "policyProfile": "search",
+  "supabaseMode": "noop",
+  "products": [
+    { "barcode": "alpha", "brand": "X" },
+    { "barcode": "beta", "brand": "Y" }
+  ],
+  "negativeFeatures": [],
+  "expected": { "passBarcodesSorted": ["alpha", "beta"] }
+}

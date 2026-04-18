@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "description": "코어 예시. outcome은 JUDGMENT_OUTPUT_TYPE.md / judgment-output.schema.json 과 동일 enum. v2.5.0에서 DEFER·DEGRADED·ESCALATE 명칭을 세분화함. 규칙 적용 조건은 `match`(선언형)가 단일 소스.",
+  "rules": [
+    {
+      "id": "eric-all-dimensions-present",
+      "title": "판단에 필요한 ERIC 차원이 모두 채워졌을 때만 확정 허용",
+      "when": "entity·relation·context·impact 네 차원이 각각 비어 있지 않고, 동일 사실이 두 차원에 모순 없이 기술됨",
+      "requiredDimensions": ["entity", "relation", "context", "impact"],
+      "outcome": "ALLOW",
+      "rationaleDoc": "12-judgment-constitution/ERIC_SPEC.md",
+      "match": { "builtin": "ericAllDimensionsPresent" }
+    },
+    {
+      "id": "missing-dimension-insufficient",
+      "title": "필수 차원·근거 부족 시 정보 부족으로 분류",
+      "when": "해당 결정 유형에 대해 requiredDimensions 중 하나라도 신뢰 가능한 근거 없이 비어 있음",
+      "requiredDimensions": ["entity", "relation", "context", "impact"],
+      "outcome": "INSUFFICIENT_DATA",
+      "rationaleDoc": "12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md",
+      "match": { "builtin": "missingAnyRequiredDimension" }
+    },
+    {
+      "id": "async-pipeline-hold",
+      "title": "비동기 검증·외부 콜백 대기 중에는 즉시 확정하지 않음",
+      "when": "필수 검증이 큐·웹훅·배치에 의존하고, 타임아웃 전까지 내부 단일 근거로 확정할 수 없음",
+      "requiredDimensions": ["entity", "context"],
+      "outcome": "HOLD",
+      "rationaleDoc": "12-judgment-constitution/JUDGMENT_DATA_FLOW.md",
+      "match": { "flag": "asyncPending", "equals": true }
+    },
+    {
+      "id": "conflicting-sources-detected",
+      "title": "출처 간 배타적 주장 — 상태를 명시",
+      "when": "동일 entity에 대해 두 신뢰 출처가 배타적 속성을 제시하고, 신뢰 순위 규칙으로도 단일 값이 정해지지 않음",
+      "requiredDimensions": ["entity", "relation"],
+      "outcome": "CONFLICTING_SOURCES",
+      "rationaleDoc": "12-judgment-constitution/JUDGMENT_FEDERATION.md",
+      "match": {
+        "allOf": [
+          { "flag": "conflictingSources", "equals": true },
+          { "not": { "flag": "unresolvedConflict", "equals": true } }
+        ]
+      }
+    },
+    {
+      "id": "conflict-unresolved-escalate-human",
+      "title": "모순이 정책상 자동 해소 불가일 때 사람에게 넘김",
+      "when": "CONFLICTING_SOURCES 상태이고, 자동 DENY/ALLOW 분기가 정책에 없거나 Trust 우선순위로도 결정 불가",
+      "requiredDimensions": ["entity", "relation", "context"],
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rationaleDoc": "12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md §1",
+      "match": {
+        "allOf": [
+          { "flag": "conflictingSources", "equals": true },
+          { "flag": "unresolvedConflict", "equals": true }
+        ]
+      }
+    },
+    {
+      "id": "partial-evidence-degraded",
+      "title": "일부 차원만 낮은 신뢰로 채워진 경우 저신뢰 판단",
+      "when": "네 차원은 모두 존재하나, 하나 이상의 차원이 낮은 신뢰 레이블(추정, 단일 비검증 출처)에만 의존",
+      "requiredDimensions": ["entity", "relation", "context", "impact"],
+      "outcome": "DEGRADED_CONFIDENCE",
+      "rationaleDoc": "12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md",
+      "match": { "builtin": "ericPartialDegraded" }
+    },
+    {
+      "id": "trust-boundary-violation-deny",
+      "title": "신뢰 경계 밖 데이터를 내부 권한 판단에 직접 사용 금지",
+      "when": "외부 시스템 원문을 검증·정규화 없이 권한·안전 판단의 단일 근거로 사용하려 함",
+      "requiredDimensions": ["entity", "context", "impact"],
+      "outcome": "DENY",
+      "rationaleDoc": "01-foundations/TRUST_BOUNDARY_PRINCIPLE.md",
+      "match": { "flag": "trustBoundaryViolation", "equals": true }
+    }
+  ]
+}

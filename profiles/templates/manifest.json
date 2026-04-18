@@ -1,0 +1,4 @@
+{
+  "description": "프로파일별 골격 템플릿. scaffold-system.ts가 이 매니페스트와 profiles/templates/<id>/ 파일을 참조한다.",
+  "profiles": ["nextjs-monorepo", "express-api","cli"]
+}

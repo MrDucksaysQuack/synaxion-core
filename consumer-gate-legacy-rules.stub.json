@@ -1,0 +1,4 @@
+{
+  "$comment": "Deprecated stub — consumer 게이트는 itemwiki decision-rules 번들의 consumer-product-gate-excluded-deny 와 동기. 참조: docs/itemwiki-constitution/decision-rules.json, packages/lib/core/judgment/data/itemwiki-decision-rules.json, docs/architecture/CONSUMER_GATE_LEGACY_RULE_WRAPPER.md",
+  "rules": []
+}

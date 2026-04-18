@@ -1,0 +1,24 @@
+{
+  "policy_profile": "search",
+  "meta": {
+    "replay_snapshot_schema": "consumer.gate.audit_replay.v0",
+    "replay_gate_evidence_v0": [
+      {
+        "evidenceSchemaVersion": "consumer.gate.product_evidence.v0",
+        "barcode": "replay-sample-barcode",
+        "brand": "ReplaySample",
+        "origin_country": "KR",
+        "manufacturer_country": "KR",
+        "brand_country": null,
+        "ingredients": [],
+        "top_category": "food",
+        "sub_category": null,
+        "oem_odm_flag": false,
+        "company_ownership": null,
+        "contamination_level": null,
+        "certification": null
+      }
+    ],
+    "replay_negative_features_lite": []
+  }
+}

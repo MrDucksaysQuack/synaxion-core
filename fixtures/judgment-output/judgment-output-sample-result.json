@@ -1,0 +1,10 @@
+{
+  "$comment": "CI: judgment-output.schema.json — JudgmentResult 최소 유효 샘플",
+  "judgmentVersion": "1.0",
+  "outcome": "ALLOW",
+  "confidence": "high",
+  "evidenceIds": ["fixture:evidence:1"],
+  "appliedRuleIds": ["fixture-rule-allow"],
+  "nextAction": "NONE",
+  "policyVersion": "fixture-policy-v0"
+}

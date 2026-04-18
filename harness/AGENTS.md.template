@@ -1,0 +1,50 @@
+# Synaxion AI Operating Constitution {{SYNAXION_VERSION}}
+# Tool-Agnostic Bridge — Cursor / Claude Code / GitHub Copilot 공통
+# Project: {{PROJECT}}
+
+> 이 파일이 전체 AI Harness의 SSOT다.
+> 전체 원칙 문서: `docs/constitution/META_CONSTITUTION.md`
+> 전체 판단 헌법: `docs/constitution/12-judgment-constitution/`
+
+---
+
+## 1. 핵심 우선순위 (기본 불변 — Tier 1)
+
+Structure First → Safety → Quality → UX → Performance
+
+기본 준수: 위반 징후가 보이면 중단하고 사용자에게 알린다.
+사용자가 동일 세션에서 예외를 명시한 경우에만 순서를 재정의할 수 있다.
+
+---
+
+## 2. 계층 경계 (단방향 의존성)
+
+{{LAYER_BOUNDARIES}}
+
+역방향 의존성 생성 금지. 경계 위반 감지: `pnpm run check:layer-boundaries`
+
+---
+
+## 3. API 핸들러 팩토리 (Tier 1)
+
+- 라우트는 프로젝트 핸들러 팩토리 패턴을 따른다.
+- 7단계·래핑 순서: `docs/constitution/03-api-standards/7_STAGE_LOGIC_CONSTRUCTION.md` SSOT.
+
+---
+
+## 4. 안전 원칙 (Tier 1)
+
+- 침묵 실패(silent failure) 금지
+- try/finally로 리소스 해제 보장
+- 타임아웃 없는 외부 호출 금지
+
+---
+
+## 참조 문서
+
+| 목적 | 경로 |
+|------|------|
+| 전체 헌법 | `docs/constitution/META_CONSTITUTION.md` |
+| 판단 헌법 | `docs/constitution/12-judgment-constitution/README.md` |
+| API 표준 | `docs/constitution/03-api-standards/` |
+| 검증 스크립트 | `docs/constitution/06-automation/VERIFICATION_SCRIPTS.md` |

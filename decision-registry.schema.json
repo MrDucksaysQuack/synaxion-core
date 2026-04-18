@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Decision Registry",
+  "description": "운영 OS: 모든 결정 축이 한 레지스트리에 등록. 미등록 결정 사용 시 check 실패 목표.",
+  "type": "object",
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "singleSource"],
+        "properties": {
+          "id": { "type": "string", "description": "결정 축 식별자 (kebab-case)" },
+          "title": { "type": "string", "description": "결정(축) 설명" },
+          "singleSource": { "type": "string", "description": "단일 소스 진입점 (파일/함수)" },
+          "verificationScript": { "type": ["string", "null"], "description": "check:* 스크립트 이름" },
+          "verificationScripts": { "type": "array", "items": { "type": "string" } },
+          "layers": {
+            "type": "array",
+            "items": { "enum": ["Frontend", "API", "Domain", "Core", "lib", "web"] }
+          }
+        }
+      }
+    }
+  },
+  "required": ["version", "decisions"]
+}

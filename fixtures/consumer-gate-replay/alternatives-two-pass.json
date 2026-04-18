@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "consumer.gate.replay.fixture.v1",
+  "policyProfile": "alternatives",
+  "supabaseMode": "noop",
+  "products": [
+    { "barcode": "alt-a", "brand": "AltBrand", "top_category": "food" },
+    { "barcode": "alt-b", "brand": "Other", "top_category": "food" }
+  ],
+  "negativeFeatures": [],
+  "filterOverrides": { "filterVulnerableGroups": false },
+  "expected": { "passBarcodesSorted": ["alt-a", "alt-b"] }
+}

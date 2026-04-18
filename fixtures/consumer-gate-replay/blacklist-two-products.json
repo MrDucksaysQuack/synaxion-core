@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "consumer.gate.replay.fixture.v1",
+  "policyProfile": "recommendations",
+  "supabaseMode": "noop",
+  "products": [
+    { "barcode": "111", "brand": "BadBrand" },
+    { "barcode": "222", "brand": "GoodBrand" }
+  ],
+  "negativeFeatures": [
+    {
+      "feature_type": "brand",
+      "feature_value": "BadBrand",
+      "severity_level": "blacklist"
+    }
+  ],
+  "filterOverrides": { "filterVulnerableGroups": false },
+  "expected": { "passBarcodesSorted": ["222"] }
+}

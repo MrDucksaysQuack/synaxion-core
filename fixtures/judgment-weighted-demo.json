@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "description": "weighted-max 모드 데모 전용. JudgmentContext.experiment.weightedDemo=true 일 때 두 규칙이 동시에 매칭된다.",
+  "rules": [
+    {
+      "id": "weighted-demo-low",
+      "title": "낮은 가중치 후보",
+      "when": "experiment.weightedDemo",
+      "requiredDimensions": ["context"],
+      "outcome": "ALLOW",
+      "rationaleDoc": "MULTI_MATCH_EXPERIMENT.md",
+      "match": { "experiment": "weightedDemo", "equals": true }
+    },
+    {
+      "id": "weighted-demo-high",
+      "title": "높은 가중치 후보",
+      "when": "experiment.weightedDemo",
+      "requiredDimensions": ["context"],
+      "outcome": "ALLOW",
+      "rationaleDoc": "MULTI_MATCH_EXPERIMENT.md",
+      "match": { "experiment": "weightedDemo", "equals": true }
+    }
+  ]
+}

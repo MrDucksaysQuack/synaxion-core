@@ -1,0 +1,40 @@
+{
+  "id": "nextjs-monorepo",
+  "description": "Next.js 앱 + 패키지 모노레포 (lib, app)",
+  "dirs": [
+    "packages/lib",
+    "app",
+    "docs/constitution",
+    "public"
+  ],
+  "files": [
+    {
+      "path": "package.json",
+      "content": "{\n  \"name\": \"{{name}}\",\n  \"private\": true,\n  \"scripts\": {\n    \"check:constitution-version\": \"tsx docs/constitution/scripts/check-constitution-version.ts\",\n    \"generate:from-registry\": \"tsx docs/constitution/scripts/generate-from-registry.ts\"\n  },\n  \"constitutionVersion\": \"{{constitutionVersion}}\"\n}\n"
+    },
+    {
+      "path": "packages/lib/package.json",
+      "content": "{\n  \"name\": \"{{name}}-lib\",\n  \"version\": \"0.0.0\",\n  \"main\": \"index.ts\",\n  \"types\": \"index.ts\"\n}\n"
+    },
+    {
+      "path": "packages/lib/index.ts",
+      "content": "// {{name}} lib — domain/core 진입점\n\nexport {};\n"
+    },
+    {
+      "path": "app/layout.tsx",
+      "content": "export default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"ko\">\n      <body>{children}</body>\n    </html>\n  );\n}\n"
+    },
+    {
+      "path": "app/page.tsx",
+      "content": "export default function Home() {\n  return <main><h1>{{name}}</h1></main>;\n}\n"
+    },
+    {
+      "path": "tsconfig.json",
+      "content": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2022\",\n    \"module\": \"ESNext\",\n    \"strict\": true,\n    \"skipLibCheck\": true\n  },\n  \"include\": [\"app\", \"packages\"]\n}\n"
+    },
+    {
+      "path": "README.md",
+      "content": "# {{name}}\n\nConstitution(nextjs-monorepo) 기반 프로젝트. `docs/constitution/`을 채운 뒤 `pnpm run check:constitution-version` 실행.\n"
+    }
+  ]
+}
