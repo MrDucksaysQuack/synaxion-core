@@ -1,0 +1,61 @@
+# {{PROJECT_NAME}} — Claude Code Operating Instructions
+# Synaxion Constitution {{SYNAXION_VERSION}} 기반
+
+> **섹션 역할(유지보수용)**: 아래 본문에서 Synaxion 공통으로 고정하는 것은 **운영 원칙**(분석 협력·토큰 절약·범위 준수), **Agent 실행 원칙**(Plan→확인→실행, shell 승인·위험 명령 주의, targeted read), **우선순위 Tier 1**, **API 작업 시** bullet의 헌법·7단계·검증 레인·침묵 실패·타임아웃 규칙, **작업 전 체크**다. 레포마다 바꾸는 것은 **계층 경계** 블록 안 내용, 같은 섹션의 검증 문구, API bullet의 **핸들러 팩토리 경로** 한 곳, **전체 헌법 참조** 표뿐이다.
+
+---
+
+## 운영 원칙 (변경 불가)
+
+**분석 협력**: 모르거나 확신 없는 것은 직접 분석하지 말고 사용자에게 요청한다. (너 혼자서 모든 것을 분석하려 하지 말 것 — 필요한 정보는 사용자에게 요청하면 된다.)  
+**토큰 절약**: 불필요한 파일 탐색 최소화. 필요한 정보만 요청.  
+**범위 준수**: 요청된 작업 범위 외 파일 수정 금지.
+
+---
+
+## Agent 실행 원칙 (Claude Code 특화)
+
+- **복잡한 multi-step 작업**은 먼저 Plan을 제시하고, 사용자 확인 후 실행한다.
+- **Shell command**는 실행 전 사용자에게 보여 주고 승인을 받는다. 특히 `rm`, `git reset`·`git push --force` 등 **파괴적·되돌리기 어려운** 명령은 더욱 그렇다.
+- **토큰 절약**: 파일 전체 연속 읽기보다 `grep`, `find`, 필요 범위만 **targeted read**를 우선한다.
+
+---
+
+## 우선순위 (Synaxion Tier 1 — 기본 불변)
+
+Structure First → Safety → Quality → UX → Performance
+
+**예외**: 사용자가 동일 세션에서 명시한 경우에만 순서 재정의 가능.
+
+---
+
+## 계층 경계
+
+```
+{{LAYER_BOUNDARIES}}
+```
+
+역방향 의존성 생성 금지. 검증: {{CHECK_COMMANDS}}
+
+---
+
+## API 작업 시
+
+- 핸들러 팩토리·권한 필드·미들웨어 순서는 **{{API_SSOT_PATH}}** 및 **`docs/constitution/03-api-standards/7_STAGE_LOGIC_CONSTRUCTION.md`**·`pnpm run verify:api-7-stages`를 SSOT로 따른다(여기서는 예시 코드를 두지 않음).
+- 침묵 실패 금지. 타임아웃 없는 외부 호출 금지.
+
+---
+
+## 작업 전 체크
+
+- 3단계 이상 작업 → 계획 먼저 제시, 확인 후 실행
+- 아키텍처 변경 → 사용자 승인 필수
+- 완료 기준: 변경 범위에 맞는 **최소 `check:*` 통과**; PR·릴리스 직전에는 팀이 정한 **전체 레인**(`check:all` 또는 CI 동등물)
+
+---
+
+## 전체 헌법 참조
+
+{{CONSTITUTION_REF_TABLE}}
+
+> 세부 사항이 필요할 때만 위 파일을 읽는다. 매 작업마다 전체를 읽지 않는다.

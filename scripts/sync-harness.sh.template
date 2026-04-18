@@ -3,12 +3,12 @@
 # 실제 파일 복사는 하지 않음 (각 파일은 독립적 포맷이므로)
 # 대신 세 파일의 핵심 버전이 일치하는지 검증한다.
 #
-# 기본 Constitution VERSION 경로: docs/constitution/VERSION (scripts/sync-harness.sh.template 기본값과 동일)
+# Constitution VERSION: 프로젝트 루트 기준 상대 경로 (플레이스홀더는 install 시 치환)
 
 set -e
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-VERSION_FILE_REL="docs/constitution/VERSION"
+VERSION_FILE_REL="{{VERSION_FILE_PATH}}"
 if [ -f "$ROOT_DIR/$VERSION_FILE_REL" ]; then
   CONSTITUTION_VERSION=$(cat "$ROOT_DIR/$VERSION_FILE_REL")
 else
