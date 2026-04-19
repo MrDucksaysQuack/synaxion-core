@@ -39,6 +39,7 @@
 **일관성**을 “팀이 노력하면 지켜지는 품질”로만 두지 않는다. Synaxion에서는 **일관성을 시스템 제약**으로 선언한다 — 모순을 **기대하지 않고**, 빌드·런타임·게이트로 **허용 범위를 줄인다**.
 
 - 선언문·네 원리·Itemwiki 인스턴스와의 연결: [01-foundations/CONSISTENCY_AS_SYSTEM_CONSTRAINT.md](./01-foundations/CONSISTENCY_AS_SYSTEM_CONSTRAINT.md)
+- 분산 비동기 체인에서의 **암시적 파이프라인**과, 관측·정책 단일화·명시적 워크플로·계약 테스트·컨텍스트 전파로의 전환: [01-foundations/IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md](./01-foundations/IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md)
 - 본 절은 §0의 **이름·범위**와 별도로, “왜 Constitution이 문서 모음이 아니라 **운영 규칙**인가”에 대한 **철학 층**을 고정한다.
 
 ---

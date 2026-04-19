@@ -6,7 +6,7 @@
 > 아래 원리는 **프로젝트 성과 요약**이 아니라, **모순을 구조적으로 허용하지 않는** 설계 스탠스의 선언이다.
 
 **Tier**: 2 (권장·아키텍처 원리) — 전부를 `check:*`로 자동화할 수는 없으나, 인스턴스(예: Itemwiki)에서는 동일 철학이 CI·계약·Critical 범위로 **구체화**된다.  
-**연계**: [META_CONSTITUTION.md](../META_CONSTITUTION.md) §0.2 · [PHILOSOPHY.md](../00-overview/PHILOSOPHY.md) (구조 우선) · [STRUCTURE_FIRST_PRINCIPLE.md](./STRUCTURE_FIRST_PRINCIPLE.md)
+**연계**: [META_CONSTITUTION.md](../META_CONSTITUTION.md) §0.2 · [PHILOSOPHY.md](../00-overview/PHILOSOPHY.md) (구조 우선) · [STRUCTURE_FIRST_PRINCIPLE.md](./STRUCTURE_FIRST_PRINCIPLE.md) · [IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md](./IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md) (암시적 분산 흐름)
 
 **최종 업데이트**: 2026-03-28
 
