@@ -82,6 +82,167 @@
 
 ## 2. check:* 스크립트 인벤토리
 
+> **규모 안내**: 2026-05 기준 `check:*` 스크립트는 **155개 이상**이다. 이 중 `check:all`·`check:constitution-pr`에 포함되는 핵심 스크립트는 §1에 정의되어 있다. 아래 §2.1은 핵심 게이트에 포함되지 않는 스크립트들을 도메인 계약별로 분류한다.
+
+### 2.1 도메인별 계약 스크립트 그룹
+
+새 스크립트를 추가할 때는 **하나의 그룹에 귀속**시키고, `check:constitution-pr` 포함 여부를 함께 결정한다.
+
+#### 🏛 계층·구조 (Architecture Boundaries)
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:layer-boundaries | 계층 간 역방향 import 탐지 (Workers @/ alias 포함) |
+| check:engine-imports | 엔진 → Domain·Web·API 교차 import 금지 |
+| check:domain-layer-idp | Domain → lib/utils 직접 import 금지 |
+| check:ui-domain-runtime-imports | Frontend에서 Domain 런타임 직접 import 금지 |
+| check:ui-domain-type-imports | Domain `import type` 허용 목록 관리 |
+| check:dependency-graph | 의존성 방향·순환 탐지 |
+| check:provider-dependencies | Provider 의존성 정합성 |
+| check:domain-top-index | Domain 최상위 바렐 index.ts 존재 여부 |
+| check:lib-console | packages/lib 내 console.* 금지 |
+| check:no-hardcoded-origin | 하드코딩된 origin URL 금지 |
+
+#### 🔌 API 표준 (API Standards)
+
+| 스크립트 | 목적 |
+|---------|------|
+| verify:api-7-stages | API 라우트 7단계 로직 구성 검증 |
+| check:api-catch-logging | catch/finally 경로 구조화 로그 필수 |
+| check:execute-api-route-side-effect-log-context | Side effect 실행 시 로그 컨텍스트 검사 |
+| check:operation-route-files | operation 라우트 파일 구조 |
+| check:silent-failures | 침묵 실패 위험 패턴 탐지 |
+| check:load-with-api-resilience-no-mutation | 로드 경로에 mutation 혼입 금지 |
+
+#### 📥 Alignment·입력 보증 (Input Persistence)
+
+`check:constitution-pr`의 IP 게이트 스크립트 군. 상세 원칙은 [INPUT_PERSISTENCE_GUARANTEE.md](../04-safety-standards/INPUT_PERSISTENCE_GUARANTEE.md).
+
+| 스크립트 | check:constitution-pr 포함 |
+|---------|:---:|
+| check:alignment-new-source-bundle | ✅ |
+| check:alignment-package-path | ✅ |
+| check:alignment-module-pr-contract | ✅ |
+| check:alignment-roundtrip-hint -- --fail | ✅ |
+| check:domain-alignment-roundtrip-marker | ✅ |
+| check:domain-alignment-test-contract-signal | ✅ |
+| check:persistence-touch-pr-contract | ✅ |
+| check:client-direct-persistence-pr-contract | ✅ |
+| check:client-direct-persistence-formdata-coverage | ✅ |
+| check:form-to-api-mapper-boundary | ✅ |
+| check:input-persistence-pr-hint | ✅ (CI strict) |
+| check:input-persistence-form-mapper-manifest | - |
+| check:input-persistence-p1-preferences-contract | ✅ |
+| check:input-persistence-high-risk-multi-contract | ✅ |
+
+#### 🔗 Pipeline·Field Filter
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:pipeline-contract-anchors | Pipeline 레지스트리 계약 앵커 정합성 |
+| check:pipeline-registry-domain-alignment-tests | alignment.ts ↔ 단위 테스트 1:1 대응 |
+| check:pipeline-domain-anchor-contract-export | alignment.ts에 Contract export 존재 |
+| check:pipeline-schema-contract-ssot | schemaContractAnchor SSOT 검사 |
+| check:pipeline-alignment-zod-surface | alignment Zod 표면 존재 검사 |
+| check:multi-persistence-section2-pipeline-ids | 다중 저장 섹션2 pipeline ID 정합성 |
+| check:field-filter-users-me-contract | /users/me 필드 필터 계약 |
+| check:field-filter-tab-preferences-contract | 탭 preferences 필드 필터 계약 |
+| check:field-filter-registry-contract | 필드 필터 레지스트리 일관성 |
+| check:high-risk-multi-e2e-matrix | 고위험 다중 저장 E2E 매트릭스 |
+
+#### ⚖️ Judgment·Decision (판단 엔진)
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:judgment-contracts | evaluateJudgment 허용 진입점 검사 |
+| check:judgment-output-schema | judgment-output.schema.json + 픽스처 검증 |
+| check:judgment-runtime-rules | 배포 번들 decision-rules 스키마 검증 |
+| check:decision-registry | 레지스트리 스키마 + 등록된 check:* 전부 실행 |
+| check:decision-usage | 미사용 결정 ID 경고 (--fail-on-unused) |
+| check:decision-call-registry | checkDecision() ID ↔ 레지스트리 동기화 |
+| check:consumer-facing-judgment-decision-only | 소비자 facing 코드의 score 직접 비교 금지 |
+| check:consumer-gate-before-rank | 소비자 게이트 랭킹 전 적용 순서 |
+| check:consumer-judgment-closure | Judgment 클로저 정합성 |
+| check:consumer-judgment-scan-manifest-sync | 스캔 매니페스트 동기화 |
+
+#### 🔐 권한·보안 (Permission & Security)
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:admin-permission-policies | 관리자 권한 정책 |
+| check:permission-alignment | 권한 매트릭스 정책 정합성 |
+| check:permission-drift | 권한 코드 드리프트 |
+| check:admin-mutation-12b-doc-hint | Admin mutation 12b 문서 힌트 |
+| check:packages-web-session-direct-access | packages/web에서 session 직접 접근 금지 |
+| check:no-session-user-ui | UI에서 session.user 직접 접근 금지 |
+| check:auth-getuser-no-arg | getUser() 인자 없는 호출 금지 |
+| check:env-access | 환경 변수 접근 규칙 (--strict) |
+| check:env-feature-registry | 환경 변수 ↔ 피처 레지스트리 정합성 |
+
+#### 🎨 Frontend·UX
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:stale-ui-risks | Mutation 후 refetch 미실시 위험 |
+| check:ux-risks | UX 위험 패턴 분류 |
+| check:save-ok-reload-failure-uses-alert | 저장 성공·리로드 실패 시 alert 사용 |
+| check:critical-ui-observability-signals | 핵심 UI 관측 신호 누락 |
+| check:no-client-preference-ui-select | 클라이언트 preference UI select 금지 |
+| check:no-json-stringify-request-body-ui | UI 요청 body에 JSON.stringify 금지 |
+| check:no-json-stringify-ui-wide | UI 전체 JSON.stringify 남용 탐지 |
+| check:component-patterns | 컴포넌트 패턴 준수 |
+| check:design-route-depth | URL 깊이 3-Depth Rule |
+| check:page-design-flow-jsdoc | 페이지 @flow·ROUTE_FLOW JSDoc |
+| check:page-metadata-public-main | 퍼블릭 페이지 메타데이터 |
+| check:color-contrast | 색상 대비 접근성 |
+
+#### 🧪 테스트 품질 (Test Quality)
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:e2e-skip-contract | E2E skip 계약 준수 |
+| check:e2e-count | E2E 테스트 수 하한선 |
+| check:e2e-ready-signals | E2E 준비 신호 레지스트리 동기화 |
+| check:e2e-skip-budget | E2E skip 예산 초과 경고 |
+| check:e2e-skip-by-level | 레벨별 skip 비율 |
+| check:e2e-domain-ui-roundtrip-registry | E2E domain·UI roundtrip 레지스트리 |
+| check:mock-fidelity-registry-floor | Mock 충실도 하한선 |
+| check:retryable-test-infra | 재시도 가능 테스트 인프라 |
+| check:test-standardization | 테스트 표준화 준수 |
+| check:skip-ratio | 전체 skip 비율 |
+| check:temporary-files | 임시 테스트 파일 잔류 |
+| check:test-fact | 테스트 fact 주석 존재 |
+
+#### 📦 Product 도메인 계약
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:product-barcode-patch-contract | PATCH /products/[barcode] 계약 |
+| check:contract-db-enum-sync | Contract 상수 ↔ DB enum 동기화 |
+| check:preferences-read-ssot | preferences 읽기 SSOT |
+| check:preferences-regression-contracts | preferences 회귀 계약 |
+| check:final3-critical-authority-specs | Final3 핵심 권위 스펙 |
+| check:final3-appendix-a-multi-user-perception | 다중 사용자 인식 appendix |
+| check:final3-appendix-c-runtime-contract | Final3 런타임 계약 |
+
+#### 📄 문서·SSOT
+
+| 스크립트 | 목적 |
+|---------|------|
+| check:flow-docs | @flow·ROUTE_FLOW ↔ flow-map.ts 일치 |
+| check:docs-json-manifest | docs JSON 매니페스트 정합성 |
+| check:single-source-drift | 리다이렉트·인증 경로 하드코딩 탐지 |
+| check:constitution-violations | Constitution 위반 패턴 |
+| check:signup-url-single-source | signup URL SSOT |
+| check:conceptual-rot | 개념 부패 위험 |
+| check:duplicate-code | 동일 이름 export 중복 |
+| check:todo-comments | TODO 주석 잔류 |
+| check:migration-static | Supabase 마이그레이션 정적 분석 |
+
+---
+
+### 2.2 전체 인벤토리 (평면 목록)
+
 | 스크립트 | 목적 |
 |----------|------|
 | check:api-schemas | API 스키마·검증 일관성 |
@@ -221,6 +382,6 @@ rg "('infant'|'basic'|'strict')" packages/lib app --glob '*.ts' | head -80
 
 **관련 문서**: [VERIFICATION_FRAMEWORK.md](./VERIFICATION_FRAMEWORK.md). 프로젝트 구조 헌법은 프로젝트 적용 디렉터리 참조.
 
-**최종 업데이트**: 2026-03-19
+**최종 업데이트**: 2026-05-28 — §2 `check:*` 155개+ 규모 안내, §2.1 도메인 10그룹, §2.2 평면 목록 구조 유지
 
 **변경 이력**: `check:all` vs `check:constitution-pr` 차이 표 추가. `check:all`에 **verify:api-7-stages** 추가(로컬 전수 점검). check:constitution-pr의 verify:api-7-stages는 엄격 모드(이슈 시 exit 1). 과거: PR에 --warn 포함. check:ready-signals 스크립트 추가 문서화. check:all/check:constitution-pr에 check:ux-risks·check:stale-ui-risks 반영. verify:before-push 문서화.

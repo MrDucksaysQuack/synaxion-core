@@ -3,7 +3,8 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**번들 버전**: [VERSION](./VERSION)  
+**버전**: 2.7.6  
+**VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
 ---

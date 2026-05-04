@@ -11,18 +11,27 @@
 모든 시스템은 **명확한 계층 구조**를 가져야 하며, **의존성은 단방향**으로만 흐릅니다.
 
 ```
-Frontend Layer (UI/UX)
+Frontend Layer (UI/UX)          app/, components/
     ↓ (단방향 의존)
-API Layer (Interface)
+API Layer (Interface)           app/api/
     ↓ (단방향 의존)
-Domain Layer (Business Logic)
+Server Adapter Layer            packages/next-server   ← Next.js 서버 전용 (auth·metrics·cookies)
+    ↓ (단방향 의존)              packages/web           ← 클라이언트 훅 (packages/lib만 의존)
+Domain Layer (Business Logic)   packages/lib/domain/
     ↓ (단방향 의존)
-Engine Layer (Reusable Logic)
+Engine Layer (Reusable Logic)   packages/lib/engines/
     ↓ (단방향 의존)
-Core Layer (Infrastructure)
+Core Layer (Infrastructure)     packages/lib/core/
+
+관측·교차 관심사 (Instrumentation)  packages/observability  ← packages/lib만 의존; node·browser·edge 진입
+                                       ↑ 소비(단방향): app · next-server · web · workers 가 import
 ```
 
-**역방향 의존은 절대 금지됩니다.**
+**역방향 의존은 절대 금지됩니다.** (`observability`는 하위로 **Domain/API/app을 참조하지 않음**.)
+
+> **Workers 런타임 (별도 트랙):** `workers/` 는 위 계층 밖에서 독립 실행되는 별도 런타임입니다.  
+> `packages/lib`(Core·Engine·Domain)만 의존 가능하며, `@/` alias·`packages/next-server`·`packages/web`·`app/` 참조는 **금지**됩니다.  
+> 상세 규칙은 [§ Workers 런타임 경계](#workers-런타임-경계) 절을 참조하세요.
 
 ---
 
@@ -162,11 +171,54 @@ import { getUserOrders } from '@/domain/order';  // ❌ 다른 Domain 의존
 
 ---
 
+### Server Adapter Layer (packages/next-server, packages/web)
+
+**위치:** `packages/next-server/`, `packages/web/`
+
+**역할:** 런타임·프레임워크 어댑터
+
+| 패키지 | 역할 | 주요 내용 |
+|--------|------|-----------|
+| `packages/next-server` | Next.js 서버 전용 어댑터 | auth middleware, cookie 정책, metrics 수집, 서버 로거 |
+| `packages/web` | 클라이언트 훅·유틸 | React hooks, API call helpers, 클라이언트 상태 |
+
+**특징:**
+- `packages/lib`(Core·Engine·Domain)만 의존 가능
+- `packages/next-server` ↔ `packages/web` 상호 의존 금지
+- Next.js·React 등 프레임워크 바인딩이 이 계층에 집중됨
+
+**의존성 규칙:**
+```
+✅ 허용: packages/lib (Core · Engine · Domain)
+❌ 금지: packages/next-server ↔ packages/web 교차 의존
+❌ 금지: app/ 역방향 참조
+❌ 금지: workers/ 참조
+```
+
+---
+
+### Observability (`packages/observability`)
+
+**위치:** `packages/observability/` (`node` · `browser` · `edge` · `types` export)
+
+**역할:** 런타임별 관측·텔레메트리 진입(로그/이벤트 래퍼 등). **교차 관심사**로 Core·09-observability 원칙과 맞춘다.
+
+**의존성 규칙:**
+```
+✅ 허용: packages/lib (Core·필요 시 Domain 타입은 type-only로 제한적)
+❌ 금지: app/ · packages/next-server · packages/web · workers/ 를 observability **패키지가** import (상위 런타임이 observability를 소비하는 것은 정상)
+❌ 금지: Domain 비즈니스 로직을 관측 패키지에 넣어 “역방향 비즈니스 의존” 만들기
+```
+
+**소비자:** `app/` · `packages/next-server` · `packages/web` · `workers/` 가 필요 시 `@itemwiki/observability` 를 참조한다.
+
+---
+
 ### API Layer (Interface)
 
 **위치:** `app/api/` 또는 `src/api/`
 
-**역할:** HTTP 인터페이스
+**역할:** HTTP 인터페이스. 비즈니스 로직은 Domain으로만; **서버 횡단 관심사(인증·메트릭·구조화 로그)** 는 `packages/next-server`에서 가져와 조합한다.
 
 **포함 내용:**
 - API 라우트 (`route.ts`)
@@ -179,32 +231,32 @@ import { getUserOrders } from '@/domain/order';  // ❌ 다른 Domain 의존
 - Domain Layer를 통해서만 비즈니스 로직 접근
 - 7단계 로직 구성 준수
 - 표준 에러 응답 형식 사용
+- `packages/next-server`의 auth·metrics 미들웨어 사용 (Server Adapter 경유)
 
 **의존성 규칙:**
 ```
-✅ 허용: Domain Layer 의존 가능
-✅ 허용: Core의 인증/로깅 유틸리티 직접 사용 가능 (인터페이스 레벨)
-❌ 금지: Core의 비즈니스 로직 직접 사용 금지 (Domain 통해서만)
-❌ 금지: Engine 직접 사용 금지 (Domain 통해서만)
+✅ 허용: Domain Layer (packages/lib/domain)
+✅ 허용: packages/next-server (auth middleware, withMetrics 등)
+✅ 허용: packages/lib/core (타입·상수·에러)
+❌ 금지: Engine 직접 사용 (Domain 통해서만)
+❌ 금지: packages/web (서버→클라이언트 역방향)
 ```
 
 **예시:**
 ```typescript
-// ✅ 올바른 API Layer 코드
+// ✅ 올바른 API Layer 코드 (withAuth = handler를 감싼 뒤 (request) => … 로 export)
 // app/api/v1/products/[barcode]/route.ts
-import { getProduct } from '@/domain/product';    // ✅ Domain 의존
-import { withAuth } from '@/core/auth/middleware'; // ✅ Core 인터페이스 의존
+import { getProduct } from '@itemwiki/lib/domain/product/api/get-product'; // ✅ Domain
+import { withAuth } from '@itemwiki/next-server/auth/middleware'; // ✅ Server Adapter 경유
 
-export async function GET(request: NextRequest) {
-  return withMetrics(request, async () => {
-    const product = await getProduct(barcode);  // Domain 통해 접근
-    return createSuccessResponse({ product });
-  });
-}
+export const GET = withAuth(async (context, request) => {
+  const product = await getProduct(barcode);
+  return createSuccessResponse({ product });
+});
 
 // ❌ 잘못된 API Layer 코드
-import { ParserEngine } from '@/engines/parser';  // ❌ Engine 직접 의존
-const parser = new ParserEngine(...);             // ❌ Domain 우회
+// import { ParserEngine } from '@/engines/parser';  // ❌ Engine 직접 의존
+// const parser = new ParserEngine(...);             // ❌ Domain 우회
 ```
 
 ---
@@ -256,7 +308,13 @@ import { ParserEngine } from '@/engines/parser';
 import { User } from '@/core/types';
 
 // ✅ API에서 Domain
-import { getProduct } from '@/domain/product';
+import { getProduct } from '@itemwiki/lib/domain/product/api/get-product';
+
+// ✅ API에서 Server Adapter (next-server 경유; 실제 별칭은 @itemwiki/…)
+import { withAuth } from '@itemwiki/next-server/auth/middleware';
+
+// ✅ 런타임에서 observability 소비 (예: API·next-server·web)
+// import { … } from '@itemwiki/observability/node';
 
 // ✅ Frontend에서 API (HTTP)
 await fetch('/api/v1/products');
@@ -283,16 +341,67 @@ import { ValidationEngine } from '@/engines/validation';
 
 ---
 
+## Workers 런타임 경계
+
+`workers/`는 Next.js 프로세스와 **완전히 분리된 별도 런타임**입니다 (Cloudflare Workers / Fly.io 등). 계층 다이어그램 밖에 독립적으로 위치합니다.
+
+### Workers 허용 의존성
+
+```
+workers/src → packages/lib (상대 경로, copy-lib.sh로 빌드 전 복사)
+workers/src → 외부 라이브러리만
+```
+
+### Workers 금지 패턴
+
+```typescript
+// ❌ @/ alias 사용 금지 (Next.js 전용)
+import { something } from '@/lib/...';
+
+// ❌ packages/next-server 참조 금지 (Next.js 서버 전용)
+import { withAuth } from '@itemwiki/next-server';
+
+// ❌ packages/web 참조 금지 (클라이언트 전용)
+import { useProduct } from '@itemwiki/web';
+
+// ❌ app/ 참조 금지 (Next.js 라우터 전용)
+import { handler } from '@/app/api/...';
+
+// ❌ DOM API 사용 금지
+document.querySelector(...);
+window.location.href;
+
+// ✅ 올바른 Workers 코드 (상대 경로로 lib 참조)
+import { someUtil } from '../../lib/core/...';
+```
+
+### Workers 런타임 검증
+
+```bash
+# Workers 경계 위반 자동 탐지
+pnpm run check:layer-boundaries
+```
+
+`check:layer-boundaries`는 Workers 내 `@/` alias·DOM API·React Hook 사용, 서버/클라이언트 코드 혼재를 함께 검사합니다.
+
+---
+
 ## 경계 위반 검증
 
 ### 자동 검증 스크립트
 
 ```bash
-# 계층 경계 검증
+# 전체 계층 경계 검증 (Workers 포함)
 pnpm run check:layer-boundaries
 
 # 엔진 전용 import (Utils·Domain·Web·엔진 간 교차) — IDP §2.4·§2.5
 pnpm run check:engine-imports
+
+# Domain → lib/utils 직접 import 금지
+pnpm run check:domain-layer-idp
+
+# UI에서 Domain 런타임 직접 import 금지
+pnpm run check:ui-domain-runtime-imports
 ```
 
 ### 검증 규칙
@@ -301,6 +410,8 @@ pnpm run check:engine-imports
 2. Engine에서 Domain import 금지 (`check:engine-imports`가 Utils 직접 참조·상대 utils 경로 등도 검사)
 3. Domain에서 다른 Domain import 금지
 4. API에서 Engine 직접 import 금지
+5. Workers에서 `@/` alias·`packages/next-server`·`packages/web` 참조 금지
+6. `packages/next-server` ↔ `packages/web` 교차 의존 금지
 
 ### 예외 처리
 
@@ -433,5 +544,5 @@ const product = parseProduct(text);
 
 ---
 
-**최종 업데이트**: 2026-03-23 — Frontend Itemwiki: `api/core`·`import type` 경계  
-**버전**: 1.0.0
+**최종 업데이트**: 2026-05-28 — `packages/observability` 핵심 계층도·전용 절 추가, API 예시를 `next-server`·`@itemwiki/lib` 경로로 정합  
+**버전**: 1.2.0
