@@ -15,6 +15,7 @@
 | [UX_FEEDBACK_AND_ACCESSIBILITY.md](./UX_FEEDBACK_AND_ACCESSIBILITY.md) | 피드백(로딩·에러·결과), 접근성 기본 원칙 |
 | [DATA_FETCH_INITIATION.md](./DATA_FETCH_INITIATION.md) | 데이터 조회 시점: 접근 행동(클릭)에서 fetch, 모달/탭 진입 |
 | [IA_NAVIGATION_PRINCIPLES.md](./IA_NAVIGATION_PRINCIPLES.md) | 정보 구조·네비게이션: 3-Depth, Hick's Law(카테고리 3~7개) |
+| [LIST_PAGINATION_STRATEGY.md](./LIST_PAGINATION_STRATEGY.md) | **Tier 2**: 목록 페이징·무한 스크롤 — 목적(탐색/소비/관리)별 권장 패턴, `@pagination-strategy` 주석 규약 |
 | [PAGE_FORM_UX_HEURISTICS.md](./PAGE_FORM_UX_HEURISTICS.md) | **Tier 2**: 설정·긴 폼 화면 공통 UX 검증(결정 밀도·목적 분리·위계·카피 등 7축 + 체크리스트) |
 | [INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md](./INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md) | **필수**: SSOT, mapper 필수(신규/수정), 다중 persistence 부분 실패 정책, allowlist 공유, Round-trip·PR IP-1~6 |
 | *(04와 짝)* [INPUT_PERSISTENCE_GUARANTEE.md](../04-safety-standards/INPUT_PERSISTENCE_GUARANTEE.md) | 입력–저장 **보증**(단일 Save 권위·렌더=저장 결과·정렬·다중 단계) — 원칙만 |
@@ -69,7 +70,7 @@
 ### OBSERVABILITY (operationId · Tier 2)
 
 - **적용 현황**:
-  - `packages/lib/api` 전반: `retryFetch(..., { operation: NetworkOperations.* })` 사용 (products, contributions, comments, preference-sets, users, features, images 등). 클라이언트가 이 API 함수들을 호출하면 operationId가 전달됨.
+  - `packages/lib/api` 전반: `retryFetch(..., { operation: NetworkOperations.* })` 사용 (products, contributions, comments, preferences, users, features, images 등). 클라이언트가 이 API 함수들을 호출하면 operationId가 전달됨.
   - 컴포넌트·훅: `callAPIByOperation`, `callAPI(..., { operation })` 사용처 다수 (AccountDeleteButton, ProfileSettings, RecommendationCard, IngredientCorrectionModal, LearningLoopFeedback 등).
   - 권한·캐시·재시도: `permission-matrix`, `caching-policy-registry`, `retry-policy-registry`가 operationId 기준으로 동작.
 - **2026-03 후속**: `callAPI` / `callAPIWithJSON` / `callAPIWithFormData`의 `operation`은 **타입상 필수**이며, 누락된 엔드포인트는 `network-operations.ts`에 ID를 추가해 매핑함. `NetworkOperationId`는 연산 수 증가에 따른 TS 한도를 피하도록 **2단계 그룹에서 leaf만 추출**하는 방식으로 정의됨.

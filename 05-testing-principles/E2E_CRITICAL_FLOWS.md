@@ -128,10 +128,9 @@
    - 결과 표시
    - 필터링
 
-5. **선호도 설정 플로우** (`preference-sets.spec.ts`)
-   - 선호도 생성
-   - 선호도 적용
-   - 선호도 공유
+5. **선호도 설정 플로우** (`preferences.spec.ts`, `ux-improvement-plan-2026.spec.ts` — `/me` 취향 요약)
+   - `GET/PATCH …/users/me/preferences`
+   - ~~`preference-sets.spec.ts`~~ 삭제 — [PREFERENCE_SETS_REMOVAL.md](../../testing/PREFERENCE_SETS_REMOVAL.md)
 
 ### Phase 2: 중복 제거
 

@@ -53,7 +53,7 @@
 
 **탐색·셸·제품 상세 로드·탭 순서 UI**(`home`, `search`, `product-detail-*`, `product-lookup`, `product-tab-order-persistence` 등)는 **flow(⚠️)** — 하이드레이션·네트워크·렌더 타이밍에 더 민감하므로 머지 차단에서 제외한다.
 
-**참고**: `test-trust-manifest.json`이 E2E를 critical로 표기해도, `authority-specs.json`의 **`legacy`**에 경로가 있으면 `run-by-authority`는 해당 파일을 **critical·flow 어느 단계에서도 실행하지 않는다**(합집합에서 제외). 예: `tests/e2e/api/reputation-score.spec.ts`, `tests/e2e/api/users-advanced.spec.ts`.
+**참고**: `test-trust-manifest.json`이 E2E를 critical로 표기해도, `authority-specs.json`의 **`legacy`**에 경로가 있으면 `run-by-authority`는 해당 파일을 **critical·flow 어느 단계에서도 실행하지 않는다**(합집합에서 제외). 예: 레거시로 표시된 구형 전용 스펙 경로.
 
 **결제(Order/Payment)**: 현재 제품 범위에 없으면 critical에 넣지 않는다.
 
