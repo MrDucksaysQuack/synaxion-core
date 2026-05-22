@@ -22,6 +22,22 @@
 
 **실제 스크립트 인벤토리**: 이 프레임워크를 구현하는 `check:*` / `measure:*` 스크립트 목록과 역할은 [VERIFICATION_SCRIPTS.md](./VERIFICATION_SCRIPTS.md)에서 관리합니다.
 
+### 권장 `check:*` — 콘텐츠 로케일 패리티 (Locale parity)
+
+**Tier**: **Tier 2** (다국어 `src/content/{locale}/`·레지스트리·i18n 키가 있는 제품)
+
+지원 로케일 간 **키·페이지·레지스트리 항목 누락**은 런타임에서만 드러나기 쉽다. CI에 다음을 둔다.
+
+| 스크립트 (예시 이름) | 목적 |
+|---------------------|------|
+| `check:locale-parity` / `check:tl-copy` | 기준 로케일(en/ko) 대비 보조 로케일 파일·키 동형성 |
+| `check:registry-tl` | 도메인 레지스트리·질문 엔진 등 locale별 항목 수·필수 필드 |
+
+- **기준 로케일**과 **지원 로케일 목록**은 프로젝트 `package.json` 또는 인스턴스 문서에 고정한다.
+- 신규 페이지·폼 질문 추가 시 **모든 로케일**을 같은 PR에 넣거나, parity check 실패로 머지를 막는다.
+
+**인스턴스**: truefarm `check:tl-copy`, `check:registry-tl`.
+
 ---
 
 ## 검증 계층
@@ -381,5 +397,5 @@ npm run fix:imports
 
 ---
 
-**최종 업데이트**: 2026-03-19  
-**버전**: 1.0.1
+**최종 업데이트**: 2026-05-23 — 로케일 패리티 권장 게이트  
+**버전**: 1.0.2

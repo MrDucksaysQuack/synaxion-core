@@ -54,7 +54,26 @@
 
 ---
 
-## 3. 관련 문서
+## 3. 다단계 폼·위저드 이탈 관측 (Abandonment tracking)
+
+**Tier**: **Tier 3** (참고 — 다단계 폼·질문 엔진이 있는 제품)
+
+“제출까지 몇 %가 왔는가”만으로는 **어느 질문에서 이탈하는지** 알기 어렵다. 위저드·질문 그룹 단위로 이탈을 정량화한다.
+
+### 패턴
+
+1. **질문 메타 `track_abandonment`**: 레지스트리에서 이탈 추적 대상 질문만 표시한다.
+2. **이탈 집계 함수**: 그룹 완료·단계 이탈 시점에 `getAbandonedQuestionIds(groupId, answers)` — **보이는데 비어 있는** `track_abandonment` 질문 id 목록.
+3. **분석 이벤트**: 예) `join_question_abandon` — `group_id`, `question_ids`, `step`, `draft_id`, `experiment_bucket` 등 — [LOGGING_OBSERVABILITY_PRINCIPLES §6](../09-observability/LOGGING_OBSERVABILITY_PRINCIPLES.md).
+4. **UX와 분리**: 이탈 이벤트는 **관측**용이며, 사용자에게 “미완료 질문” 경고를 띄우는 것과 혼동하지 않는다(제품 정책에 따름).
+
+### 인스턴스 참고
+
+- truefarm: `abandonment-tracking.ts`, `JOIN_QUESTION_ABANDON`, registry `track_abandonment: true`.
+
+---
+
+## 4. 관련 문서
 
 - [UX_SAFETY_RULES.md](../04-safety-standards/UX_SAFETY_RULES.md) — 네트워크 타임아웃, fetch 규칙, 로딩 고정 방지  
 - [07-frontend-ui/README.md](./README.md) — 프론트엔드·UI 섹션 개요 및 프로젝트 인스턴스 링크  
@@ -63,4 +82,4 @@
 
 ---
 
-**최종 업데이트**: 2026-02
+**최종 업데이트**: 2026-05-23 — §3 폼 이탈 관측

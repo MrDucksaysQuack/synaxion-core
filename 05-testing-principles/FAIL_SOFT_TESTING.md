@@ -30,6 +30,8 @@
 **목표:**
 > 최악의 상황에서도 시스템이 응답하고, 사용자가 알 수 있어야 합니다.
 
+**다중 저장 대상(Primary/Secondary)**: API 응답의 `success`·경고 메시지 조합은 [SILENT_FAILURE_PREVENTION.md](../04-safety-standards/SILENT_FAILURE_PREVENTION.md) **Fail-Soft Multi-Target**과 함께 계약·통합 테스트로 검증한다.
+
 ---
 
 ## Fail-Soft 테스트 패턴

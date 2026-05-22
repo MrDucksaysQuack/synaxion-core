@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.7.6  
+**버전**: 2.7.7  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -140,4 +140,5 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-05-23 | **2.7.7** — truefarm에서 추출한 8패턴 반영: Fail-Soft Multi-Target, 클라이언트 영속 버저닝, rate limit fallback, IP 해싱, 이벤트 택소노미, 로케일 패리티 게이트, 폼 이탈 관측, A/B 버킷 내성. |
 | 2026-04-19 | 루트 README를 Synaxion 헌법 진입점·목차·루트 메타 표로 정리. harness 안내는 부록으로 이동. |

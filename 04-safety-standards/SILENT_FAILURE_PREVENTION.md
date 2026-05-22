@@ -351,8 +351,48 @@ pnpm check:silent-failures:strict
 
 ---
 
+## Fail-Soft Multi-Target (부분 성공 투명성)
+
+**Tier**: **Tier 1** (사용자 트리거 mutation·다중 저장 대상)  
+**관련**: [INPUT_PERSISTENCE_GUARANTEE.md](./INPUT_PERSISTENCE_GUARANTEE.md) §4, [FAIL_SOFT_TESTING.md](../05-testing-principles/FAIL_SOFT_TESTING.md)
+
+한 사용자 액션이 **primary·secondary** 등 여러 저장 대상에 동시에 쓰일 때, “에러를 삼키지 않는다”만으로는 부족하다. **어느 대상이 성공했는지**에 따라 사용자-facing `success`와 메시지를 구분해야 한다.
+
+### 원칙
+
+> **Primary 저장 성공 = 사용자 액션 성공으로 처리하되, secondary 실패는 반드시 노출한다.**
+
+| Primary | Secondary | `success` | 사용자 피드백 |
+|---------|-----------|-----------|----------------|
+| OK | OK | `true` | 성공(경고 없음) |
+| OK | 실패 | `true` | 성공 + **secondary 실패 경고** (주 저장은 완료됨을 명시) |
+| 실패 | OK | `true` | **`success: true`여도 primary 실패 경고 필수** — “백업만 됨” 오해 금지, 재시도·문의 유도 |
+| 실패 | 실패 | `false` | 실패, 재시도·대체 채널 안내 |
+
+**규칙**
+
+1. **Primary 권위**: 팀이 정한 주 저장소(DB·권위 API) 성공 여부가 “제출/저장 완료”의 기준이다.
+2. **Secondary 투명성**: 시트 백업·웹훅·이메일 큐 등 보조 경로 실패는 `success: true`여도 **사용자 또는 운영자**에게 드러나야 한다(토스트/인라인 경고 + 구조화 로그).
+3. **Primary 실패 시 secondary만 성공**: API가 `success: true`를 반환하더라도 UI는 **primary 실패 경고**를 반드시 보여 준다. “제출 완료”만 표시하지 않는다.
+4. **로깅**: 각 대상별 결과(`primaryOk`, `secondaryOk` 등)를 한 요청 단위로 로그에 남긴다 — 침묵 catch 금지와 병행.
+5. **Side effect 순서**: primary 확정 후에만 “완료” 부수 효과(확인 메일·드래프트 정리)를 실행한다.
+
+### 금지
+
+- Primary OK + secondary 실패인데 사용자에게 아무 말 없이 `success: true`만 반환.
+- Secondary만 성공했을 때 “제출 완료”처럼 보이는 UI.
+
+### 인스턴스 참고
+
+- 다중 persistence·MULTI 계약: 프로젝트 `input-persistence` 인스턴스 문서.
+- truefarm `submitForm` 등: primary=Supabase, secondary=Sheets — 3단계 응답 조합.
+
+---
+
 ## 📚 관련 문서
 
+- [INPUT_PERSISTENCE_GUARANTEE.md](./INPUT_PERSISTENCE_GUARANTEE.md) — 다중 저장·클라이언트 드래프트
+- [FAIL_SOFT_TESTING.md](../05-testing-principles/FAIL_SOFT_TESTING.md) — degraded response 테스트
 - [에러 피드백 가이드](../guides/ERROR_FEEDBACK_GUIDE.md)
 - [showToUser 사용 기준](../guides/SHOW_TO_USER_CRITERIA.md)
 - [UX 버그 기준 평가](../analysis/UX_BUG_CRITERIA_EVALUATION.md)
@@ -360,5 +400,5 @@ pnpm check:silent-failures:strict
 
 ---
 
-**최종 업데이트**: 2026-01-14  
+**최종 업데이트**: 2026-05-23  
 **책임자**: Team 5 — Silent Failure & Background UX 팀

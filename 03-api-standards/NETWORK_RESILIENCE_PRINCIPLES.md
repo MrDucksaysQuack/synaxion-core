@@ -31,10 +31,36 @@
 
 ---
 
+## 5. 안전 인프라 장애 시 Graceful Fallback (Rate limit 등)
+
+**Tier**: **Tier 2** (권장 — 보안 인프라 단일 장애점 완화)
+
+Redis 기반 rate limiter, 분산 circuit breaker, WAF edge 등 **요청을 막기 위해 둔 외부 안전 계층**이 없거나 실패했을 때, **전체 트래픽을 deny-by-default로 두지 않는다**는 원칙이다.
+
+### Rate limiting
+
+| 상황 | 기본 동작 |
+|------|-----------|
+| 외부 limiter **미설정**(env 없음) | **in-process** 슬라이딩 윈도·버킷 등으로 동일 한도 적용 |
+| 외부 limiter **호출 실패**(타임아웃·5xx) | **로그 후 in-process fallback** — 요청을 무조건 허용하지 않되, **인프라 장애 ≠ 사용자 무제한 허용**과 **인프라 장애 ≠ 전면 503** 사이에서 팀이 정한 한도를 유지 |
+| in-process도 불가 | 명시적 정책(예: allow-with-warning vs fail-closed)을 문서화 — 침묵 실패 금지 |
+
+**규칙**
+
+- Fallback 전환은 **구조화 로그**로 남긴다(`upstash fallback to memory` 등).
+- in-process 한도는 **인스턴스별**이므로 멀티 인스턴스 환경에서는 한도가 느슨해질 수 있음을 운영 문서에 명시한다.
+- **fail-open(무제한 허용)**은 DDoS·남용 위험이 있으므로, 기본 권장은 **degraded but bounded**(in-process)이다.
+
+### 인스턴스 참고
+
+- truefarm `checkRateLimit`: Upstash 설정 시 Redis, 미설정·예외 시 `checkRateLimitInMemory`.
+
+---
+
 ## 🔗 인스턴스 (Itemwiki)
 
 - 구체 호출 래퍼·retry 정책·operationId 매핑: [NETWORK_CALL_RULES.md](../../itemwiki-constitution/itemwiki-specific/api-network/NETWORK_CALL_RULES.md) 등 인스턴스 `api-network/` 문서.
 
 ---
 
-**최종 업데이트**: 2026-04-14
+**최종 업데이트**: 2026-05-23 — §5 안전 인프라 graceful fallback

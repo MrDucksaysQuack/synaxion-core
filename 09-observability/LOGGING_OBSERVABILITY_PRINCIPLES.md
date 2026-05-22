@@ -65,7 +65,32 @@
 
 ---
 
-## 6. 개선 로드맵
+## 6. 프론트엔드 분석 이벤트 택소노미 (Event taxonomy registry)
+
+**Tier**: **Tier 2** (권장 — GA/gtag·자체 analytics 사용 시)
+
+서버 로깅(§1~3)과 별도로, **클라이언트 분석 이벤트**는 문자열 리터럴이 흩어지면 오타·파라미터 드리프트·중복 이벤트가 쌓인다.
+
+### 원칙
+
+1. **단일 레지스트리**: 이벤트 이름은 `as const` 객체(또는 enum) **한 파일**에 모은다 — `TRACKING_EVENTS.HERO_CTA_CLICK` 등.
+2. **이름 타입 추출**: `type TrackingEventName = (typeof TRACKING_EVENTS)[keyof typeof TRACKING_EVENTS]`로 **허용 이름만** `trackEvent`에 전달.
+3. **이벤트별 파라미터 타입**: 공통 `TrackingParams`에 optional 필드를 두되, 팀이 필요하면 **이벤트별 discriminated union**으로 강화한다.
+4. **개발 환경 가시성**: `NODE_ENV === 'development'`에서 `console.info('[tracking]', name, params)` 등으로 호출을 검증한다(프로덕션 스팸 금지).
+5. **서버 로그와 분리**: 분석 이벤트는 제품 KPI용; **에러·보안**은 §1 구조화 로깅 경로를 따른다 — [SILENT_FAILURE_PREVENTION](../04-safety-standards/SILENT_FAILURE_PREVENTION.md).
+
+### 금지
+
+- 컴포넌트마다 `gtag('event', 'join_submit')` 문자열 하드코딩.
+- 레지스트리에 없는 이벤트 이름을 타입 단언으로 우회.
+
+### 인스턴스 참고
+
+- truefarm `src/lib/tracking/events.ts`: `TRACKING_EVENTS`, `TrackingParams`, `trackEvent`.
+
+---
+
+## 7. 개선 로드맵
 
 - **Phase 1**: API 라우트에서 `console.error`/`warn`/`log` 제거 → `logUnifiedError`/`logUnifiedWarn` 사용 (health, webhook 등). ✅ 적용됨.
 - **Phase 2**: API 전용 console 금지 — `.eslintrc.json`에 `local/no-console-in-api` 적용됨.
@@ -77,4 +102,4 @@
 
 ---
 
-**최종 업데이트**: 2026-03-19
+**최종 업데이트**: 2026-05-23 — §6 프론트엔드 이벤트 택소노미

@@ -22,6 +22,7 @@
 | [UI_INPUT_RENDER_AUTHORITY.md](./UI_INPUT_RENDER_AUTHORITY.md) | 낙관·드래프트 시 **표시 권위**·실패 시 refetch/롤백 — [SCREEN_MAPPINGS](../../itemwiki-constitution/itemwiki-specific/input-persistence/INPUT_PERSISTENCE_SCREEN_MAPPINGS.md) 권위 표와 짝(IP-6) |
 | [입력–저장 Itemwiki 인스턴스](../../itemwiki-constitution/itemwiki-specific/input-persistence/README.md) | 매핑 인덱스·화면별 표·다중 persistence·필드 필터 인벤토리·감사 백로그·남은 작업(실행 백로그) — [INPUT_PERSISTENCE_SCHEMA_ALIGNMENT](./INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md) 원칙과 짝 |
 | [OBSERVABILITY_AND_PAGE_STATE.md](./OBSERVABILITY_AND_PAGE_STATE.md) | **Tier 2**: 아웃바운드 호출 operation ID 의무, 관측성 스키마·콘솔 페이지 상태 계약 |
+| [EXPERIMENT_BUCKET_RESILIENCE.md](./EXPERIMENT_BUCKET_RESILIENCE.md) | **Tier 3**: A/B 버킷 SSR·storage 폴백, 할당 vs 렌더 분리 |
 
 ---
 

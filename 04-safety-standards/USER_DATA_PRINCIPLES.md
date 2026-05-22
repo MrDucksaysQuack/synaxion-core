@@ -52,11 +52,35 @@
 
 ---
 
+## 6. 운영 식별자 익명화 (Privacy-preserving operational IDs)
+
+**Tier**: **Tier 2** (권장 — 레이트 리밋·남용 방지·감사 로그에 IP 등을 쓸 때)
+
+운영·보안 목적으로 **IP, 디바이스 fingerprint, 세션 하드웨어 ID** 등을 저장할 때, **raw 값을 영구 저장하지 않는다**.
+
+### 원칙
+
+1. **Salted one-way hash**: `SHA-256(salt + identifier)` 등 **복원 불가** 해시만 DB·로그·rate-limit 키에 사용한다.
+2. **Salt는 비밀 env**: salt는 코드에 하드코딩하지 않고 **환경 변수**로 주입한다. 로테이션 절차는 인스턴스 문서에 둔다.
+3. **목적 제한**: 해시는 남용 방지·집계·감사에만 쓰고, 마케팅·프로파일링 식별자로 승격하지 않는다.
+4. **null 허용**: 프록시 헤더가 없으면 `null`로 두고, fake IP를 만들지 않는다.
+
+### 금지
+
+- `form_submissions.ip = req.ip` 형태의 **평문 IP** 장기 보관(법적·정책 예외는 인스턴스에서 명시).
+
+### 인스턴스 참고
+
+- truefarm `getIpHash()`: `FORM_SUBMISSION_IP_SALT` + `x-forwarded-for` / `x-real-ip`.
+
+---
+
 ## 🔗 관련 문서
 
 - [UX_SAFETY_RULES.md](./UX_SAFETY_RULES.md) — UX·네트워크 안전
 - [CONCEPTUAL_ROT_PREVENTION.md](./CONCEPTUAL_ROT_PREVENTION.md) — 권한·정책 일관성
+- [NETWORK_RESILIENCE_PRINCIPLES.md](../03-api-standards/NETWORK_RESILIENCE_PRINCIPLES.md) — rate limit 키 설계
 
 ---
 
-**최종 업데이트**: 2026-04-14 — §5 소유권 계약(범용 요약)
+**최종 업데이트**: 2026-05-23 — §6 운영 식별자 익명화

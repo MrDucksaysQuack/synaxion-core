@@ -52,9 +52,9 @@
 | **Tier 2** | 권장. 프로젝트/팀 단위로 선택 적용 | 리드·아키텍트 결정 |
 | **Tier 3** | 참고. 심화·확장 시 참조 | 아키텍트·신규 도메인 |
 
-- **Tier 1 예**: 계층 경계, 단방향 의존성, API withMetrics+withAuth, UX 안전(타임아웃·finally), 침묵 실패 방지, **API 7단계 자동 검증**(예: `verify:api-7-stages`를 PR/게이트에 엄격 포함)
-- **Tier 2 예**: Fail-Soft 테스트, 계약 테스트, E2E authority 그룹 (7단계는 **자동 검증이 없고 주석만 요구**할 때 여기에 둠)
-- **Tier 3 예**: 8단계 방법론 심화, 프로토콜 문서, 프로젝트 특화 세부
+- **Tier 1 예**: 계층 경계, 단방향 의존성, API withMetrics+withAuth, UX 안전(타임아웃·finally), 침묵 실패 방지·**Fail-Soft Multi-Target**(다중 저장 부분 성공 투명성), 클라이언트 영속 `schema_version`·read migration, **API 7단계 자동 검증**(예: `verify:api-7-stages`를 PR/게이트에 엄격 포함)
+- **Tier 2 예**: Fail-Soft 테스트, 계약 테스트, E2E authority 그룹, rate limit 인프라 fallback, 운영 IP salted hash, 프론트 이벤트 택소노미, **로케일 패리티 `check:*`** (7단계는 **자동 검증이 없고 주석만 요구**할 때 여기에 둠)
+- **Tier 3 예**: 8단계 방법론 심화, 프로토콜 문서, 폼 이탈 관측, A/B 버킷 내성, 프로젝트 특화 세부
 - **층 B(Judgment Constitution) 전체**: 기본적으로 Tier 3에 해당한다(§0). 다만 아래 §1.1처럼 **스키마·JSON 예시**는 자동 검증 대상으로 둘 수 있다.
 
 **규칙**: 새 원칙 추가 시 반드시 Tier를 지정한다. Tier 1은 가능한 한 `check:*`로 검증 가능해야 한다.

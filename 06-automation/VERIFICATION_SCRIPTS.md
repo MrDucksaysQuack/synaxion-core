@@ -196,6 +196,18 @@
 | check:page-metadata-public-main | 퍼블릭 페이지 메타데이터 |
 | check:color-contrast | 색상 대비 접근성 |
 
+#### 🌐 콘텐츠·로케일 (Locale parity) — Tier 2 권장
+
+다국어 제품은 [VERIFICATION_FRAMEWORK.md](./VERIFICATION_FRAMEWORK.md) “로케일 패리티” 절과 정렬한다. `check:constitution-pr` **기본 포함 여부는 프로젝트 선택**.
+
+| 스크립트 (인스턴스 예) | 목적 |
+|------------------------|------|
+| check:locale-parity | 기준 로케일 대비 `src/content/{locale}/` 키·파일 동형성 |
+| check:tl-copy | 보조 로케일(tl 등) 카피·Taglish 품질 게이트 |
+| check:registry-tl | 질문 레지스트리·도메인 항목 locale별 누락 |
+
+**인스턴스**: truefarm `check:tl-copy`, `check:registry-tl`.
+
 #### 🧪 테스트 품질 (Test Quality)
 
 | 스크립트 | 목적 |

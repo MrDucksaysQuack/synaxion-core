@@ -29,6 +29,32 @@
 ## 4. 다중 단계 저장 (한 사용자 액션 → 여러 요청)
 
 - 한 번의 사용자 의도가 **여러 네트워크 단계**로 쪼개지면, **부분 성공·재시도·토스트**를 사용자에게 일관되게 설명할 수 있어야 한다. “절반만 됐다”를 숨기지 않는다(인스턴스의 MULTI·필드 필터 계약과 정렬).
+- 서버 측 primary/secondary 조합 응답은 [SILENT_FAILURE_PREVENTION.md](./SILENT_FAILURE_PREVENTION.md) **Fail-Soft Multi-Target**과 정렬한다.
+
+---
+
+## 5. 클라이언트 영속 데이터 버저닝 (localStorage / sessionStorage)
+
+**Tier**: **Tier 1** (드래프트·위저드·오프라인 큐 등 사용자 입력이 브라우저에 남는 경우)
+
+서버 저장 흐름(§1~4)과 별도로, **브라우저 영속 저장소**에도 스키마 드리프트·구버전 키 잔존 리스크가 있다.
+
+### 원칙
+
+1. **키에 major 버전 포함**: `app_feature_draft_v1`처럼 저장소 키 자체에 **breaking 변경 시 바꿀 수 있는 major**를 둔다. 필드만 바꿀 때와 키를 바꿀 때의 기준을 팀이 정한다.
+2. **페이로드에 `schema_version`**: JSON(또는 직렬화 객체) 안에 **정수 `schema_version`**(또는 동등한 필드)을 넣어, 로드 시 현재 코드가 기대하는 버전과 대조한다.
+3. **read 시점 forward migration**: `load`·hydrate 경로에서 **마이그레이션 함수**(`migrateX(fromVersion)`)를 호출해 구버전 → 현재 버전으로 변환한다. 쓰기 전에 한 번만 적용해도 된다.
+4. **파싱 실패 = null + clear 선택**: 손상·알 수 없는 버전은 사용자 데이터 손실을 최소화하며 **조용히 오염된 상태를 재사용하지 않는다**(필요 시 키 삭제·빈 드래프트).
+5. **서버 메타와 정렬**: 제출 본문에도 동일 `schema_version`을 실어 서버·시트·감사 로그가 클라이언트 드래프트와 추적 가능하게 한다 — [INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md](../07-frontend-ui/INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md).
+
+### 금지
+
+- 버전 없는 `localStorage.setItem(key, JSON.stringify(form))`만으로 장기 운영.
+- 마이그레이션 없이 필드 rename/remove 후 구 데이터를 그대로 렌더.
+
+### 인스턴스 참고
+
+- truefarm: `draft-storage` 키 `_v1`, `migrateJoinSubmissionMeta` / `migrateDraftAnswers`, `SCHEMA_VERSION` 상수.
 
 ---
 
@@ -44,4 +70,4 @@
 
 ---
 
-**최종 업데이트**: 2026-04-14 — Constitution 범용 승격(원칙만; 세부는 07·인스턴스)
+**최종 업데이트**: 2026-05-23 — §5 클라이언트 영속 데이터 버저닝

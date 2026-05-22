@@ -9,8 +9,8 @@
 
 | 문서 | 역할 |
 |------|------|
-| [LOGGING_OBSERVABILITY_PRINCIPLES.md](./LOGGING_OBSERVABILITY_PRINCIPLES.md) | 로깅 환경 구분, 에러 구조화·컨텍스트, catch에서 로그 누락 금지 |
+| [LOGGING_OBSERVABILITY_PRINCIPLES.md](./LOGGING_OBSERVABILITY_PRINCIPLES.md) | 서버 로깅, catch 누락 금지, **§6 프론트 분석 이벤트 택소노미** |
 
 ---
 
-**최종 업데이트**: 2026-02
+**최종 업데이트**: 2026-05-23
