@@ -102,15 +102,19 @@
 
 [14-experience-direction/](./14-experience-direction/README.md) — 브랜드 감정 축, 이미지 처리 매트릭스, 여백 밀도 계층, 페이지 내러티브 리듬, 컴포넌트 감정 온도, 아이콘 성숙도, 마이크로카피 보이스, AI 이미지 생성 거버넌스(4-layer 프롬프트·Scene·Tempo·Narrative Ownership)
 
-### 15 — 배포 (Deployment)
+### 15 — 컴포넌트 패턴 (Component Patterns)
+
+[15-component-patterns/](./15-component-patterns/README.md) — 애니메이션 안무, 섹션 구성, 다크 모드 구현, 반응형 전략, 폼 UX 패턴. UI Constitution(13장)·Experience Constitution(14장)을 구현하는 검증 가능한 패턴 라이브러리.
+
+### 16 — 배포 (Deployment)
 
 [15-deployment/](./15-deployment/README.md) — DEPLOY-01~08, 롤백 템플릿, [DEPLOYMENT_READINESS_RUBRIC](./15-deployment/DEPLOYMENT_READINESS_RUBRIC.md)
 
-### 16 — 운영 (Operations)
+### 17 — 운영 (Operations)
 
 [16-operations/](./16-operations/README.md) — OPS-01~09, 인시던트·SLO 템플릿, [OPERATIONS_READINESS_RUBRIC](./16-operations/OPERATIONS_READINESS_RUBRIC.md)
 
-### 17 — 데이터·DB
+### 18 — 데이터·DB
 
 [17-data-db/](./17-data-db/README.md) — [DATA_CONSTITUTION](./17-data-db/DATA_CONSTITUTION.md), [DB_CONTRACT_TEMPLATE](./17-data-db/DB_CONTRACT_TEMPLATE.md)
 
@@ -179,6 +183,7 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-05-25 | **2.12.0** — 15장 Component Patterns 추가: ANIMATION_CHOREOGRAPHY, SECTION_COMPOSITION, DARK_MODE_IMPLEMENTATION, RESPONSIVE_STRATEGY, FORM_UX_PATTERNS. 11섹션 패턴 템플릿, Pattern Adoption Rule(7문항 5+ 기준), Mandatory/Recommended/Project-specific 3레벨 체계. truefarm-website를 reference extraction source로 삼아 추출한 첫 패턴 세트. |
 | 2026-05-24 | **2.11.0** — `reference/express-api-minimal`, profile-aware verification, `verify:scaffold:express-api`, CI dual-reference + scaffold smoke. Reusability 10축 5점. |
 | 2026-05-24 | **2.11.0** — 00-planning 장 추가: Forward Planning Protocol(신규 8단계·기능 5단계), PROJECT_INIT_CHECKLIST, PLANNING_DIRECTORY_STANDARD, FEATURE_SPEC·TASK_SPEC 템플릿, harness/forward-planning/ 3종. 계획→실행→검증 전 사이클 정방향 커버. |
 | 2026-05-24 | **2.10.0** — `verification/` reference check 패키지, `reference/nextjs-minimal`, `CORE_READINESS_SCORECARD`, `CONTRACT_CHANGE_POLICY`, 15–17장 README 목차, `verify:core` CI. |
