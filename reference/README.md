@@ -1,7 +1,12 @@
 # Synaxion Reference Instances
 
-| Instance | Purpose |
-|----------|---------|
-| [nextjs-minimal](./nextjs-minimal/) | `verify:reference` — 최소 Next.js contract·ops·deploy 파일 집합 |
+| Instance | Profile | Verify |
+|----------|---------|--------|
+| [nextjs-minimal](./nextjs-minimal/) | Next.js App Router | `pnpm run verify:reference:nextjs` |
+| [express-api-minimal](./express-api-minimal/) | Express API | `pnpm run verify:reference:express` |
+
+전체: `pnpm run verify:reference`
+
+Scaffold smoke: `pnpm run verify:scaffold:express-api`
 
 **최종 업데이트**: 2026-05-24

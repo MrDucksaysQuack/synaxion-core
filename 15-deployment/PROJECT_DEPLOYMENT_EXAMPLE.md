@@ -4,15 +4,17 @@
 
 ---
 
-## 0. Reference — nextjs-minimal (synaxion-core 내장)
+## 0. Reference instances (synaxion-core 내장)
 
-**경로**: [reference/nextjs-minimal/](../reference/nextjs-minimal/)  
-**검증**: `cd synaxion-core && pnpm run verify:reference`
+| Profile | 경로 | 검증 |
+|---------|------|------|
+| Next.js | [reference/nextjs-minimal/](../reference/nextjs-minimal/) | `pnpm run verify:reference:nextjs` |
+| Express API | [reference/express-api-minimal/](../reference/express-api-minimal/) | `pnpm run verify:reference:express` |
 
-적용된 것:
-- `docs/reference-constitution/` — ROLLBACK, SLO, INCIDENT, DB/ENV contract stubs
-- `src/app/api/health/route.ts`, `src/lib/env.ts`, `.env.example`
-- `instrumentation-client.ts` — OPS-01 문서화 패턴
+전체: `pnpm run verify:reference` · Scaffold: `pnpm run verify:scaffold:express-api`
+
+**nextjs-minimal**: `src/app/api/health/route.ts`, `instrumentation-client.ts`  
+**express-api-minimal**: `synaxion.profile.json`, `GET /health` in `src/index.js`, `src/lib/env.mjs`
 
 ---
 

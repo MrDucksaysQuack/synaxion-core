@@ -12,6 +12,8 @@
 
 이 문서는 **NEW_PROJECT_PROTOCOL** 역할을 한다. 단계를 순서대로 수행하면 lib/web/workers 분리, handler factory, policy, check:all, authority, SINGLE_SOURCE_MAP, ADR이 갖춰진 프로젝트 골격이 생긴다.
 
+**선행 조건**: 코드 부트스트랩 전에 [00-planning/FORWARD_PLANNING_PROTOCOL.md](./00-planning/FORWARD_PLANNING_PROTOCOL.md)로 `docs/planning/`, `docs/<project>-constitution/`, `docs/specs/`, `docs/tasks/` 기준선을 확보하는 것을 권장한다. 레거시 프로젝트는 [REVERSE_PLANNING_PROTOCOL](./11-protocols/REVERSE_PLANNING_PROTOCOL.md) 후 동일 기준선을 맞춘다.
+
 ---
 
 ## 부트스트랩 프로토콜 (11단계)

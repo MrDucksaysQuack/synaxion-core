@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.10.0  
+**버전**: 2.11.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -19,6 +19,8 @@
 | 철학 한 축 | [00-overview/PHILOSOPHY.md](./00-overview/PHILOSOPHY.md) |
 | 판단 층(B) 인덱스 | [12-judgment-constitution/README.md](./12-judgment-constitution/README.md) |
 | 범위 경계 | [SCOPE_BOUNDARY.md](./SCOPE_BOUNDARY.md) |
+| 정방향 계획 (신규·기능) | [00-planning/FORWARD_PLANNING_PROTOCOL.md](./00-planning/FORWARD_PLANNING_PROTOCOL.md) |
+| 프로젝트 docs/ 표준 | [00-planning/PLANNING_DIRECTORY_STANDARD.md](./00-planning/PLANNING_DIRECTORY_STANDARD.md) |
 | 코어 완성도 점수 | [CORE_READINESS_SCORECARD.md](./CORE_READINESS_SCORECARD.md) |
 | 계약 변경·ADR | [CONTRACT_CHANGE_POLICY.md](./CONTRACT_CHANGE_POLICY.md) |
 | 검증 (reference check) | [verification/README.md](./verification/README.md) — `pnpm run verify:core` |
@@ -26,6 +28,10 @@
 ---
 
 ## 목차 (번호별 장)
+
+### 00 — Planning (정방향 계획)
+
+[00-planning/](./00-planning/) — Forward Planning Protocol, 프로젝트 init 체크리스트, `docs/` 구조 표준, feature·task 명세 템플릿. **Reverse Planning**(11-protocols)의 정방향 대칭.
 
 ### 00 — 개요
 
@@ -82,7 +88,7 @@
 
 ### 11 — 프로토콜·교과
 
-[11-protocols/](./11-protocols/) — 제품/팀별 완료 계약·개발 프로토콜 문서, **Reverse Planning Protocol** (미완성·레거시 프로젝트 복원 절차: O/I/U 분류, 8단계, Reconstruction Scorecard)
+[11-protocols/](./11-protocols/) — 제품/팀별 완료 계약·개발 프로토콜 문서, **Reverse Planning Protocol** (미완성·레거시 복원: O/I/U, 8단계). 신규·기능 계획은 [00-planning](./00-planning/).
 
 ### 12 — 판단 헌법 (Judgment)
 
@@ -112,9 +118,9 @@
 
 [DELIVERY_READINESS_RUBRIC.md](./DELIVERY_READINESS_RUBRIC.md) — UX·Visual·Deployment·Operations 가중 합산
 
-### Reference instance
+### Reference instances
 
-[reference/nextjs-minimal/](./reference/nextjs-minimal/README.md) — `pnpm run verify:reference` 검증 대상
+[reference/](./reference/README.md) — `pnpm run verify:reference` (nextjs-minimal + express-api-minimal)
 
 ---
 
@@ -173,6 +179,8 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-05-24 | **2.11.0** — `reference/express-api-minimal`, profile-aware verification, `verify:scaffold:express-api`, CI dual-reference + scaffold smoke. Reusability 10축 5점. |
+| 2026-05-24 | **2.11.0** — 00-planning 장 추가: Forward Planning Protocol(신규 8단계·기능 5단계), PROJECT_INIT_CHECKLIST, PLANNING_DIRECTORY_STANDARD, FEATURE_SPEC·TASK_SPEC 템플릿, harness/forward-planning/ 3종. 계획→실행→검증 전 사이클 정방향 커버. |
 | 2026-05-24 | **2.10.0** — `verification/` reference check 패키지, `reference/nextjs-minimal`, `CORE_READINESS_SCORECARD`, `CONTRACT_CHANGE_POLICY`, 15–17장 README 목차, `verify:core` CI. |
 | 2026-05-24 | **2.10.0** — Reverse Planning Protocol 추가 (11-protocols): O/I/U 분류 원칙, 8단계 복원 절차, Reconstruction Scorecard (25점 기준), Synaxion Reconstruction Complete 선언 조건 10개. harness/reverse-planning/ 템플릿 5개 추가. 미완성·레거시 프로젝트를 Synaxion 계획 기준선으로 복원하는 체계 확립. |
 | 2026-05-24 | **2.9.1** — IMAGE_DIRECTION_CONSTITUTION 추가: 4-layer 프롬프트 구조, Scene Categories·Visual Tempo·Narrative Ownership·Collision Matrix·Slot System 스키마 정의. AI 이미지 생성 거버넌스를 Experience Direction의 부속 헌법으로 편입. |

@@ -1,11 +1,15 @@
 {
   "name": "synaxion-core",
-  "version": "2.10.0",
+  "version": "2.11.0",
+  "constitutionVersion": "2.11.0",
   "private": true,
   "type": "module",
   "description": "Synaxion Engineering + Judgment Constitution",
   "scripts": {
     "verify:core": "node verification/run.mjs",
-    "verify:reference": "node verification/run.mjs --full"
+    "verify:reference:nextjs": "SYNAXION_PROJECT_ROOT=reference/nextjs-minimal node verification/run.mjs --full",
+    "verify:reference:express": "SYNAXION_PROJECT_ROOT=reference/express-api-minimal node verification/run.mjs --full",
+    "verify:reference": "pnpm run verify:reference:nextjs && pnpm run verify:reference:express",
+    "verify:scaffold:express-api": "node verification/scaffold-profile-smoke.mjs --profile=express-api"
   }
 }

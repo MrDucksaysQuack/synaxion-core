@@ -10,6 +10,11 @@ import { getCoreRoot } from "./lib/paths.mjs";
 const CORE = getCoreRoot();
 
 const REQUIRED = [
+  "00-planning/FORWARD_PLANNING_PROTOCOL.md",
+  "00-planning/PLANNING_DIRECTORY_STANDARD.md",
+  "00-planning/FEATURE_SPEC_TEMPLATE.md",
+  "00-planning/TASK_SPEC_TEMPLATE.md",
+  "00-planning/PROJECT_INIT_CHECKLIST.md",
   "SCOPE_BOUNDARY.md",
   "CONTRACT_CHANGE_POLICY.md",
   "CORE_READINESS_SCORECARD.md",

@@ -1,0 +1,13 @@
+{
+  "name": "synaxion-reference-express-api",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "constitutionVersion": "2.11.0",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

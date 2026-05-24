@@ -82,5 +82,6 @@ E2E 필요 여부:
 2. 새 기능 PR의 description에 붙여넣는다
 3. 각 항목을 채우고 PR 리뷰어와 함께 검토한다
 4. 큰 기능이면 `docs/adr/` 에 ADR로 기록한다
+5. 기능 명세가 필요하면 [00-planning/FEATURE_SPEC_TEMPLATE.md](./00-planning/FEATURE_SPEC_TEMPLATE.md)로 `docs/specs/`에 작성한다
 
 **최종 업데이트**: 2026-05-24

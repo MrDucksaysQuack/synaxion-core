@@ -16,7 +16,12 @@ if (!existsSync(envExample)) {
   else passed.push(`.env.example — ${n}개`);
 }
 
-const validationPaths = ["src/lib/env.ts", "src/lib/env.mjs", "src/config/env.ts"];
+const validationPaths = [
+  "src/lib/env.ts",
+  "src/lib/env.mjs",
+  "src/config/env.ts",
+  "src/lib/env.js",
+];
 const hasVal = validationPaths.some((p) => existsSync(join(ROOT, p)));
 if (hasVal) passed.push("env validation 파일 존재");
 else issues.push("src/lib/env.ts 등 env validation 없음");

@@ -17,6 +17,7 @@
 | **자동화** | 레지스트리에 등록된 `verificationScript`를 `check:decision-registry`가 자동 실행; CI에서 `check:constitution-pr` 필수 |
 | **데이터 계약** | `DATA_CONSTITUTION.md` — DB schema, migration safety, 데이터 계층 경계 |
 | **범위 판단** | `SCOPE_BOUNDARY.md` — Coverage Eligibility 공식으로 새 규칙 편입 여부 결정 |
+| **정방향 계획** | `00-planning/FORWARD_PLANNING_PROTOCOL.md` — 신규 프로젝트·기능의 docs/planning·specs·tasks 기준선 |
 
 ---
 
@@ -57,5 +58,6 @@
 - [17-data-db/README.md](./17-data-db/README.md) — Data / DB Constitution
 - [SCOPE_BOUNDARY.md](./SCOPE_BOUNDARY.md) — Coverage Eligibility 공식
 - [FEATURE_CONTRACT_TEMPLATE.md](./FEATURE_CONTRACT_TEMPLATE.md) — 기능 개발 전 계약 템플릿
+- [00-planning/README.md](./00-planning/README.md) — Planning 층 인덱스
 
-**최종 업데이트**: 2026-03-20
+**최종 업데이트**: 2026-05-24

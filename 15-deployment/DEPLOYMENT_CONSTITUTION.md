@@ -83,6 +83,28 @@ Production 배포 후 최소한의 smoke test가 실행되어야 한다.
 
 ---
 
+## §2b Progressive Rollout — 코어 상한 (4점)
+
+**Tier 1 코어**는 Vercel Pro·Kubernetes canary 등 **호스팅 인프라**에 의존하는 progressive rollout을 **구현으로 강제할 수 없다**.
+
+| 점수 | 의미 | 코어에서 가능한 것 |
+|------|------|-------------------|
+| **4점 (코어 상한)** | DEPLOY-01~08 + rollback·smoke·env contract + `verify:core` deployment checks | 문서·reference `check:deployment-*` |
+| **5점 (인스턴스)** | 트래픽 % 롤아웃 + 자동 롤백 파이프라인 **실제 동작** | 플랫폼 설정 + CI job 예시 |
+
+5점 예시(문서·파이프라인 스켈레톤):
+
+```yaml
+# .github/workflows/deploy-production.yml (예시 — 인스턴스)
+# 1) deploy preview → smoke
+# 2) promote 10% → monitor error rate 5m
+# 3) promote 100% OR auto-rollback on SLO burn
+```
+
+인프라 없이 5점을 주장하지 않는다. [DEPLOYMENT_READINESS_RUBRIC](./DEPLOYMENT_READINESS_RUBRIC.md) 자가 평가 시 이 절을 따른다.
+
+---
+
 ## §3 관련 문서
 
 - [06-automation/DEPLOYMENT_TRIGGER.md](../06-automation/DEPLOYMENT_TRIGGER.md) — 검증 후 배포 트리거

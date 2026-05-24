@@ -18,7 +18,8 @@
 | **B. Judgment Constitution** | **판단 출력 타입** 먼저, E/R/C/I, 규칙, 플로, 연합 | [12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md](./12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md), [judgment-output.schema.json](./judgment-output.schema.json), [12-judgment-constitution/](./12-judgment-constitution/README.md), `decision-rules.schema.json` |
 | **C. UI Design Constitution** | 시각 토큰 3-tier 아키텍처, 색상·테마 원칙, 타이포그래피, 공간, 형태, 모션, 상태 표현, **시각 의존 방향** | [13-ui-design/UI_DESIGN_CONSTITUTION.md](./13-ui-design/UI_DESIGN_CONSTITUTION.md), `check:ui-*` |
 | **D. Experience Constitution** | 브랜드 감정 축, 이미지 처리 매트릭스, 여백 밀도, 페이지 내러티브, 컴포넌트 온도, 아이콘 성숙도, 마이크로카피 보이스, **Design Review Gate** | [14-experience-direction/EXPERIENCE_CONSTITUTION.md](./14-experience-direction/EXPERIENCE_CONSTITUTION.md), Design Review Gate Checklist |
-| **P. Protocols** | "무엇이어야 하는가"가 아닌 "어떤 순서로 무엇을 해야 하는가"를 정의하는 절차 규약. Constitution을 보완. | [11-protocols/REVERSE_PLANNING_PROTOCOL.md](./11-protocols/REVERSE_PLANNING_PROTOCOL.md), RECONSTRUCTION_SCORECARD.md, harness/reverse-planning/ |
+| **0. Planning** | 만들기 **전** 의도·범위·명세·태스크 분해. Engineering Constitution의 입력. | [00-planning/FORWARD_PLANNING_PROTOCOL.md](./00-planning/FORWARD_PLANNING_PROTOCOL.md), PLANNING_DIRECTORY_STANDARD.md, harness/forward-planning/ |
+| **P. Protocols** | "무엇이어야 하는가"가 아닌 "어떤 순서로 무엇을 해야 하는가"를 정의하는 절차 규약. Constitution을 보완. | [11-protocols/REVERSE_PLANNING_PROTOCOL.md](./11-protocols/REVERSE_PLANNING_PROTOCOL.md) (역방향), [00-planning](./00-planning/) (정방향), RECONSTRUCTION_SCORECARD.md, harness/reverse-planning/ |
 
 층 B는 기본 **Tier 3**로 두고, 제품화 시 Tier 승격·PR 게이트 포함 여부를 팀이 정한다. 층 A의 Tier·검증 의무는 기존 절차를 따른다.
 

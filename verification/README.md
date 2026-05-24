@@ -6,14 +6,16 @@
 
 | 스크립트 | 범위 |
 |----------|------|
-| `pnpm run verify:core` | 코어 문서·verification 패키지 자체 |
-| `pnpm run verify:reference` | 코어 + `reference/nextjs-minimal` 인스턴스 검사 |
+| `pnpm run verify:core` | 코어 문서 + reference 기본 경로로 deployment·ops·contract-adr |
+| `pnpm run verify:reference` | nextjs-minimal + express-api-minimal (--full 각각) |
+| `pnpm run verify:scaffold:express-api` | `profiles/templates/express-api.json` 골격 smoke |
 
 ## 환경 변수
 
 | 변수 | 기본값 | 설명 |
 |------|--------|------|
 | `SYNAXION_PROJECT_ROOT` | `reference/nextjs-minimal` | 인스턴스 프로젝트 루트 (상대 또는 절대) |
+| (profile) | `synaxion.profile.json` | `express-api` — health·completeness 규칙 분기 |
 | `SYNAXION_CONSTITUTION_DIR` | (자동 탐지) | `docs/*-constitution` |
 
 ## 인스턴스에 복사
@@ -33,6 +35,8 @@ cp synaxion-core/verification/lib/paths.mjs scripts/lib/  # optional
 | `check:ui-scripts-registry` | UI_DESIGN_CONSTITUTION `check:ui-*` |
 | `check:deployment-constitution` | 15-deployment §1 hard rules |
 | `check:ops-constitution` | 16-operations §1 hard rules |
-| `check:contract-adr` | CONTRACT_CHANGE_POLICY |
+| `check:contract-adr` | CONTRACT_CHANGE_POLICY (로컬 warning; `CONTRACT_ADR_STRICT=1` 또는 CI=strict) |
+| `check:ux-touch-targets` | UX_CONSTITUTION UX-07 |
 
 **최종 업데이트**: 2026-05-24
+

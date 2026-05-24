@@ -19,7 +19,13 @@ jobs:
           node-version: "22"
       - name: verify:core
         run: node verification/run.mjs
-      - name: verify:reference
+      - name: verify:reference (nextjs-minimal)
         run: node verification/run.mjs --full
         env:
           SYNAXION_PROJECT_ROOT: reference/nextjs-minimal
+      - name: verify:reference (express-api-minimal)
+        run: node verification/run.mjs --full
+        env:
+          SYNAXION_PROJECT_ROOT: reference/express-api-minimal
+      - name: scaffold smoke (express-api profile)
+        run: node verification/scaffold-profile-smoke.mjs --profile=express-api

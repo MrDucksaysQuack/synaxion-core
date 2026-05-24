@@ -63,7 +63,7 @@
 모바일 터치 가능 요소(버튼, 링크, 입력)의 최소 크기:
 - 터치 타겟: 44×44px 이상 (WCAG 2.5.5 기준)
 - 인접 타겟 간격: 8px 이상
-- 검증: check:ux-touch-targets (해당 스크립트가 없으면 PR 리뷰)
+- 검증: `synaxion-core/verification/check-ux-touch-targets.mjs` (`check:ux-touch-targets`, 경고만)
 
 ---
 

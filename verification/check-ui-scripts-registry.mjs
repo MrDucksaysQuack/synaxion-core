@@ -15,6 +15,7 @@ const UI_CHECKS = [
   { name: "check:ui-raw-values", file: "check-ui-raw-values.mjs" },
   { name: "check:ui-motion", file: "check-ui-motion.mjs" },
   { name: "check:ui-theme-split", file: "check-ui-theme-split.mjs" },
+  { name: "check:ux-touch-targets", file: "check-ux-touch-targets.mjs" },
 ];
 
 const missing = UI_CHECKS.filter(({ file }) => !existsSync(join(VERIFICATION, file)));
