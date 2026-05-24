@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.7.7  
+**버전**: 2.10.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -18,6 +18,10 @@
 | 짧게 훑기 | [00-overview/QUICK_START.md](./00-overview/QUICK_START.md) |
 | 철학 한 축 | [00-overview/PHILOSOPHY.md](./00-overview/PHILOSOPHY.md) |
 | 판단 층(B) 인덱스 | [12-judgment-constitution/README.md](./12-judgment-constitution/README.md) |
+| 범위 경계 | [SCOPE_BOUNDARY.md](./SCOPE_BOUNDARY.md) |
+| 코어 완성도 점수 | [CORE_READINESS_SCORECARD.md](./CORE_READINESS_SCORECARD.md) |
+| 계약 변경·ADR | [CONTRACT_CHANGE_POLICY.md](./CONTRACT_CHANGE_POLICY.md) |
+| 검증 (reference check) | [verification/README.md](./verification/README.md) — `pnpm run verify:core` |
 
 ---
 
@@ -78,11 +82,39 @@
 
 ### 11 — 프로토콜·교과
 
-[11-protocols/](./11-protocols/) — 제품/팀별 완료 계약·개발 프로토콜 문서
+[11-protocols/](./11-protocols/) — 제품/팀별 완료 계약·개발 프로토콜 문서, **Reverse Planning Protocol** (미완성·레거시 프로젝트 복원 절차: O/I/U 분류, 8단계, Reconstruction Scorecard)
 
 ### 12 — 판단 헌법 (Judgment)
 
 [12-judgment-constitution/](./12-judgment-constitution/README.md) — E/R/C/I, 스키마, 리플레이·연합
+
+### 13 — UI 디자인 헌법 (UI Design)
+
+[13-ui-design/](./13-ui-design/README.md) — 토큰 3-tier 아키텍처, 색상·테마 원칙, 타이포그래피, 공간, 형태, 모션, 상태 표현, 검증
+
+### 14 — Experience Direction 헌법 (Experience Direction)
+
+[14-experience-direction/](./14-experience-direction/README.md) — 브랜드 감정 축, 이미지 처리 매트릭스, 여백 밀도 계층, 페이지 내러티브 리듬, 컴포넌트 감정 온도, 아이콘 성숙도, 마이크로카피 보이스, AI 이미지 생성 거버넌스(4-layer 프롬프트·Scene·Tempo·Narrative Ownership)
+
+### 15 — 배포 (Deployment)
+
+[15-deployment/](./15-deployment/README.md) — DEPLOY-01~08, 롤백 템플릿, [DEPLOYMENT_READINESS_RUBRIC](./15-deployment/DEPLOYMENT_READINESS_RUBRIC.md)
+
+### 16 — 운영 (Operations)
+
+[16-operations/](./16-operations/README.md) — OPS-01~09, 인시던트·SLO 템플릿, [OPERATIONS_READINESS_RUBRIC](./16-operations/OPERATIONS_READINESS_RUBRIC.md)
+
+### 17 — 데이터·DB
+
+[17-data-db/](./17-data-db/README.md) — [DATA_CONSTITUTION](./17-data-db/DATA_CONSTITUTION.md), [DB_CONTRACT_TEMPLATE](./17-data-db/DB_CONTRACT_TEMPLATE.md)
+
+### Delivery 통합
+
+[DELIVERY_READINESS_RUBRIC.md](./DELIVERY_READINESS_RUBRIC.md) — UX·Visual·Deployment·Operations 가중 합산
+
+### Reference instance
+
+[reference/nextjs-minimal/](./reference/nextjs-minimal/README.md) — `pnpm run verify:reference` 검증 대상
 
 ---
 
@@ -99,6 +131,7 @@
 | 판단 출력 스키마 | [judgment-output.schema.json](./judgment-output.schema.json) |
 | ADR | [adr/](./adr/) |
 | 변경 연대기 | [history/](./history/) |
+| Delivery readiness | [DELIVERY_READINESS_RUBRIC.md](./DELIVERY_READINESS_RUBRIC.md) |
 
 ---
 
@@ -140,5 +173,10 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-05-24 | **2.10.0** — `verification/` reference check 패키지, `reference/nextjs-minimal`, `CORE_READINESS_SCORECARD`, `CONTRACT_CHANGE_POLICY`, 15–17장 README 목차, `verify:core` CI. |
+| 2026-05-24 | **2.10.0** — Reverse Planning Protocol 추가 (11-protocols): O/I/U 분류 원칙, 8단계 복원 절차, Reconstruction Scorecard (25점 기준), Synaxion Reconstruction Complete 선언 조건 10개. harness/reverse-planning/ 템플릿 5개 추가. 미완성·레거시 프로젝트를 Synaxion 계획 기준선으로 복원하는 체계 확립. |
+| 2026-05-24 | **2.9.1** — IMAGE_DIRECTION_CONSTITUTION 추가: 4-layer 프롬프트 구조, Scene Categories·Visual Tempo·Narrative Ownership·Collision Matrix·Slot System 스키마 정의. AI 이미지 생성 거버넌스를 Experience Direction의 부속 헌법으로 편입. |
+| 2026-05-24 | **2.9.0** — 14장 Experience Direction Constitution 추가: 브랜드 감정 축·이미지 처리 매트릭스·여백 밀도·페이지 내러티브·컴포넌트 온도·아이콘 성숙도·마이크로카피 7개 축 스키마 정의. UI Constitution과 구분되는 Design Review Gate enforcement 모델 도입. |
+| 2026-05-24 | **2.8.0** — 13장 UI Design Constitution 추가: 토큰 3-tier 아키텍처, 색상·테마 원칙, 타이포그래피, 공간, 형태, 모션, 상태 표현, 검증 레벨 1–4. |
 | 2026-05-23 | **2.7.7** — truefarm에서 추출한 8패턴 반영: Fail-Soft Multi-Target, 클라이언트 영속 버저닝, rate limit fallback, IP 해싱, 이벤트 택소노미, 로케일 패리티 게이트, 폼 이탈 관측, A/B 버킷 내성. |
 | 2026-04-19 | 루트 README를 Synaxion 헌법 진입점·목차·루트 메타 표로 정리. harness 안내는 부록으로 이동. |

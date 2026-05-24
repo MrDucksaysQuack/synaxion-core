@@ -1,0 +1,25 @@
+name: Synaxion Core Verify
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: verify:core
+        run: node verification/run.mjs
+      - name: verify:reference
+        run: node verification/run.mjs --full
+        env:
+          SYNAXION_PROJECT_ROOT: reference/nextjs-minimal

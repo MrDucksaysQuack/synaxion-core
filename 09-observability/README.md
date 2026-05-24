@@ -13,4 +13,6 @@
 
 ---
 
+**상위 레이어**: 이 섹션의 원칙은 [16-operations/OPERATIONS_CONSTITUTION.md](../16-operations/OPERATIONS_CONSTITUTION.md) OPS-02, OPS-03, OPS-04의 기반이다.
+
 **최종 업데이트**: 2026-05-23

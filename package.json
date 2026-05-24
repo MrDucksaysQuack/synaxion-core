@@ -1,0 +1,11 @@
+{
+  "name": "synaxion-core",
+  "version": "2.10.0",
+  "private": true,
+  "type": "module",
+  "description": "Synaxion Engineering + Judgment Constitution",
+  "scripts": {
+    "verify:core": "node verification/run.mjs",
+    "verify:reference": "node verification/run.mjs --full"
+  }
+}

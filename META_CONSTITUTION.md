@@ -16,6 +16,9 @@
 |----|------|-------------|
 | **A. Engineering Constitution** | 코드 구조, API, 테스트, CI, **코드 속 결정 축** | `00~11/`, `decision-registry`, `check:*`, ADR |
 | **B. Judgment Constitution** | **판단 출력 타입** 먼저, E/R/C/I, 규칙, 플로, 연합 | [12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md](./12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md), [judgment-output.schema.json](./judgment-output.schema.json), [12-judgment-constitution/](./12-judgment-constitution/README.md), `decision-rules.schema.json` |
+| **C. UI Design Constitution** | 시각 토큰 3-tier 아키텍처, 색상·테마 원칙, 타이포그래피, 공간, 형태, 모션, 상태 표현, **시각 의존 방향** | [13-ui-design/UI_DESIGN_CONSTITUTION.md](./13-ui-design/UI_DESIGN_CONSTITUTION.md), `check:ui-*` |
+| **D. Experience Constitution** | 브랜드 감정 축, 이미지 처리 매트릭스, 여백 밀도, 페이지 내러티브, 컴포넌트 온도, 아이콘 성숙도, 마이크로카피 보이스, **Design Review Gate** | [14-experience-direction/EXPERIENCE_CONSTITUTION.md](./14-experience-direction/EXPERIENCE_CONSTITUTION.md), Design Review Gate Checklist |
+| **P. Protocols** | "무엇이어야 하는가"가 아닌 "어떤 순서로 무엇을 해야 하는가"를 정의하는 절차 규약. Constitution을 보완. | [11-protocols/REVERSE_PLANNING_PROTOCOL.md](./11-protocols/REVERSE_PLANNING_PROTOCOL.md), RECONSTRUCTION_SCORECARD.md, harness/reverse-planning/ |
 
 층 B는 기본 **Tier 3**로 두고, 제품화 시 Tier 승격·PR 게이트 포함 여부를 팀이 정한다. 층 A의 Tier·검증 의무는 기존 절차를 따른다.
 
@@ -155,7 +158,7 @@
 
 ## 8. 코어 vs 인스턴스
 
-- **코어**: `00~11`, `12-judgment-constitution/`, `scripts/`, `generated/`, `profiles/`, `decision-registry.schema.json`, `decision-rules.schema.json`, `decision-rules.example.json`, **`judgment-output.schema.json`**, META/EXECUTION/SINGLE_SOURCE/DECISION_REGISTRY. 프로젝트 중립이며 이식·재사용 대상.
+- **코어**: `00~11`, `12-judgment-constitution/`, `13-ui-design/`, `14-experience-direction/`, `scripts/`, `generated/`, `profiles/`, `decision-registry.schema.json`, `decision-rules.schema.json`, `decision-rules.example.json`, **`judgment-output.schema.json`**, META/EXECUTION/SINGLE_SOURCE/DECISION_REGISTRY. 프로젝트 중립이며 이식·재사용 대상.
 - **인스턴스**: 프로젝트 적용 디렉터리의 레지스트리·단일 소스 맵·특화 문서. 한 프로젝트에만 적용.
 - **규칙**: 새 원칙·결정이 "모든 시스템에 공통"이면 코어에, "이 프로젝트만 해당"이면 인스턴스에 둔다. 분리 전략은 [EVOLUTION_STRATEGY.md](./EVOLUTION_STRATEGY.md) 참조.
 

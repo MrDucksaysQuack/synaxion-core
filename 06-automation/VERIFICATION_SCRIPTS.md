@@ -379,6 +379,28 @@ rg "('infant'|'basic'|'strict')" packages/lib app --glob '*.ts' | head -80
 
 ---
 
+## 2.3 Tier 1 — Delivery & Core Reference (Synaxion 2.10+)
+
+프로젝트 인스턴스가 복사·확장하는 **SSOT**: [verification/](../verification/README.md) (`synaxion-core` 루트).
+
+| 스크립트 | 목적 | CI 차단 |
+|----------|------|---------|
+| `verify:core` | 코어 필수 문서 + UI reference 스크립트 등록 | Yes (synaxion-core workflow) |
+| `verify:reference` | `reference/nextjs-minimal` 인스턴스 검사 | Yes |
+| `check:core-completeness` | SCOPE, 15–17장, CONTRACT_CHANGE 등 | Yes |
+| `check:ui-scripts-registry` | `check:ui-*` reference 파일 존재 | Yes |
+| `check:deployment-constitution` | env + health + rollback | Yes |
+| `check:ops-constitution` | sentry + runbooks | Yes |
+| `check:constitution-completeness` | 인스턴스 필수 contract 문서 | Yes |
+| `check:contract-adr` | contract 변경 시 ADR (CI) | Yes |
+| `check:ui-raw-values` | raw color 탐지 | Yes |
+| `check:ui-theme-split` | dark palette override | Yes |
+| `check:ui-motion` | duration 토큰 (warn) | No |
+
+**Itemwiki 전용** 155+ `check:*`는 §2.1·§2.2 및 Itemwiki `ITEMWIKI_IDP_AUTOMATION_MATRIX`에 유지한다. 신규 **범용** delivery/UI check는 이 §2.3과 `verification/`에만 추가한다.
+
+---
+
 ## 체크리스트
 
 새 원칙 또는 규칙 추가 시:

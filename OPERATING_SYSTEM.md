@@ -12,9 +12,11 @@
 | 영역 | 내용 |
 |------|------|
 | **구조 생성** | `generate:from-registry`(결정 ID·타입), `generate:adr`, `generate:domain`, `generate:api-route`, `scaffold:constitution`(경전 복사), **`scaffold:system`**(프로파일별 골격), **`generate:from-spec`**(DSL→검증·생성) |
-| **검증 강제** | `check:constitution-version`, `check:layer-boundaries`, `check:silent-failures`, `check:decision-registry`, **`check:decision-rules`**(판단 규칙 코어 예시), `check:constitution`, `check:single-source-drift` 등 — PR/로컬에서 위반 시 차단. Judgment **출력 타입**: [JUDGMENT_OUTPUT_TYPE.md](./12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md), [judgment-output.schema.json](./judgment-output.schema.json) |
+| **검증 강제** | `check:constitution-version`, `check:layer-boundaries`, `check:silent-failures`, `check:decision-registry`, **`check:decision-rules`**(판단 규칙 코어 예시), `check:constitution`, `check:single-source-drift` 등 — PR/로컬에서 위반 시 차단. `check:deployment-constitution`, `check:ops-constitution` — 배포·운영 최소 기준 강제. Judgment **출력 타입**: [JUDGMENT_OUTPUT_TYPE.md](./12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md), [judgment-output.schema.json](./judgment-output.schema.json) |
 | **거버넌스** | META_CONSTITUTION(Tier·변경 절차·충돌), SINGLE_SOURCE_MAP(결정→단일 소스→검증), DECISION_REGISTRY(미등록 사용 시 실패 목표) |
 | **자동화** | 레지스트리에 등록된 `verificationScript`를 `check:decision-registry`가 자동 실행; CI에서 `check:constitution-pr` 필수 |
+| **데이터 계약** | `DATA_CONSTITUTION.md` — DB schema, migration safety, 데이터 계층 경계 |
+| **범위 판단** | `SCOPE_BOUNDARY.md` — Coverage Eligibility 공식으로 새 규칙 편입 여부 결정 |
 
 ---
 
@@ -44,11 +46,16 @@
 ## 4. 관련 문서
 
 - [META_CONSTITUTION.md](./META_CONSTITUTION.md) — 변경·Tier·검증 의무  
-- [EXECUTION_CONSTITUTION.md](./EXECUTION_CONSTITUTION.md) — 부트스트랩 9단계  
+- [EXECUTION_CONSTITUTION.md](./EXECUTION_CONSTITUTION.md) — 부트스트랩 11단계  
 - [DECISION_REGISTRY.md](./DECISION_REGISTRY.md) — 결정 레지스트리  
 - [06-automation/VERIFICATION_SCRIPTS.md](./06-automation/VERIFICATION_SCRIPTS.md) — check:* 인벤토리  
 - [EVOLUTION_STRATEGY.md](./EVOLUTION_STRATEGY.md) — 진화 전략  
 - [profiles/README.md](./profiles/README.md) — 시스템 프로파일  
 - [12-judgment-constitution/README.md](./12-judgment-constitution/README.md) — 판단 헌법(Judgment 층), `check:decision-rules`  
+- [15-deployment/README.md](./15-deployment/README.md) — Deployment Constitution  
+- [16-operations/README.md](./16-operations/README.md) — Operations Constitution  
+- [17-data-db/README.md](./17-data-db/README.md) — Data / DB Constitution
+- [SCOPE_BOUNDARY.md](./SCOPE_BOUNDARY.md) — Coverage Eligibility 공식
+- [FEATURE_CONTRACT_TEMPLATE.md](./FEATURE_CONTRACT_TEMPLATE.md) — 기능 개발 전 계약 템플릿
 
 **최종 업데이트**: 2026-03-20

@@ -14,7 +14,7 @@
 
 ---
 
-## 부트스트랩 프로토콜 (9단계)
+## 부트스트랩 프로토콜 (11단계)
 
 ### 1. 레포 생성
 
@@ -53,19 +53,33 @@
 - `pnpm run check:all` 이 통과하는 상태로 유지
 - [VERIFICATION_SCRIPTS.md](06-automation/VERIFICATION_SCRIPTS.md) 참고
 
-### 7. Authority·그룹 생성 (E2E 사용 시)
+### 7. Deployment Contract 설정
+
+- `.env.example` 파일 생성 — 필수 환경 변수 목록 문서화
+- `src/app/api/health/route.ts` 생성 — health check 엔드포인트
+- `docs/<project>-constitution/ROLLBACK_RUNBOOK.md` 작성 (템플릿: `synaxion-core/15-deployment/ROLLBACK_RUNBOOK_TEMPLATE.md`)
+- `pnpm run check:deployment` 통과 확인
+
+### 8. Operations Contract 설정
+
+- `docs/<project>-constitution/SLO.md` 작성 (템플릿: `synaxion-core/16-operations/SLO_TEMPLATE.md`)
+- `docs/<project>-constitution/INCIDENT_RUNBOOK.md` 작성 (템플릿: `synaxion-core/16-operations/INCIDENT_RUNBOOK_TEMPLATE.md`)
+- error tracking 도구 연결 (`NEXT_PUBLIC_SENTRY_DSN` 또는 동등)
+- `pnpm run check:ops` 통과 확인
+
+### 9. Authority·그룹 생성 (E2E 사용 시)
 
 - `tests/e2e/authority-specs.json` 생성: critical / flow / integration / legacy 배열
 - E2E 스펙을 authority별로 분류
 - `scripts/run-e2e-by-authority.js` (또는 동일 역할 스크립트)로 authority별 실행 가능하게
 
-### 8. SINGLE_SOURCE_MAP 작성
+### 10. SINGLE_SOURCE_MAP 작성
 
 - [SINGLE_SOURCE_MAP.md](SINGLE_SOURCE_MAP.md) 표 구조 유지
 - "결정(축) | 단일 소스 | 검증 스크립트 | 영향 레이어" 형태로 프로젝트의 단일 소스 목록 채우기
 - 인증·권한·리다이렉트 등 공통 항목은 Constitution 쪽 맵을 복사 후 프로젝트에 맞게 수정
 
-### 9. 첫 ADR 작성
+### 11. 첫 ADR 작성
 
 - `docs/constitution/adr/0001-...md` 로 프로젝트의 **핵심 구조 결정**(예: 3계층 채택, handler factory 채택)을 기록
 - [adr/template.md](adr/template.md) 사용
@@ -81,6 +95,9 @@
 - [ ] API는 createGetHandler/createPostHandler + checkAuthorization 패턴 사용
 - [ ] policy.ts에 리소스/액션 정의
 - [ ] pnpm run check:all 통과
+- [ ] Deployment Contract: .env.example, health endpoint, rollback runbook 존재
+- [ ] Operations Contract: SLO.md, Incident runbook 존재
+- [ ] `pnpm run check:deployment && pnpm run check:ops` 통과
 - [ ] (E2E 시) authority-specs.json 및 authority별 실행 가능
 - [ ] SINGLE_SOURCE_MAP 표가 프로젝트 단일 소스를 반영
 - [ ] ADR 1편 이상 존재
@@ -97,9 +114,11 @@
 | 4 | Handler Factory 도입 |
 | 5 | policy.ts 작성 |
 | 6 | check:all 통과 |
-| 7 | Authority·그룹 생성 |
-| 8 | SINGLE_SOURCE_MAP 작성 |
-| 9 | 첫 ADR 작성 |
+| 7 | Deployment Contract 설정 |
+| 8 | Operations Contract 설정 |
+| 9 | Authority·그룹 생성 |
+| 10 | SINGLE_SOURCE_MAP 작성 |
+| 11 | 첫 ADR 작성 |
 
 **이 프로토콜을 따르면 Constitution은 "실행 순서를 가진 생성 OS"가 된다.**
 

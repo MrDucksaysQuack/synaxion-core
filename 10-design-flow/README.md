@@ -12,6 +12,8 @@
 | [DESIGN_FLOW_PRINCIPLES.md](./DESIGN_FLOW_PRINCIPLES.md) | 한 페이지 한 목적, 3-Depth, 입구/출구, 출발점→행동→결과, 목적 기반 네비게이션, Atomic-Composite-Page, 질문에 답하는 페이지 |
 | [EXPECTATION_MODEL_RULES.md](./EXPECTATION_MODEL_RULES.md) | 사용자 기대 모델, 결정/상태에 대한 근거 표시, 버튼 상태 피드백 |
 | [PAGE_LAYOUT_AND_FLOW_CHECKLIST.md](./PAGE_LAYOUT_AND_FLOW_CHECKLIST.md) | **짧은 체크리스트**: 한 목적·입구/출구·주 행동·IA (구현 이름 없음) |
+| [UX_CONSTITUTION.md](./UX_CONSTITUTION.md) | UX 최소 품질 강제 규칙 7개 (Tier 1) |
+| [UX_READINESS_RUBRIC.md](./UX_READINESS_RUBRIC.md) | UX 완성도 자가 평가 루브릭 |
 | *(인스턴스)* [Itemwiki 신규 페이지 설계 체크리스트](../../itemwiki-constitution/itemwiki-specific/design-flow/NEW_PAGE_DESIGN_CHECKLIST.md) | 6하·세 질문·Entry/Exit 체크리스트 (신규 페이지 설계 시) |
 | *(인스턴스)* [Itemwiki 기존 페이지 Design-Flow 점검](../../itemwiki-constitution/itemwiki-specific/design-flow/EXISTING_PAGES_DESIGN_FLOW_AUDIT.md) | 기존 페이지 전수 5단계·Entry/Exit·6하·세 질문 점검 |
 
