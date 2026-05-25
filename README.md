@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.12.0  
+**버전**: 2.13.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -114,7 +114,11 @@
 
 [16-operations/](./16-operations/README.md) — OPS-01~09, 인시던트·SLO 템플릿, [OPERATIONS_READINESS_RUBRIC](./16-operations/OPERATIONS_READINESS_RUBRIC.md)
 
-### 18 — 데이터·DB
+### 18 — 인지 인터페이스 (Cognitive Interface)
+
+[18-cognitive-interface/](./18-cognitive-interface/README.md) — 논리 유형 10개 분류(Hierarchical·Sequential·Conditional·Comparative·Causal·Relational·Proportional·Cyclic·Categorical·State-based), 인지 병목 × UI 패턴 매핑, Primary/Secondary 복합 로직 규칙, 감정 상태 레이어(불안·탐색·확신·신뢰·압박). **"Interface must match cognition before it matches aesthetics."**
+
+### 19 — 데이터·DB
 
 [17-data-db/](./17-data-db/README.md) — [DATA_CONSTITUTION](./17-data-db/DATA_CONSTITUTION.md), [DB_CONTRACT_TEMPLATE](./17-data-db/DB_CONTRACT_TEMPLATE.md)
 
@@ -183,6 +187,7 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-05-25 | **2.13.0** — 18장 Cognitive Interface Design 추가: 논리 유형 10개(Hierarchical·Sequential·Conditional·Comparative·Causal·Relational·Proportional·Cyclic·Categorical·State-based) × 인지 병목 × UI 패턴 매핑 체계. Primary/Secondary 복합 로직 규칙, 허용/금지 조합 정의. 감정 상태 5개(불안·탐색·확신·신뢰·압박) × Logic Type 매트릭스. "인지 구조 기반 인터페이스 설계 언어" — 컴포넌트 선택 전, 논리 유형을 먼저 정의하는 check:cognitive 게이트 도입. |
 | 2026-05-25 | **2.12.0** — 15장 Component Patterns 추가: ANIMATION_CHOREOGRAPHY, SECTION_COMPOSITION, DARK_MODE_IMPLEMENTATION, RESPONSIVE_STRATEGY, FORM_UX_PATTERNS. 11섹션 패턴 템플릿, Pattern Adoption Rule(7문항 5+ 기준), Mandatory/Recommended/Project-specific 3레벨 체계. truefarm-website를 reference extraction source로 삼아 추출한 첫 패턴 세트. |
 | 2026-05-24 | **2.11.0** — `reference/express-api-minimal`, profile-aware verification, `verify:scaffold:express-api`, CI dual-reference + scaffold smoke. Reusability 10축 5점. |
 | 2026-05-24 | **2.11.0** — 00-planning 장 추가: Forward Planning Protocol(신규 8단계·기능 5단계), PROJECT_INIT_CHECKLIST, PLANNING_DIRECTORY_STANDARD, FEATURE_SPEC·TASK_SPEC 템플릿, harness/forward-planning/ 3종. 계획→실행→검증 전 사이클 정방향 커버. |
