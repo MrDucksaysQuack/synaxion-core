@@ -15,11 +15,12 @@ import { ITEMWIKI_RULE_PRECEDENCE } from '../../../packages/lib/core/judgment/it
 import { ITEMWIKI_JUDGMENT_SCENARIOS } from '../../../packages/lib/core/judgment/itemwiki-scenarios';
 import { WEIGHTED_DEMO_PRECEDENCE } from '../../../packages/lib/core/judgment/precedence';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
+import { getConstitutionDir, getProjectRoot } from './lib/paths';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = getProjectRoot();
 const ITEMWIKI_RULES = path.join(ROOT, 'docs', 'itemwiki-constitution', 'decision-rules.json');
-const CORE_RULES = path.join(ROOT, 'docs', 'constitution', 'decision-rules.example.json');
-const WEIGHTED_FIXTURE = path.join(ROOT, 'docs', 'constitution', 'fixtures', 'judgment-weighted-demo.json');
+const CORE_RULES = path.join(getConstitutionDir(), 'decision-rules.example.json');
+const WEIGHTED_FIXTURE = path.join(getConstitutionDir(), 'fixtures', 'judgment-weighted-demo.json');
 
 function load(p: string): DecisionRulesFile {
   return JSON.parse(fs.readFileSync(p, 'utf-8')) as DecisionRulesFile;

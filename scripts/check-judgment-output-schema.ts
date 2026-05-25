@@ -8,8 +8,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
+import { getProjectRoot } from './lib/paths';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = getProjectRoot();
 
 const SCHEMA_PATH = path.join(ROOT, 'docs', 'constitution', 'judgment-output.schema.json');
 const FIXTURES = [

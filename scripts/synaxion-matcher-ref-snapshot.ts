@@ -9,8 +9,9 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getProjectRoot } from './lib/paths';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = getProjectRoot();
 
 function getRulesPath(): string {
   const arg = process.argv.find((a) => a.startsWith('--rules='));

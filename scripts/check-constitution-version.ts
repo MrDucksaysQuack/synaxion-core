@@ -12,11 +12,12 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getProjectRoot } from './lib/paths';
 
 function getRoot(): string {
   const arg = process.argv.find((a) => a.startsWith('--project-root='));
   if (arg) return path.resolve(process.cwd(), arg.slice('--project-root='.length).trim());
-  return path.resolve(__dirname, '..', '..', '..');
+  return getProjectRoot();
 }
 
 function main(): void {
