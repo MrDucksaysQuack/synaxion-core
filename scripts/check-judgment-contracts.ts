@@ -8,8 +8,9 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getProjectRoot } from './lib/paths';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = getProjectRoot();
 
 /** posix relative from repo root */
 function toPosixRel(file: string): string {

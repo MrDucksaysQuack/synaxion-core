@@ -11,8 +11,9 @@ import * as path from 'path';
 import { evaluateJudgment } from '../../../packages/lib/core/judgment/evaluate';
 import { ITEMWIKI_RULE_PRECEDENCE } from '../../../packages/lib/core/judgment/itemwiki-precedence';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
+import { getProjectRoot } from './lib/paths';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = getProjectRoot();
 const RULES_PATH = path.join(ROOT, 'docs', 'itemwiki-constitution', 'decision-rules.json');
 
 const filled = (trust: 'high' | 'medium' | 'low') => ({ filled: true as const, trust });

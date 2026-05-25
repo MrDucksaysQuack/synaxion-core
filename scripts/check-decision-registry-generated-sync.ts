@@ -7,8 +7,9 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import { getProjectRoot } from './lib/paths';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = getProjectRoot();
 const GENERATED_PATH = path.join(ROOT, 'packages', 'lib', 'core', 'decisions', 'index.ts');
 
 function getRegistryPath(): string {

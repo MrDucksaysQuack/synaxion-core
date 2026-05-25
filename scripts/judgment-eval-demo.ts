@@ -8,9 +8,10 @@ import * as path from 'path';
 import { evaluateJudgment } from '../../../packages/lib/core/judgment/evaluate';
 import { judgmentToPlainText } from '../../../packages/lib/core/judgment/format-judgment-log';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
+import { getConstitutionDir, getProjectRoot } from './lib/paths';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
-const RULES_PATH = path.join(ROOT, 'docs', 'constitution', 'decision-rules.example.json');
+const ROOT = getProjectRoot();
+const RULES_PATH = path.join(getConstitutionDir(), 'decision-rules.example.json');
 
 function loadRules(): DecisionRulesFile {
   return JSON.parse(fs.readFileSync(RULES_PATH, 'utf-8')) as DecisionRulesFile;
