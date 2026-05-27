@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.14.0  
+**버전**: 2.14.1  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -118,16 +118,16 @@
 
 [18-cognitive-interface/](./18-cognitive-interface/README.md) — 논리 유형 10개 분류(Hierarchical·Sequential·Conditional·Comparative·Causal·Relational·Proportional·Cyclic·Categorical·State-based), 인지 병목 × UI 패턴 매핑, Primary/Secondary 복합 로직 규칙, 감정 상태 레이어(불안·탐색·확신·신뢰·압박). **"Interface must match cognition before it matches aesthetics."**
 
-### 19 — 데이터·DB
+### 19 — 제품 UI 아키텍처 (Product UI Architecture)
+
+[19-product-ui-architecture/](./19-product-ui-architecture/README.md) — 다역할·Event 기반 제품에서 "누가·어떤 순서로·무엇을 보는가"를 구조화하는 UI 지도 체계. 문서 14종 taxonomy, 크기 프로파일 S/M/L, PLAN-READINESS 3단 게이트, 거버넌스 4규칙. 코어 6 스키마(Handoff·Event→UI·Time Zones·Recovery·State Matrix·INDEX.template) + GOVERNANCE. **"컴포넌트 패턴만으로는 누가·어떤 순서로·무엇을 보는가가 잡히지 않는다."**
+
+> **Ch.07·10·15·18과의 관계**: 07=기술 레이어, 10=화면 품질, 15=컴포넌트, 18=인지 구조. **19장**은 이 네 레이어 위에서 **제품 전체의 UI 지도**를 관리한다.  
+> **Reference instance**: [Agrinovation 11-ui-architecture](../Plan/11-ui-architecture/) — 11역할·21 Handoff·12 Recovery Journey, Plan Complete 96%. (인스턴스 레포 `docs/Plan/11-ui-architecture/`)
+
+### 20 — 데이터·DB
 
 [17-data-db/](./17-data-db/README.md) — [DATA_CONSTITUTION](./17-data-db/DATA_CONSTITUTION.md), [DB_CONTRACT_TEMPLATE](./17-data-db/DB_CONTRACT_TEMPLATE.md)
-
-### 20 — 제품 UI 아키텍처 (Product UI Architecture)
-
-[19-product-ui-architecture/](./19-product-ui-architecture/README.md) — 다역할·Event 기반 제품에서 "누가·어떤 순서로·무엇을 보는가"를 구조화하는 UI 지도 체계. 문서 14종 taxonomy(Persona→Journey→Handoff→Recovery→Traceability), 크기 프로파일 3단계(S/M/L), PLAN-READINESS 3단 게이트, 거버넌스 4규칙. Handoff 카탈로그 7필드 스키마·State Matrix 확장 열·Recovery Journey 섹션 구조 포함. **"컴포넌트 패턴만으로는 누가·어떤 순서로·무엇을 보는가가 잡히지 않는다."**
-
-> **Ch.07·10·15·18과의 관계**: 07=기술 레이어, 10=화면 품질, 15=컴포넌트, 18=인지 구조. 20장은 이 네 레이어 위에서 **제품 전체의 UI 지도**를 관리한다.  
-> **Reference instance**: [Agrinovation 11-ui-architecture](../Plan/11-ui-architecture/) — 11역할·21 Handoff·12 Recovery Journey, Plan Complete 96%. (인스턴스 레포 `docs/Plan/11-ui-architecture/`)
 
 ### Delivery 통합
 
@@ -137,8 +137,8 @@
 
 [reference/](./reference/README.md) — `pnpm run verify:reference` (nextjs-minimal + express-api-minimal)
 
-**Multi-role Event-driven products** (Ch.20 기준):  
-- [Agrinovation 11-ui-architecture](../Plan/11-ui-architecture/) — 11역할·22 Handoff·12 Recovery·Event 기반 농업 운영 플랫폼 (Plan Complete 96%, Implementation Ready ~82%)
+**Multi-role Event-driven products** (Ch.19 기준):  
+- [Agrinovation 11-ui-architecture](../Plan/11-ui-architecture/) — 11역할·21 Handoff·12 Recovery·Event 기반 농업 운영 플랫폼 (Plan Complete 96%, Implementation Ready ~82%)
 
 ---
 
@@ -197,6 +197,7 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-05-27 | **2.14.1** — Ch.19 목차 번호 정합(19=Product UI·20=Data·DB), Handoff 21건 통일, Event→UI·Time Zones 스키마 README 반영. |
 | 2026-05-27 | **2.14.0** — 19장 Product UI Architecture 추가: 다역할·Event 기반 제품 UI 지도 체계. 문서 taxonomy 14종, 크기 프로파일 S/M/L, PLAN-READINESS 3단 게이트, 거버넌스 4규칙. 스키마 6종(Handoff·Event→UI·Time Zones·Recovery·State Matrix·INDEX.template). UX_READINESS_RUBRIC 4점 기준 강화. Agrinovation 11-ui-architecture(11역할·21 Handoff·12 Recovery)를 레퍼런스 인스턴스 1호로 등재. |
 | 2026-05-25 | **2.13.0** — 18장 Cognitive Interface Design 추가: 논리 유형 10개(Hierarchical·Sequential·Conditional·Comparative·Causal·Relational·Proportional·Cyclic·Categorical·State-based) × 인지 병목 × UI 패턴 매핑 체계. Primary/Secondary 복합 로직 규칙, 허용/금지 조합 정의. 감정 상태 5개(불안·탐색·확신·신뢰·압박) × Logic Type 매트릭스. "인지 구조 기반 인터페이스 설계 언어" — 컴포넌트 선택 전, 논리 유형을 먼저 정의하는 check:cognitive 게이트 도입. |
 | 2026-05-25 | **2.12.0** — 15장 Component Patterns 추가: ANIMATION_CHOREOGRAPHY, SECTION_COMPOSITION, DARK_MODE_IMPLEMENTATION, RESPONSIVE_STRATEGY, FORM_UX_PATTERNS. 11섹션 패턴 템플릿, Pattern Adoption Rule(7문항 5+ 기준), Mandatory/Recommended/Project-specific 3레벨 체계. truefarm-website를 reference extraction source로 삼아 추출한 첫 패턴 세트. |
