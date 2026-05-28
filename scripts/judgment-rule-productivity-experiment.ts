@@ -12,7 +12,9 @@ import { evaluateJudgment } from '../../../packages/lib/core/judgment/evaluate';
 import { ITEMWIKI_RULE_PRECEDENCE } from '../../../packages/lib/core/judgment/itemwiki-precedence';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+import { getRepoRoot } from './lib/paths.js';
+
+const ROOT = getRepoRoot();
 const RULES_PATH = path.join(ROOT, 'docs', 'itemwiki-constitution', 'decision-rules.json');
 
 const filled = (trust: 'high' | 'medium' | 'low') => ({ filled: true as const, trust });

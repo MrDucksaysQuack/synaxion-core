@@ -13,9 +13,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { execSync } from 'child_process';
+import { getConstitutionDir, getRepoRoot } from './lib/paths.js';
 
-const CONSTITUTION_DIR = path.resolve(__dirname, '..');
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const CONSTITUTION_DIR = getConstitutionDir();
+const ROOT = getRepoRoot();
 const TEMPLATES_DIR = path.join(CONSTITUTION_DIR, 'profiles', 'templates');
 
 interface Template {

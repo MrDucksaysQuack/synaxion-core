@@ -9,7 +9,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+import { getRepoRoot } from './lib/paths.js';
+
+const ROOT = getRepoRoot();
 
 /** posix relative from repo root */
 function toPosixRel(file: string): string {

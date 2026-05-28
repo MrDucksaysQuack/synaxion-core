@@ -11,9 +11,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { JUDGMENT_MATCHER_REF_ALLOWLIST } from '../../../packages/lib/core/judgment/escape-matcher-registry';
+import { getConstitutionDir, getRepoRoot } from './lib/paths.js';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
-const CONSTITUTION_DIR = path.join(ROOT, 'docs', 'constitution');
+const ROOT = getRepoRoot();
+const CONSTITUTION_DIR = getConstitutionDir();
 
 const OUTCOMES = new Set([
   'ALLOW',

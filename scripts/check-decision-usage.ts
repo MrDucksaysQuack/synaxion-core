@@ -14,9 +14,10 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getConstitutionDir, getRepoRoot } from './lib/paths.js';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
-const CONSTITUTION_DIR = path.join(ROOT, 'docs', 'constitution');
+const ROOT = getRepoRoot();
+const CONSTITUTION_DIR = getConstitutionDir();
 
 function getRegistryPath(): string {
   const arg = process.argv.find((a) => a.startsWith('--registry='));
