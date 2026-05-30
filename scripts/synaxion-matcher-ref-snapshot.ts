@@ -10,7 +10,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+import { getRepoRoot } from './lib/paths.js';
+
+const ROOT = getRepoRoot();
 
 function getRulesPath(): string {
   const arg = process.argv.find((a) => a.startsWith('--rules='));

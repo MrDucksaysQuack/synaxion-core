@@ -144,6 +144,21 @@
 - **목표 (v1.1)**: 완전한 External Contract 문서화
 - **이유**: 기본 동작은 작동, 문서화는 v1.1에서 완료
 
+### 8. 사용자 가이드 (본문)
+
+- **v1.0**: [USER_GUIDE_STUB.md](../../guides/USER_GUIDE_STUB.md) (섹션 스텁)
+- **v1.1 ✅**: [USER_GUIDE.md](../../guides/USER_GUIDE.md) — 바코드·기여·선호도·신뢰도 4섹션 본문
+
+### 9. 백업 자동화
+
+- **v1.0**: Supabase Pro+ 일일 백업 + 런북·전략 문서
+- **v1.1 ✅**: `pnpm run verify:backup` · [backup-verify.yml](../../.github/workflows/backup-verify.yml) 주간 CI
+
+### 10. 알림 고도화
+
+- **v1.0**: Sentry·health smoke·[ALERT_THRESHOLDS.md](../../itemwiki-constitution/ALERT_THRESHOLDS.md)
+- **v1.1 ✅**: Alert rule API weekly CI · smoke Slack · INCIDENT_RUNBOOK on-call (Stream G)
+
 ---
 
 ## 🚫 지금 안 고치는 이유
@@ -184,8 +199,8 @@
 - [x] 모니터링 시스템 구축 (Sentry)
 - [x] 기본 메트릭 수집
 - [x] 에러 로깅
-- [ ] 알림 시스템 구축 (v1.1) — *운영 초안·체크리스트: [BACKUP_AND_ALERTING_RUNBOOK.md](../../guides/operations/BACKUP_AND_ALERTING_RUNBOOK.md) §2*
-- [ ] 백업/복구 절차 문서화 (v1.1) — *초안 런북: [BACKUP_AND_ALERTING_RUNBOOK.md](../../guides/operations/BACKUP_AND_ALERTING_RUNBOOK.md) §1·§3*
+- [x] 알림 시스템 구축 — Sentry DSN·ingest·[ALERT_THRESHOLDS.md](../../itemwiki-constitution/ALERT_THRESHOLDS.md)·`pnpm run verify:sentry-alerts` (v1.1: rule API 자동 검증·Slack CI webhook 고도화)
+- [x] 백업/복구 절차 문서화 — [BACKUP_STRATEGY.md](../../deployment/BACKUP_STRATEGY.md)·[ROLLBACK_RUNBOOK.md](../../itemwiki-constitution/ROLLBACK_RUNBOOK.md)·[BACKUP_AND_ALERTING_RUNBOOK.md](../../guides/operations/BACKUP_AND_ALERTING_RUNBOOK.md) (v1.1: 복구 자동화 스크립트)
 
 ### 보안 요구사항
 
@@ -218,14 +233,15 @@
 
 ### v1.1 범위 (다음 2-4주)
 
-**목표**: 사용자 경험 개선 및 안정성 강화
+**목표**: 사용자 경험 개선 및 운영 고도화
 
 - 모바일 최적화 완료
-- UI/UX 개선
+- UI/UX PR Design Review — [EXPERIENCE_GATE_CHECKLIST.md](../../itemwiki-constitution/EXPERIENCE_GATE_CHECKLIST.md) 적용 ([BRAND_EXPERIENCE_GUIDE.md](../../itemwiki-constitution/BRAND_EXPERIENCE_GUIDE.md) v1.0 완비)
 - 성능 최적화 (CDN, 서버 사이드 캐싱)
 - 고급 관측 가능성 (Golden Signals, 대시보드)
-- 알림 시스템 구축
-- 백업/복구 절차 문서화
+- 사용자 가이드 본문 — ✅ [USER_GUIDE.md](../../guides/USER_GUIDE.md) (Stream H)
+- 알림 고도화 — ✅ Stream G (synaxion-g6-weekly · on-call runbook)
+- 백업/복구 자동화 — ✅ `verify:backup` · backup-verify.yml (Stream I)
 
 ### v2.0 범위 (다음 3-6개월)
 
@@ -264,29 +280,51 @@
 - [x] 아키텍처 문서
 - [x] 배포 문서
 - [x] Known Limitations 문서 (이 문서)
-- [ ] 사용자 가이드 (v1.1)
+- [x] 사용자 가이드 — [USER_GUIDE.md](../../guides/USER_GUIDE.md) ✅ v1.1 (Stream H)
 
 ### 운영 준비도
 
 - [x] 모니터링 시스템
 - [x] 로깅 시스템
 - [x] 에러 추적
-- [ ] 알림 시스템 (v1.1)
-- [ ] 백업/복구 절차 (v1.1)
+- [x] 알림 시스템 — Sentry·`verify:sentry-alerts` weekly CI · smoke Slack ✅ v1.1 (Stream G)
+- [x] 백업/복구 절차 — BACKUP_STRATEGY·`verify:backup` weekly CI ✅ v1.1 (Stream I)
+
+---
+
+## 📦 Delivery Readiness (자가 평가)
+
+> 루브릭: [DELIVERY_READINESS_RUBRIC.md](../DELIVERY_READINESS_RUBRIC.md) · 상세: [01-delivery-target.md](../../planning/01-delivery-target.md)
+
+| 영역 | 점수 | 비고 |
+|------|------|------|
+| UX | **3.5** | 핵심 플로·상태 UI 충족; 여정·복구 문서는 v1.1 |
+| Visual | **4.0** | [BRAND_EXPERIENCE_GUIDE.md](../../itemwiki-constitution/BRAND_EXPERIENCE_GUIDE.md) 7축 완비 · `check:raw-values`·`check:theme-split`·`check:motion-tokens` |
+| Deployment | **4.0** | performance-gate.yml · Lighthouse ≥80 · TTFB ≤2s · smoke CI |
+| Operations | **4.0** | SLO·INCIDENT_RUNBOOK on-call · `synaxion-g6-weekly` verify:sentry-alerts · smoke Slack |
+| **가중 합산** | **3.88** | **Production Grade 직전** (4.3+ 목표) |
+
+**최소 기준**: UX ≥ 3 ✅ · Visual ≥ 4 ✅ · Deployment ≥ 4 ✅ · Operations ≥ 4 ✅
+
+**평가일**: 2026-05-30
 
 ---
 
 ## 📝 완성 선언
 
-**날짜**: TBD (모든 체크리스트 완료 시)  
-**상태**: 🚧 진행 중
+**날짜**: 2026-05-30  
+**상태**: ✅ v1.0 완성 선언
 
-이 시스템은 v1.0 완성 기준을 충족하면 완성되었다고 선언할 수 있습니다.
+Itemwiki v1.0은 본 문서의 필수 기능·출시 기준·완성 체크리스트를 충족하였다.
 
-Known Limitations는 의도된 것이며, v1.1/v2.0에서 개선 예정입니다.
+Known Limitations §8–10은 v1.1(Stream H·G·I)에서 해소되었다. §1–7 등은 v2.0/v1.1 로드맵에 따른다.
 
 ---
 
 ## 🔄 업데이트 이력
 
+- **2026-05-30**: Stream H·I — USER_GUIDE.md · verify:backup · backup-verify.yml
+- **2026-05-30**: Stream G — Operations 4.0 · synaxion-g6-weekly verify:sentry-alerts · INCIDENT_RUNBOOK on-call · Delivery 3.88
+- **2026-05-30**: Visual 4.0 — BRAND_EXPERIENCE_GUIDE 7축 완비, Delivery 가중 3.63
+- **2026-05-30**: v1.0 완성 선언 — 잔여 체크박스 정리, USER_GUIDE_STUB, Delivery Readiness 3.63 (RC)
 - **2025-01-29**: 초안 작성 (시스템 평가 7가지 기준 기반)

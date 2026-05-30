@@ -14,9 +14,10 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getConstitutionDir, getRepoRoot } from './lib/paths.js';
 
-const CONSTITUTION_DIR = path.resolve(__dirname, '..');
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const CONSTITUTION_DIR = getConstitutionDir();
+const ROOT = getRepoRoot();
 
 function main(): void {
   const targetArg = process.argv.find((a) => a.startsWith('--target='));
