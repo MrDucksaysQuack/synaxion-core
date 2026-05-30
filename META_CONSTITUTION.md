@@ -48,6 +48,27 @@
 - 분산 비동기 체인에서의 **암시적 파이프라인**과, 관측·정책 단일화·명시적 워크플로·계약 테스트·컨텍스트 전파로의 전환: [01-foundations/IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md](./01-foundations/IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md)
 - 본 절은 §0의 **이름·범위**와 별도로, “왜 Constitution이 문서 모음이 아니라 **운영 규칙**인가”에 대한 **철학 층**을 고정한다.
 
+### 0.3 Pattern Promotion Model — 인스턴스 발견 패턴의 Tier 승격
+
+Synaxion은 *제품 인스턴스*(Itemwiki·Inflomatrix 등)에서 발견된 보편화 가능한 패턴을 흡수하며 진화한다. 그러나 인스턴스 1개의 경험만으로는 *보편*임을 보장할 수 없다. 따라서 다음의 *증명 단계 모델*을 둔다.
+
+| 단계 | 조건 | 위치 |
+|------|------|------|
+| **Tier 3 (도입)** | 1개 인스턴스에서 실증, 헌법 문서로 작성 완료 | 해당 챕터에 `Tier 3 (도입 단계)` 표기 |
+| **Tier 2 (권장)** | 6개월 내 1개 이상 *외부 인스턴스*(원 발견 인스턴스가 아닌)에서 적용 시도 | 동일 챕터, Tier 갱신 + 적용 인스턴스 목록 |
+| **Tier 1 (필수)** | 2개 이상 외부 인스턴스에서 *작동 확인* + 검증 스크립트 코어 재사용 가능 | 동일 챕터, Tier 갱신 + CI 게이트 의무 |
+
+**규칙**: Tier 3 도입 시 *제안자 인스턴스*와 *Tier 3 등재일*을 챕터 하단에 명시한다. 승격 PR은 *증명 근거*(외부 인스턴스 적용 사례)를 ADR로 첨부한다. 강등은 §3 규칙을 따른다.
+
+**현재 Tier 3 신규 패턴 (2.15.0 — Inflomatrix 제안)**
+
+| ID | 챕터 | 위치 | 검증 |
+|----|------|------|------|
+| Recursive Layering | [01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md](./01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md) | 메타 원칙 — 어휘 불변성 + 자기 닮음 문법 | `check:vocabulary-coverage` (제안) |
+| N-way Consistency Gate | [01-foundations/N_WAY_CONSISTENCY_GATE.md](./01-foundations/N_WAY_CONSISTENCY_GATE.md) | 복수 SSOT 양방향 정합 strict 게이트 | `check:matrix-table-manifest` 등 |
+| Meta-Gate / Gate Telemetry | [06-automation/META_GATE_TELEMETRY.md](./06-automation/META_GATE_TELEMETRY.md) | 게이트 *검사 건수* 발행 + 공집합 통과 차단 | `check:gate-coverage` (제안) |
+| Adjacent Debt Rule (Touch-It Type-It) | [02-development-framework/ADJACENT_DEBT_RULE.md](./02-development-framework/ADJACENT_DEBT_RULE.md) | 부채를 전담 스프린트가 아닌 통행료로 정리 | `monitor:lint-baseline` |
+
 ---
 
 ## 1. 원칙의 수준 (Tier 정의)

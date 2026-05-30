@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.14.1  
+**버전**: 2.15.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -49,10 +49,12 @@
 | [IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md](./01-foundations/IMPLICIT_DISTRIBUTED_INFORMATION_FLOW.md) | 암시적 분산 흐름·관측·정책·계약 |
 | [TRUST_BOUNDARY_PRINCIPLE.md](./01-foundations/TRUST_BOUNDARY_PRINCIPLE.md) | 신뢰 경계 |
 | [STATE_TRANSITION_CONTRACT.md](./01-foundations/STATE_TRANSITION_CONTRACT.md) | 상태 전이 계약 |
+| [RECURSIVE_LAYERING_PRINCIPLE.md](./01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md) | 재귀적 계층화 — 어휘 불변성·자기 닮음 문법 (Tier 3 · 2.15.0) |
+| [N_WAY_CONSISTENCY_GATE.md](./01-foundations/N_WAY_CONSISTENCY_GATE.md) | N중 정합 게이트 — 복수 SSOT 양방향 정합 strict (Tier 3 · 2.15.0) |
 
 ### 02 — 개발 프레임워크
 
-[02-development-framework/](./02-development-framework/) — 8단계 방법론, 리팩터링 안전
+[02-development-framework/](./02-development-framework/) — 8단계 방법론, 리팩터링 안전, [부채를 통행료로 (Touch-It Type-It)](./02-development-framework/ADJACENT_DEBT_RULE.md) (Tier 3 · 2.15.0)
 
 ### 03 — API 표준
 
@@ -68,7 +70,7 @@
 
 ### 06 — 자동화
 
-[06-automation/](./06-automation/) — CI/CD, 검증 스크립트, 린트
+[06-automation/](./06-automation/) — CI/CD, 검증 스크립트, 린트, [Meta-Gate / Gate Telemetry](./06-automation/META_GATE_TELEMETRY.md) (Tier 3 · 2.15.0)
 
 ### 07 — 프론트엔드·UI
 
@@ -197,6 +199,7 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-05-30 | **2.15.0** — META §0.3 Pattern Promotion Model 추가 (Tier 3 → 2 → 1 승격 단계 모델). Inflomatrix 인스턴스 발견 4개 Tier 3 패턴 신규 등재: [Recursive Layering](./01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md)(어휘 불변성 + 자기 닮음 문법), [N-way Consistency Gate](./01-foundations/N_WAY_CONSISTENCY_GATE.md)(복수 SSOT 양방향 정합), [Meta-Gate / Gate Telemetry](./06-automation/META_GATE_TELEMETRY.md)(게이트 검사 건수 발행 + 공집합 통과 차단), [Adjacent Debt Rule / Touch-It Type-It](./02-development-framework/ADJACENT_DEBT_RULE.md)(부채를 통행료로). Inflomatrix 5중 중첩 매트릭스(SubDomain·Flow·Stream·Schema·Conscious·ERIC)를 Recursive Layering 1호 실증 사례로 등재. |
 | 2026-05-27 | **2.14.1** — Ch.19 목차 번호 정합(19=Product UI·20=Data·DB), Handoff 21건 통일, Event→UI·Time Zones 스키마 README 반영. |
 | 2026-05-27 | **2.14.0** — 19장 Product UI Architecture 추가: 다역할·Event 기반 제품 UI 지도 체계. 문서 taxonomy 14종, 크기 프로파일 S/M/L, PLAN-READINESS 3단 게이트, 거버넌스 4규칙. 스키마 6종(Handoff·Event→UI·Time Zones·Recovery·State Matrix·INDEX.template). UX_READINESS_RUBRIC 4점 기준 강화. Agrinovation 11-ui-architecture(11역할·21 Handoff·12 Recovery)를 레퍼런스 인스턴스 1호로 등재. |
 | 2026-05-25 | **2.13.0** — 18장 Cognitive Interface Design 추가: 논리 유형 10개(Hierarchical·Sequential·Conditional·Comparative·Causal·Relational·Proportional·Cyclic·Categorical·State-based) × 인지 병목 × UI 패턴 매핑 체계. Primary/Secondary 복합 로직 규칙, 허용/금지 조합 정의. 감정 상태 5개(불안·탐색·확신·신뢰·압박) × Logic Type 매트릭스. "인지 구조 기반 인터페이스 설계 언어" — 컴포넌트 선택 전, 논리 유형을 먼저 정의하는 check:cognitive 게이트 도입. |

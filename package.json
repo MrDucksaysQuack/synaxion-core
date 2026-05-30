@@ -1,7 +1,7 @@
 {
   "name": "synaxion-core",
-  "version": "2.12.0",
-  "constitutionVersion": "2.12.0",
+  "version": "2.15.0",
+  "constitutionVersion": "2.15.0",
   "private": true,
   "type": "module",
   "description": "Synaxion Engineering + Judgment Constitution",
