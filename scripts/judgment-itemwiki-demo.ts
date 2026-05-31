@@ -16,7 +16,9 @@ import { ITEMWIKI_JUDGMENT_SCENARIOS } from '../../../packages/lib/core/judgment
 import { WEIGHTED_DEMO_PRECEDENCE } from '../../../packages/lib/core/judgment/precedence';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+import { getRepoRoot } from './lib/paths.js';
+
+const ROOT = getRepoRoot();
 const ITEMWIKI_RULES = path.join(ROOT, 'docs', 'itemwiki-constitution', 'decision-rules.json');
 const CORE_RULES = path.join(ROOT, 'docs', 'constitution', 'decision-rules.example.json');
 const WEIGHTED_FIXTURE = path.join(ROOT, 'docs', 'constitution', 'fixtures', 'judgment-weighted-demo.json');

@@ -10,8 +10,9 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getRepoRoot } from './lib/paths.js';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = getRepoRoot();
 
 function getRegistryPath(): string {
   const arg = process.argv.find((a) => a.startsWith('--registry='));

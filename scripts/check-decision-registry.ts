@@ -11,9 +11,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { execSync } from 'child_process';
+import { getConstitutionDir, getRepoRoot } from './lib/paths.js';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
-const CONSTITUTION_DIR = path.join(ROOT, 'docs', 'constitution');
+const ROOT = getRepoRoot();
+const CONSTITUTION_DIR = getConstitutionDir();
 const SCHEMA_PATH = path.join(CONSTITUTION_DIR, 'decision-registry.schema.json');
 
 function getRegistryPath(): string {

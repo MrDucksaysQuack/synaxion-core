@@ -11,9 +11,10 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getConstitutionDir, getRepoRoot } from './lib/paths.js';
 
-const CONSTITUTION_DIR = path.resolve(__dirname, '..');
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const CONSTITUTION_DIR = getConstitutionDir();
+const ROOT = getRepoRoot();
 const DEFAULT_OUTPUT = path.join(CONSTITUTION_DIR, 'generated', 'registry-generated.ts');
 
 function getRegistryPath(): string {

@@ -9,7 +9,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+import { getRepoRoot } from './lib/paths.js';
+
+const ROOT = getRepoRoot();
 
 const SCHEMA_PATH = path.join(ROOT, 'docs', 'constitution', 'judgment-output.schema.json');
 const FIXTURES = [
