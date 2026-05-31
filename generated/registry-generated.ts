@@ -34,7 +34,8 @@ export const DECISION_IDS = [
   "consumer-gate-explanation-scope",
   "consumer-gate-ux-copy",
   "ingestion-ocr-feature-batch",
-  "ingestion-ingredient-text-parse"
+  "ingestion-ingredient-text-parse",
+  "ingestion-capture-shot-content"
 ] as const;
 
 export type DecisionId = (typeof DECISION_IDS)[number];
@@ -44,4 +45,4 @@ export function isRegisteredDecisionId(id: string): id is DecisionId {
 }
 
 // 레지스트리 버전: 1.0
-// 결정 수: 30
+// 결정 수: 31
