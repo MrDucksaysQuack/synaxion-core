@@ -88,6 +88,7 @@ Synaxion Core에 패턴을 추가하려면 아래 7개 질문 중 **5개 이상*
 | [RESPONSIVE_STRATEGY.md](./RESPONSIVE_STRATEGY.md) | 반응형 전략 | Recommended | Responsive design is priority reordering, not shrinking |
 | [FORM_UX_PATTERNS.md](./FORM_UX_PATTERNS.md) | 폼 UX 패턴 | Recommended | Form UX quality is measured by recovery, not only completion |
 | [LOADING_STATE_PATTERNS.md](./LOADING_STATE_PATTERNS.md) | 로딩 상태 패턴 | Recommended | Loading state is a layout promise — the skeleton tells the user what is coming |
+| [FOCUS_VISIBLE_RING.md](./FOCUS_VISIBLE_RING.md) | 키보드 전용 포커스 링 (FOCUS-R1) | **Mandatory** (2.16.0) | Focus indication is for keyboard users, not every click |
 
 ---
 
@@ -107,6 +108,7 @@ Truefarm의 농장 이미지, 필리핀 컨텍스트, 특정 색상 조합은 Pr
 
 ---
 
-**버전**: 1.0.0  
+**버전**: 1.1.0  
 **소속**: Synaxion Constitution 15장 (15-component-patterns)  
-**최초 추출 소스**: truefarm-website 2026-05-25
+**최초 추출 소스**: truefarm-website 2026-05-25  
+**2.16.0**: FOCUS-R1 Mandatory — [FOCUS_VISIBLE_RING.md](./FOCUS_VISIBLE_RING.md) (Itemwiki ADR-0009, `check:focus-visible-ring`)

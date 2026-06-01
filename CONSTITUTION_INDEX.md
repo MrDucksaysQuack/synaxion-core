@@ -17,7 +17,7 @@ Single entry point for **Synaxion shared** and **Itemwiki-specific** constitutio
 | Logging / observability | [09-observability/](./09-observability/) |
 | Frontend UI input/render authority | [07-frontend-ui/UI_INPUT_RENDER_AUTHORITY.md](./07-frontend-ui/UI_INPUT_RENDER_AUTHORITY.md) |
 | Input–persistence alignment | [07-frontend-ui/INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md](./07-frontend-ui/INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md) |
-| Component patterns (v2.15) | [15-component-patterns/README.md](./15-component-patterns/README.md) |
+| Component patterns (15장; FOCUS-R1 Mandatory @ 2.16.0) | [15-component-patterns/README.md](./15-component-patterns/README.md) · [FOCUS_VISIBLE_RING.md](./15-component-patterns/FOCUS_VISIBLE_RING.md) |
 
 ## Itemwiki extensions (`docs/itemwiki-constitution/`)
 
