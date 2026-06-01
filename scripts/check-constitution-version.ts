@@ -11,12 +11,13 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 
 function getRoot(): string {
   const arg = process.argv.find((a) => a.startsWith('--project-root='));
   if (arg) return path.resolve(process.cwd(), arg.slice('--project-root='.length).trim());
-  return path.resolve(__dirname, '..', '..', '..');
+  return resolveProjectRoot(import.meta.url);
 }
 
 function main(): void {

@@ -4,6 +4,7 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 import { evaluateJudgment } from '../../../packages/lib/core/judgment/evaluate';
 import {
@@ -16,7 +17,7 @@ import { ITEMWIKI_JUDGMENT_SCENARIOS } from '../../../packages/lib/core/judgment
 import { WEIGHTED_DEMO_PRECEDENCE } from '../../../packages/lib/core/judgment/precedence';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 const ITEMWIKI_RULES = path.join(ROOT, 'docs', 'itemwiki-constitution', 'decision-rules.json');
 const CORE_RULES = path.join(ROOT, 'docs', 'constitution', 'decision-rules.example.json');
 const WEIGHTED_FIXTURE = path.join(ROOT, 'docs', 'constitution', 'fixtures', 'judgment-weighted-demo.json');

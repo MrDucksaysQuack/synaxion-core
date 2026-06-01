@@ -12,11 +12,12 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 import { execSync } from 'child_process';
 
-const CONSTITUTION_DIR = path.resolve(__dirname, '..');
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const CONSTITUTION_DIR = resolveConstitutionDir(import.meta.url);
+const ROOT = resolveProjectRoot(import.meta.url);
 const SCHEMA_PATH = path.join(CONSTITUTION_DIR, 'profiles', 'system-spec.schema.json');
 
 function getRegistryPath(): string {

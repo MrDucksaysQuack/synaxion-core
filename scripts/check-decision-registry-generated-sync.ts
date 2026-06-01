@@ -6,9 +6,10 @@
  * JSON만 고치고 `pnpm run generate:from-registry` 를 안 돌린 드리프트를 PR에서 차단.
  */
 import * as fs from 'fs';
+import { resolveProjectRoot } from './resolve-project-root.js';
 import * as path from 'path';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 const GENERATED_PATH = path.join(ROOT, 'packages', 'lib', 'core', 'decisions', 'index.ts');
 
 function getRegistryPath(): string {

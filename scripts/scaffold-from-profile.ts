@@ -13,10 +13,11 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 
-const CONSTITUTION_DIR = path.resolve(__dirname, '..');
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const CONSTITUTION_DIR = resolveConstitutionDir(import.meta.url);
+const ROOT = resolveProjectRoot(import.meta.url);
 
 function main(): void {
   const targetArg = process.argv.find((a) => a.startsWith('--target='));

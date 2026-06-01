@@ -9,10 +9,11 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 import { execSync } from 'child_process';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 const CONSTITUTION_DIR = path.join(ROOT, 'docs', 'constitution');
 const SCHEMA_PATH = path.join(CONSTITUTION_DIR, 'decision-registry.schema.json');
 
@@ -113,8 +114,11 @@ function main(): void {
   let failed: string | null = null;
   for (const script of scriptList) {
     const pnpmScript = script.replace(/^pnpm run\s+/, '');
+    const runCmd = pnpmScript.startsWith('check:')
+      ? `node scripts/ci/run-check.mjs ${pnpmScript}`
+      : `pnpm run ${pnpmScript}`;
     try {
-      execSync(`pnpm run ${pnpmScript}`, { cwd: ROOT, stdio: 'inherit' });
+      execSync(runCmd, { cwd: ROOT, stdio: 'inherit' });
       console.log(`  ✅ ${pnpmScript}`);
     } catch {
       failed = pnpmScript;

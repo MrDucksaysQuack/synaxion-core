@@ -13,9 +13,10 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 const CONSTITUTION_DIR = path.join(ROOT, 'docs', 'constitution');
 
 function getRegistryPath(): string {

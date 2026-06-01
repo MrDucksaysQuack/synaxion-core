@@ -7,12 +7,13 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 import { evaluateJudgment } from '../../../packages/lib/core/judgment/evaluate';
 import { ITEMWIKI_RULE_PRECEDENCE } from '../../../packages/lib/core/judgment/itemwiki-precedence';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 const RULES_PATH = path.join(ROOT, 'docs', 'itemwiki-constitution', 'decision-rules.json');
 
 const filled = (trust: 'high' | 'medium' | 'low') => ({ filled: true as const, trust });

@@ -9,10 +9,11 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 import { JUDGMENT_MATCHER_REF_ALLOWLIST } from '../../../packages/lib/core/judgment/escape-matcher-registry';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 const CONSTITUTION_DIR = path.join(ROOT, 'docs', 'constitution');
 
 const OUTCOMES = new Set([

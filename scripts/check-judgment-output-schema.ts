@@ -6,10 +6,11 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 import Ajv from 'ajv';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 
 const SCHEMA_PATH = path.join(ROOT, 'docs', 'constitution', 'judgment-output.schema.json');
 const FIXTURES = [

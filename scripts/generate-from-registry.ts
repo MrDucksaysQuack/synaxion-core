@@ -10,10 +10,11 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 
-const CONSTITUTION_DIR = path.resolve(__dirname, '..');
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const CONSTITUTION_DIR = resolveConstitutionDir(import.meta.url);
+const ROOT = resolveProjectRoot(import.meta.url);
 const DEFAULT_OUTPUT = path.join(CONSTITUTION_DIR, 'generated', 'registry-generated.ts');
 
 function getRegistryPath(): string {

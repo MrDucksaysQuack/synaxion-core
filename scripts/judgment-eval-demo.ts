@@ -4,12 +4,13 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 import { evaluateJudgment } from '../../../packages/lib/core/judgment/evaluate';
 import { judgmentToPlainText } from '../../../packages/lib/core/judgment/format-judgment-log';
 import type { DecisionRulesFile, JudgmentContext } from '../../../packages/lib/core/judgment/types';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 const RULES_PATH = path.join(ROOT, 'docs', 'constitution', 'decision-rules.example.json');
 
 function loadRules(): DecisionRulesFile {

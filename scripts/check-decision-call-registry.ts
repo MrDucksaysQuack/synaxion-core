@@ -9,9 +9,10 @@
  */
 
 import * as fs from 'fs';
+import { resolveProjectRoot, resolveConstitutionDir } from './resolve-project-root.js';
 import * as path from 'path';
 
-const ROOT = path.resolve(__dirname, '..', '..', '..');
+const ROOT = resolveProjectRoot(import.meta.url);
 
 function getRegistryPath(): string {
   const arg = process.argv.find((a) => a.startsWith('--registry='));
