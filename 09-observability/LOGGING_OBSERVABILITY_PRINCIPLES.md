@@ -58,14 +58,27 @@
 
 ---
 
-## 5. 관련 문서
+## 5. Rule C — Audit·메트릭 실패와 primary flow (Execution Authority)
+
+[EXECUTION_AUTHORITY_ALIGNMENT.md](../01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md) **Rule C**: 감사·메트릭·부가 관측 insert/query 실패는 **사용자 트랜잭션을 차단하지 않는다**.
+
+| 허용 | 금지 |
+|------|------|
+| primary 성공 + audit 실패를 **log · metric · outbox**로 기록 | audit 실패로 primary 5xx (의도적 fail-closed 제품만 예외·inventory 명시) |
+| degraded 응답 헤더·partial flag | 의존 DB 실패를 **빈 배열·0건 통계**로 위장 (silent success) |
+
+운영 runbook: Postgres `42501` → 권한 불일치(①), HTTP 401 on cookie-only session → 인터셉터 불일치(③) — 인스턴스 findings register에 매핑.
+
+---
+
+## 6. 관련 문서
 
 - [04-safety-standards/SILENT_FAILURE_PREVENTION.md](../04-safety-standards/SILENT_FAILURE_PREVENTION.md) — 에러 피드백 의무
 - [08-config/ENVIRONMENT_VARIABLES.md](../08-config/ENVIRONMENT_VARIABLES.md) — 환경별 설정 접근
 
 ---
 
-## 6. 프론트엔드 분석 이벤트 택소노미 (Event taxonomy registry)
+## 7. 프론트엔드 분석 이벤트 택소노미 (Event taxonomy registry)
 
 **Tier**: **Tier 2** (권장 — GA/gtag·자체 analytics 사용 시)
 
@@ -90,7 +103,7 @@
 
 ---
 
-## 7. 개선 로드맵
+## 8. 개선 로드맵
 
 - **Phase 1**: API 라우트에서 `console.error`/`warn`/`log` 제거 → `logUnifiedError`/`logUnifiedWarn` 사용 (health, webhook 등). ✅ 적용됨.
 - **Phase 2**: API 전용 console 금지 — `.eslintrc.json`에 `local/no-console-in-api` 적용됨.

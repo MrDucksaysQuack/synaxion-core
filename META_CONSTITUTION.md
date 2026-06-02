@@ -60,7 +60,7 @@ Synaxion은 *제품 인스턴스*(Itemwiki·Inflomatrix 등)에서 발견된 보
 
 **규칙**: Tier 3 도입 시 *제안자 인스턴스*와 *Tier 3 등재일*을 챕터 하단에 명시한다. 승격 PR은 *증명 근거*(외부 인스턴스 적용 사례)를 ADR로 첨부한다. 강등은 §3 규칙을 따른다.
 
-**현재 Tier 3 신규 패턴 (2.15.0 — Inflomatrix 제안)**
+**현재 Tier 3 신규 패턴 (2.15.0+ — Inflomatrix·Itemwiki 제안)**
 
 | ID | 챕터 | 위치 | 검증 |
 |----|------|------|------|
@@ -68,6 +68,8 @@ Synaxion은 *제품 인스턴스*(Itemwiki·Inflomatrix 등)에서 발견된 보
 | N-way Consistency Gate | [01-foundations/N_WAY_CONSISTENCY_GATE.md](./01-foundations/N_WAY_CONSISTENCY_GATE.md) | 복수 SSOT 양방향 정합 strict 게이트 | `check:matrix-table-manifest` 등 |
 | Meta-Gate / Gate Telemetry | [06-automation/META_GATE_TELEMETRY.md](./06-automation/META_GATE_TELEMETRY.md) | 게이트 *검사 건수* 발행 + 공집합 통과 차단 | `check:gate-coverage` (제안) |
 | Adjacent Debt Rule (Touch-It Type-It) | [02-development-framework/ADJACENT_DEBT_RULE.md](./02-development-framework/ADJACENT_DEBT_RULE.md) | 부채를 전담 스프린트가 아닌 통행료로 정리 | `monitor:lint-baseline` |
+| Execution Authority Alignment | [01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md](./01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md) | 실행 주체 ≠ 정책 주체 · Rule A–D · 5+1 실패 패턴 | 인스턴스 `check:authority-boundary` |
+| Authority Boundary (AB catalog + playbook) | [06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md](./06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md) · [AUTHORITY_BOUNDARY_PLAYBOOK.md](./06-automation/AUTHORITY_BOUNDARY_PLAYBOOK.md) | AB-01~08 · 4단계 성숙도 · inventory | Tier 2 rules · Tier 3 playbook |
 
 ---
 

@@ -21,6 +21,20 @@
 **⚠️ 경고**: 이 순서가 무너지면 시스템은 불안정해진다.  
 **✅ 약속**: 이 순서가 완벽하면 어떤 시스템도 절대 무너지지 않는다.
 
+### Authority at boundary (실행 권한 — ⑦ 보조)
+
+**문제는 경계에서 난다.** HTTP handler·DB·storage·webhook·cron·external call마다 [EXECUTION_AUTHORITY_ALIGNMENT.md](../01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md) §2 경계 질문을 적용한다.
+
+| 7단계 | Authority 체크 |
+|-------|----------------|
+| ① Trigger | 누가 요청했는가 (Edge principal 확정) |
+| ② State Read | 읽기가 **caller authority + policy**(Rule B·D)를 만족하는가 |
+| ④ Action / ⑤ Mutation | 쓰기 principal = policy principal? elevated면 **application/job만** (Rule A·norm) |
+| ⑥ Side Effect | Audit 실패가 primary를 막지 않되 **관측 유실 없음**(Rule C) |
+| ⑦ Output | cross-tenant·빈 성공 위장 없음 |
+
+인증 **순서**(Auth→Identity→…)는 [AUTH_FLOW_PRINCIPLES.md](../04-safety-standards/AUTH_FLOW_PRINCIPLES.md). 실행≠정책은 Execution Authority 문서 SSOT.
+
 ### ItemWiki HTTP API 라우트와의 관계
 
 이 표는 **모든 Flow·도메인 로직**의 사고 모델이다. **Next.js `app/api` 라우트**에 대해서는 [API_STANDARDIZATION_LEVELS.md](./API_STANDARDIZATION_LEVELS.md)가 **단계 깊이**를 완화한다. 예: 단순 조회 GET은 논리적으로 ① Trigger → ② State Read → ⑦ Output까지만 있으면 되고, ③④⑤는 “해당 없음”이 될 수 있다. 복잡한 POST/PATCH는 동일 문서의 생성·수정 API 절을 따른다. 두 문서가 충돌해 보이면 **API 표준 문서가 HTTP 핸들러 해석에 우선**한다.

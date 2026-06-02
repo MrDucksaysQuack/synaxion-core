@@ -25,6 +25,7 @@
 
 ## 3. 관련 문서
 
+- [EXECUTION_AUTHORITY_ALIGNMENT.md](./EXECUTION_AUTHORITY_ALIGNMENT.md) — 실행 주체 ≠ 정책 주체, Rule A–D, 경계 5+1종
 - [LAYER_BOUNDARIES.md](./LAYER_BOUNDARIES.md) — 계층 경계·의존성
 - [04-safety-standards/](../04-safety-standards/) — UX·침묵 실패·개념 부패 방지
 - **Itemwiki 인스턴스**: [TRUST_BOUNDARY_DECLARATION.md](../../itemwiki-constitution/itemwiki-specific/architecture/TRUST_BOUNDARY_DECLARATION.md) — 본 저장소의 신뢰 한계 선언(운영·기대 관리)

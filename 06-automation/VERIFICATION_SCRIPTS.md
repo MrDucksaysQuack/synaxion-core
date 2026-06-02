@@ -114,6 +114,17 @@
 | check:silent-failures | 침묵 실패 위험 패턴 탐지 |
 | check:load-with-api-resilience-no-mutation | 로드 경로에 mutation 혼입 금지 |
 
+#### 🔐 Authority boundary (Execution ≠ Policy)
+
+Synaxion 보펼명: **`check:authority-boundary`**. 인스턴스 예: Itemwiki·Inflomatrix `check:auth-boundary` → [AUTHORITY_BOUNDARY_CHECK_RULES.md](./AUTHORITY_BOUNDARY_CHECK_RULES.md) AB-01~08.
+
+| 스크립트 (인스턴스) | 목적 |
+|---------------------|------|
+| check:authority-boundary / check:auth-boundary | API layer elevated client · CRUD tenant binding · public secret fallback · (선택) schema drift |
+| check:permission-drift | permission matrix ↔ route `requirePermission` 드리프트 (④ SSOT 보조) |
+
+**Tier**: AB catalog **Tier 2** (2.16.0). `check:all` 포함은 인스턴스·Tier 1 승격 시 결정. Meta-Gate: 0 finding + 만료 있는 allowlist — [META_GATE_TELEMETRY.md](./META_GATE_TELEMETRY.md).
+
 #### 📥 Alignment·입력 보증 (Input Persistence)
 
 `check:constitution-pr`의 IP 게이트 스크립트 군. 상세 원칙은 [INPUT_PERSISTENCE_GUARANTEE.md](../04-safety-standards/INPUT_PERSISTENCE_GUARANTEE.md).
