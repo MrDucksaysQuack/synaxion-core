@@ -22,3 +22,5 @@
 - 검증이 없으면 빈칸. META_CONSTITUTION에 따라 Tier 1 원칙은 가능한 한 check:* 추가 제안
 
 **관련**: [META_CONSTITUTION.md](./META_CONSTITUTION.md) §6, [DECISION_REGISTRY.md](./DECISION_REGISTRY.md)
+
+**인스턴스 (MTC Platform)**: 프로젝트 SSOT·B2B 스코프는 [docs/epi-mtc-constitution/SINGLE_SOURCE_MAP.md](../epi-mtc-constitution/SINGLE_SOURCE_MAP.md) — EPI 조직·외부 handoff 항목은 Wave 2에서 내부화·폐기 (ADR-0010·0011).

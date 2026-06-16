@@ -74,6 +74,33 @@
       "outcome": "DENY",
       "rationaleDoc": "01-foundations/TRUST_BOUNDARY_PRINCIPLE.md",
       "match": { "flag": "trustBoundaryViolation", "equals": true }
+    },
+    {
+      "id": "b2b-public-apply-deprecated",
+      "title": "공개 자가지원 Apply 채널 폐기",
+      "when": "intakeChannel이 public_apply — ADR-0011 D2; 공개면은 inquiry only",
+      "requiredDimensions": ["context", "impact"],
+      "outcome": "DENY",
+      "rationaleDoc": "docs/adr/0011-b2c-to-b2b-repositioning.md",
+      "match": { "flag": "publicApplyIntake", "equals": true }
+    },
+    {
+      "id": "b2b-inquiry-organization-required",
+      "title": "B2B 문의 — 기관명 필수",
+      "when": "organizationName이 비어 있거나 2자 미만",
+      "requiredDimensions": ["entity", "context"],
+      "outcome": "INSUFFICIENT_DATA",
+      "rationaleDoc": "docs/specs/B2B_INQUIRY_AND_ENROLLMENT_SPEC.md",
+      "match": { "flag": "missingOrganizationName", "equals": true }
+    },
+    {
+      "id": "b2b-inquiry-valid-intake",
+      "title": "유효한 B2B inquiry 제출 허용",
+      "when": "inquiryType·organizationName·consent 충족 — application 자동 생성 없음",
+      "requiredDimensions": ["entity", "context", "impact"],
+      "outcome": "ALLOW",
+      "rationaleDoc": "docs/specs/B2B_INQUIRY_AND_ENROLLMENT_SPEC.md",
+      "match": { "flag": "validB2bInquiry", "equals": true }
     }
   ]
 }

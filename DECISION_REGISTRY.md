@@ -67,6 +67,21 @@ checkDecision('invalid-id');   // ❌ 컴파일 에러 (DecisionId에 없음)
 |---------|----------------|
 | `synaxion-operator-followup` | [docs/flow/SYNAXION_HUMAN_LOOP_WORKFLOW.md](../flow/SYNAXION_HUMAN_LOOP_WORKFLOW.md), GitHub 이슈 템플릿 `synaxion-rule-change-proposal`, `PATCH .../synaxion-judgments/[id]` |
 
+## 제품·전략 결정 — MTC B2B Repositioning (D1–D7)
+
+> **SSOT**: [ADR-0011](../adr/0011-b2c-to-b2b-repositioning.md) · 계획: [MTC-개편-방향-정의서-및-문서개정-계획.html](../../MTC-개편-방향-정의서-및-문서개정-계획.html)  
+> **등재일**: 2026-06-16 (Wave 0) · **상태**: ADR-0011 **제안** — A-09 법무 사인오프 후 수락
+
+| ID | 제목 | singleSource | 일자 |
+|----|------|--------------|------|
+| **D1** | EPI 완전 제거 (ADR-0010 defer 포함) | [ADR-0011 §D1](../adr/0011-b2c-to-b2b-repositioning.md) | 2026-06-16 |
+| **D2** | 학생 인테이크 = MTC 내부 등록; 공개 Apply 폐기 | [ADR-0011 §D2](../adr/0011-b2c-to-b2b-repositioning.md) | 2026-06-16 |
+| **D3** | tl-PH 비공개 유지 (콘텐츠 보존, sitemap·셀렉터 제외) | [ADR-0011 §D3](../adr/0011-b2c-to-b2b-repositioning.md) | 2026-06-16 |
+| **D4** | B2C→B2B 재포지셔닝 — 브랜드 허브 + Japan Caregiver / Korea Academic Alliance | [ADR-0011 §D4](../adr/0011-b2c-to-b2b-repositioning.md) | 2026-06-16 |
+| **D5** | 위험·잡음 제거 (No Fee, Staff 카드, 방어적 푸터) | [ADR-0011 §D5](../adr/0011-b2c-to-b2b-repositioning.md) | 2026-06-16 |
+| **D6** | MTC 단일 브랜드·로고·톤앤매너 | [ADR-0011 §D6](../adr/0011-b2c-to-b2b-repositioning.md) | 2026-06-16 |
+| **D7** | EN/JA/KO 공개 셀렉터; ja→Japan·ko→Korea 랜딩 | [ADR-0011 §D7](../adr/0011-b2c-to-b2b-repositioning.md) | 2026-06-16 |
+
 ## 다음 단계
 
 1. ~~SINGLE_SOURCE_MAP.md의 행을 기반으로 `decision-registry.json` 생성~~ → 완료.
@@ -75,4 +90,4 @@ checkDecision('invalid-id');   // ❌ 컴파일 에러 (DecisionId에 없음)
 
 **관련**: [SINGLE_SOURCE_MAP.md](./SINGLE_SOURCE_MAP.md), [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
-**최종 업데이트**: 2026-03-28 — client-session 행: accessToken·useAuthCheck(`authFlowState`·`waitForAuth`) 정렬
+**최종 업데이트**: 2026-06-16 — D1–D7 B2B repositioning 등재 (ADR-0011)
