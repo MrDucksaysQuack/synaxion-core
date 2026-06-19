@@ -1,11 +1,20 @@
 # 19장 — 거버넌스 규칙
 
 > **Synaxion Constitution 19장 · GOVERNANCE**  
-> 인스턴스가 Product UI Architecture 문서를 관리할 때 지켜야 할 4규칙과 PLAN-READINESS 패턴.
+> 인스턴스가 Product UI Architecture 문서를 관리할 때 지켜야 할 **7규칙**과 PLAN-READINESS 패턴.  
+> **2.17.0**: [GENERATION_ASSISTED_COVERAGE.md](./GENERATION_ASSISTED_COVERAGE.md) — complete generation formula는 **비목표**.
 
 ---
 
-## 거버넌스 4규칙
+## 명시적 비목표 (2.17.0)
+
+- Role×Goal×Data×Stage **카르테시안 자동 URL 생성**
+- Split/Tab/Modal **닫힌 함수 도출**
+- 인간 배제 **완전 폐루프** (assisted + CI 게이트만)
+
+---
+
+## 거버넌스 7규칙
 
 ### 규칙 1 — Backlog = 유일 실행 SSOT
 
@@ -44,6 +53,8 @@ backlog: L2-H-01
 | 여정 단계 추가/수정 | 02 + 08 |
 | 새 Event 행 | 11 + 10(핸드오프) + 08 |
 | 역할 라우팅 변경 | 06 + 04 + 08 |
+| 6차원 감사 판정 변경 (Split/Tabs/Missing 등) | PAGE-AUDIT-MATRIX + 04 + 08 |
+| Role×Goal matrix 변경 (규칙 6) | matrix JSON + sources 문서 + 04 + 08 |
 
 ---
 
@@ -53,6 +64,42 @@ backlog: L2-H-01
 
 - "거의 완성됐다"는 표현 금지. 남은 갭은 §B(의도적 후속)에 명시한다.
 - Plan Complete ≠ Implementation Ready. 게이트 혼동 금지.
+
+---
+
+### 규칙 5 — 화면 추가·개편 시 6차원 점검
+
+> **신규 URL·화면 ID 추가 또는 Goal/Role/Stage를 크게 바꾸는 PR**에서는 [PAGE_DERIVATION_AND_AUDIT.md](./PAGE_DERIVATION_AND_AUDIT.md) §2 질문 6개에 답한다.
+
+- 프로파일 **S**: PR 설명 또는 04 Inventory 행에 6차원 **한 줄 요약**
+- 프로파일 **M+**: `PAGE-AUDIT-MATRIX` 행 추가·갱신 + Needs Split/Tabs 시 분리 계획 또는 Backlog ID
+- **Wrong Role**·**Broken Workflow** 발견 시 merge 전 수정 또는 §B 갭·Backlog 등록
+
+6차원이 과밀하면 URL 분리 **또는** 탭/섹션 분리를 명시하고, Ch.10 [한 페이지 한 목적](../10-design-flow/DESIGN_FLOW_PRINCIPLES.md#1-한-페이지--한-목적-one-page-one-purpose)과 정합을 확인한다.
+
+---
+
+### 규칙 6 — Role×Goal matrix = 큐레이션 SSOT (2.17.0)
+
+> **프로파일 M+** 인스턴스는 큐레이션된 Role×Goal을 [ROLE_GOAL_MATRIX_SCHEMA.md](./ROLE_GOAL_MATRIX_SCHEMA.md) JSON(또는 YAML)로 유지한다.
+
+- Critical path·Journey·Handoff에서 파생 — **카르테시안 곱으로 자동 생성하지 않는다**.
+- `sources` 필드에 markdown SSOT 링크를 남긴다.
+- `suggestedArchetype`은 scaffold **제안**일 뿐 — merge 게이트가 아니다.
+
+---
+
+### 규칙 7 — Missing-Journey diff · 3-way drift CI (2.17.0)
+
+> **P0 Goal**이 matrix에 있으면 Router·04 Inventory와 **결정적 정합**을 CI로 검증한다 ([GENERATION_ASSISTED_COVERAGE §3](./GENERATION_ASSISTED_COVERAGE.md#3-기계화하는-네-가지-우선-roi)).
+
+| 변경 | 동반 갱신 |
+|------|----------|
+| 신규 P0 Goal / critical path | role-goal-matrix + `sources` 문서 + 04 + 08 |
+| 라우트 삭제·이동 | matrix `routeHints` + 04 + 06 + 08 |
+| Workflow queue **후보** 발견 | matrix `notes` 또는 09 Backlog — **자동 URL 생성 금지** |
+
+인스턴스는 `check:role-goal-coverage`(또는 동등 스크립트)를 제공하는 것을 권장한다.
 
 ---
 

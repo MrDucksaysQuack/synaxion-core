@@ -1,8 +1,24 @@
 # 페이지 레이아웃·플로우 짧은 체크리스트 (Page layout & flow checklist)
 
-**목적**: 신규·개편 화면에서 **입구/출구**, **주요 행동**, **한 화면 한 목적**을 빠르게 점검한다. 상세 감사·팀별 표는 프로젝트 인스턴스 `design-flow/`에 둔다.
+**목적**: 신규·개편 화면에서 **입구/출구**, **주요 행동**, **한 화면 한 목적**을 빠르게 점검한다.  
+**다역할·업무 흐름 제품**은 [Ch.19 PAGE_DERIVATION_AND_AUDIT.md](../19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md) 6차원 감사를 먼저 수행한다.
 
 **Tier**: **권장** — 심화는 [DESIGN_FLOW_PRINCIPLES.md](./DESIGN_FLOW_PRINCIPLES.md), [EXPECTATION_MODEL_RULES.md](./EXPECTATION_MODEL_RULES.md), [IA_NAVIGATION_PRINCIPLES.md](../07-frontend-ui/IA_NAVIGATION_PRINCIPLES.md).
+
+---
+
+## 6차원 빠른 점검 (Ch.19 연동)
+
+신규 URL·대규모 개편 시 아래 6문항에 **각각 한 문장**으로 답할 수 있는지 확인한다.
+
+1. **Role** — 누가 쓰는가?
+2. **Goal** — 무엇을 끝내려 하는가?
+3. **Data** — 중심 객체는 무엇인가?
+4. **Action** — 주 행동(Primary)은 무엇인가?
+5. **Permission** — 허용된 범위인가?
+6. **Workflow Stage** — 업무 흐름상 어느 단계인가?
+
+2~3개가 흐리거나 한 답에 "그리고/또한"이 반복되면 [Ch.19 감사 판정](../19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md#6-페이지-문제-유형-감사-판정)을 참고한다.
 
 ---
 
@@ -22,8 +38,9 @@
 
 - [NEW_PAGE_DESIGN_CHECKLIST.md](../../itemwiki-constitution/itemwiki-specific/design-flow/NEW_PAGE_DESIGN_CHECKLIST.md)  
 - [FLOW_ENTRY_EXIT_MATRIX.md](../../itemwiki-constitution/itemwiki-specific/design-flow/FLOW_ENTRY_EXIT_MATRIX.md)  
-- [BUTTON_PLACEMENT_AUDIT.md](../../itemwiki-constitution/itemwiki-specific/design-flow/BUTTON_PLACEMENT_AUDIT.md)
+- [BUTTON_PLACEMENT_AUDIT.md](../../itemwiki-constitution/itemwiki-specific/design-flow/BUTTON_PLACEMENT_AUDIT.md)  
+- Ch.19 [PAGE_AUDIT_MATRIX.template.md](../19-product-ui-architecture/PAGE_AUDIT_MATRIX.template.md) — 다역할 제품 평가 매트릭스
 
 ---
 
-**최종 업데이트**: 2026-04-14
+**최종 업데이트**: 2026-06-16 — 6차원 빠른 점검·Ch.19 연동

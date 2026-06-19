@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.16.0  
+**버전**: 2.17.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -123,7 +123,7 @@
 
 ### 19 — 제품 UI 아키텍처 (Product UI Architecture)
 
-[19-product-ui-architecture/](./19-product-ui-architecture/README.md) — 다역할·Event 기반 제품에서 "누가·어떤 순서로·무엇을 보는가"를 구조화하는 UI 지도 체계. 문서 14종 taxonomy, 크기 프로파일 S/M/L, PLAN-READINESS 3단 게이트, 거버넌스 4규칙. 코어 6 스키마(Handoff·Event→UI·Time Zones·Recovery·State Matrix·INDEX.template) + GOVERNANCE. **"컴포넌트 패턴만으로는 누가·어떤 순서로·무엇을 보는가가 잡히지 않는다."**
+[19-product-ui-architecture/](./19-product-ui-architecture/README.md) — 다역할·Event 기반 제품 UI 지도. **6차원 감사** + **generation-assisted coverage** (Role×Goal matrix · Missing-Journey diff · 3-way drift CI). [GENERATION_ASSISTED_COVERAGE](./19-product-ui-architecture/GENERATION_ASSISTED_COVERAGE.md) · [ROLE_GOAL_MATRIX_SCHEMA](./19-product-ui-architecture/ROLE_GOAL_MATRIX_SCHEMA.md) · [PAGE_DERIVATION_AND_AUDIT](./19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md).
 
 > **Ch.07·10·15·18과의 관계**: 07=기술 레이어, 10=화면 품질, 15=컴포넌트, 18=인지 구조. **19장**은 이 네 레이어 위에서 **제품 전체의 UI 지도**를 관리한다.  
 > **Reference instance**: [Agrinovation 11-ui-architecture](../Plan/11-ui-architecture/) — 11역할·21 Handoff·12 Recovery Journey, Plan Complete 96%. (인스턴스 레포 `docs/Plan/11-ui-architecture/`)
@@ -200,6 +200,8 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-06-18 | **2.17.0** — Ch.19 [GENERATION_ASSISTED_COVERAGE](./19-product-ui-architecture/GENERATION_ASSISTED_COVERAGE.md) · [ROLE_GOAL_MATRIX_SCHEMA](./19-product-ui-architecture/ROLE_GOAL_MATRIX_SCHEMA.md): GAC reframe (assisted not closed), Missing-Journey diff, GOVERNANCE 규칙 6·7. Inflomatrix `role-goal-matrix.json` + `check:role-goal-coverage`. |
+| 2026-06-16 | **2.16.1** — Ch.19 [PAGE_DERIVATION_AND_AUDIT](./19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md) · [PAGE_AUDIT_MATRIX.template](./19-product-ui-architecture/PAGE_AUDIT_MATRIX.template.md): 6차원(Role·Goal·Data·Action·Permission·Workflow Stage) 유도·Frontend Page Audit·판정 코드. GOVERNANCE 규칙 5. Ch.10 체크리스트·UX Rubric 4점 연동. Inflomatrix 제안 · Tier 2. |
 | 2026-06-02 | **2.16.0** — Execution Authority Alignment (Tier 3): [EXECUTION_AUTHORITY_ALIGNMENT.md](./01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md) — 실행 principal ≠ 정책 principal, Rule A–D, 5+1 실패 패턴, 경계 함수 목록. [AUTHORITY_BOUNDARY_CHECK_RULES.md](./06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md) (Tier 2, AB-01~08). [AUTHORITY_BOUNDARY_PLAYBOOK.md](./06-automation/AUTHORITY_BOUNDARY_PLAYBOOK.md). 7단계 § Authority at boundary, observability Rule C. Itemwiki + Inflomatrix `check:auth-boundary` 실증. ADR [0007](./adr/0007-execution-authority-alignment-2.16.0.md). |
 | 2026-05-30 | **2.15.0** — META §0.3 Pattern Promotion Model 추가 (Tier 3 → 2 → 1 승격 단계 모델). Inflomatrix 인스턴스 발견 4개 Tier 3 패턴 신규 등재: [Recursive Layering](./01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md)(어휘 불변성 + 자기 닮음 문법), [N-way Consistency Gate](./01-foundations/N_WAY_CONSISTENCY_GATE.md)(복수 SSOT 양방향 정합), [Meta-Gate / Gate Telemetry](./06-automation/META_GATE_TELEMETRY.md)(게이트 검사 건수 발행 + 공집합 통과 차단), [Adjacent Debt Rule / Touch-It Type-It](./02-development-framework/ADJACENT_DEBT_RULE.md)(부채를 통행료로). Inflomatrix 5중 중첩 매트릭스(SubDomain·Flow·Stream·Schema·Conscious·ERIC)를 Recursive Layering 1호 실증 사례로 등재. |
 | 2026-05-27 | **2.14.1** — Ch.19 목차 번호 정합(19=Product UI·20=Data·DB), Handoff 21건 통일, Event→UI·Time Zones 스키마 README 반영. |

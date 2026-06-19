@@ -2,7 +2,7 @@
 
 > **Synaxion Constitution 19장**  
 > 다역할·Event 기반 제품에서 "누가·어떤 순서로·무엇을 보는가"를 구조화하는 UI 지도 체계.  
-> **버전**: 2.14.1 (Synaxion Constitution)
+> **버전**: 2.17.0 (Synaxion Constitution)
 
 ---
 
@@ -12,6 +12,11 @@
 
 역할이 여럿이고 Event가 화면 상태를 바꾸는 제품은, 컴포넌트(Ch.15)·UX flow(Ch.10)·인지 구조(Ch.18)만으로는 설계가 완결되지 않는다.  
 19장은 **제품 전체의 UI 지도** — 역할 여정·핸드오프·복구 경로·이벤트→화면 반응·추적 가능성 — 을 한 장소에서 관리하는 문서 체계와 거버넌스를 정의한다.
+
+> **페이지는 디자인으로 먼저 정하지 않는다.**  
+> [PAGE_DERIVATION_AND_AUDIT.md](./PAGE_DERIVATION_AND_AUDIT.md)의 **6차원**(Role·Goal·Data·Action·Permission·Workflow Stage)에 답한 뒤 Screen Inventory·Route에 반영한다.
+
+> **Ch.19 목표 (2.17.0)**: **complete generation formula**가 아니라 **[generation-assisted coverage system](./GENERATION_ASSISTED_COVERAGE.md)** — 큐레이션된 Role×Goal · Missing-Journey diff · 3-way drift CI · scaffold 제안. 인간은 Goal 큐레이션·Split/Tab 판단에만 남긴다.
 
 ```
 Ch.07  — 상태 관리·fetch 원칙·IA 규칙        (기술 레이어)
@@ -28,7 +33,11 @@ Ch.19  — 제품 전체 UI 지도 (본 챕터)         (제품 아키텍처 레
 | 문서 | 역할 |
 |------|------|
 | [README.md](./README.md) | 챕터 개요·taxonomy·프로파일·게이트·타 챕터 관계 |
-| [GOVERNANCE.md](./GOVERNANCE.md) | 거버넌스 4규칙·PLAN-READINESS 3단 게이트·N/A 허용 정책 |
+| [GENERATION_ASSISTED_COVERAGE.md](./GENERATION_ASSISTED_COVERAGE.md) | **생성 보조·커버리지** — 비목표·인간 경계·diff CI·scaffold 범위 |
+| [ROLE_GOAL_MATRIX_SCHEMA.md](./ROLE_GOAL_MATRIX_SCHEMA.md) | **Role×Goal 기계 판독 SSOT** — JSON 스키마 · Missing-Journey diff |
+| [PAGE_DERIVATION_AND_AUDIT.md](./PAGE_DERIVATION_AND_AUDIT.md) | **6차원 유도·감사** — Role·Goal·Data·Action·Permission·Workflow Stage, 분리/탭 **판정(judgment)**, Missing Journey |
+| [PAGE_AUDIT_MATRIX.template.md](./PAGE_AUDIT_MATRIX.template.md) | 인스턴스 평가 매트릭스 템플릿 |
+| [GOVERNANCE.md](./GOVERNANCE.md) | 거버넌스 5규칙·PLAN-READINESS 3단 게이트·N/A 허용 정책 |
 | [INDEX.template.md](./INDEX.template.md) | 인스턴스 시작점 — 빈 INDEX + 문서 14종 슬롯 |
 | [HANDOFF_CATALOG_SCHEMA.md](./HANDOFF_CATALOG_SCHEMA.md) | 핸드오프 카탈로그 7필드 스키마 |
 | [EVENT_UI_MAP_SCHEMA.md](./EVENT_UI_MAP_SCHEMA.md) | Event→UI Map 표준 열 |
@@ -98,7 +107,7 @@ Ch.19  — 제품 전체 UI 지도 (본 챕터)         (제품 아키텍처 레
 | 챕터 | 관계 |
 |------|------|
 | **Ch.07** (Frontend UI) | 기술 레이어 — 상태 관리·fetch·IA 기술 원칙. 19장은 "무엇을 보여주는가"를 다루고, 07은 "어떻게 구현하는가"를 다룬다. 상호 보완, 중복 아님. |
-| **Ch.10** (Design Flow) | 페이지 단위 UX 최소선·7규칙. 19장은 제품 전체 UI 지도이고, 10은 개별 화면 품질 기준. |
+| **Ch.10** (Design Flow) | 페이지 단위 UX 최소선·7규칙. 19장은 제품 전체 UI 지도이고, 10은 개별 화면 품질 기준. **6차원 유도 → Ch.19, 화면 내부 검증 → Ch.10**. |
 | **Ch.15** (Component Patterns) | 컴포넌트 선택·패턴. 19장은 컴포넌트 조합 전에 "누가 무엇을 보는가"를 먼저 결정한다. |
 | **Ch.18** (Cognitive Interface) | 인지 구조 기반 설계 언어. 19장의 State Matrix·Journey와 연계해 Logic Type을 화면별로 매핑한다. |
 
@@ -119,5 +128,7 @@ Ch.19  — 제품 전체 UI 지도 (본 챕터)         (제품 아키텍처 레
 
 | 날짜 | 변경 |
 |------|------|
+| 2026-06-18 | **2.17.0** — [GENERATION_ASSISTED_COVERAGE.md](./GENERATION_ASSISTED_COVERAGE.md) · [ROLE_GOAL_MATRIX_SCHEMA.md](./ROLE_GOAL_MATRIX_SCHEMA.md): GAC reframe, Missing-Journey diff, 3-way CI, 비목표(완전 자동 생성). GOVERNANCE 규칙 6·7. Inflomatrix `role-goal-matrix.json` + `check:role-goal-coverage`. |
+| 2026-06-16 | **2.16.1** — [PAGE_DERIVATION_AND_AUDIT.md](./PAGE_DERIVATION_AND_AUDIT.md) · [PAGE_AUDIT_MATRIX.template.md](./PAGE_AUDIT_MATRIX.template.md) 추가. 6차원 유도·Frontend Page Audit·판정 코드(OK/Needs Split/…). GOVERNANCE 규칙 5. Inflomatrix 제안 · Tier 2. |
 | 2026-05-27 | **2.14.1** — EVENT_UI_MAP·TIME_ZONES 스키마 목차 반영. Handoff 21건(H-01~H-20b) 문구 통일. |
 | 2026-05-27 | **2.14.0** — 19장 신설. Agrinovation 11-ui-architecture를 레퍼런스 인스턴스 1호로 등재. |
