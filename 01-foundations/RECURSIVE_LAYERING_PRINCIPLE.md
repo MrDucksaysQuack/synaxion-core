@@ -119,7 +119,7 @@
 - [CONSISTENCY_AS_SYSTEM_CONSTRAINT.md](./CONSISTENCY_AS_SYSTEM_CONSTRAINT.md) — 본 원칙의 직계 상위 원리
 - [META_CONSTITUTION.md](../META_CONSTITUTION.md) §0.2 — 일관성을 시스템 제약으로
 - Inflomatrix `docs/data/matrix-*.json` (6개) — 실증 인스턴스
-- Inflomatrix `INFLOMATRIX_FRACTAL_MATRIX_PATTERN.html` — 시각화
+- Inflomatrix `inflomatrix-fractal-matrix-pattern.html` — 시각화
 
 ---
 
