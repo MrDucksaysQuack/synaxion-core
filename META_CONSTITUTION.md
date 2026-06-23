@@ -66,10 +66,27 @@ Synaxion은 *제품 인스턴스*(Itemwiki·Inflomatrix 등)에서 발견된 보
 |----|------|------|------|
 | Recursive Layering | [01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md](./01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md) | 메타 원칙 — 어휘 불변성 + 자기 닮음 문법 | `check:vocabulary-coverage` (제안) |
 | N-way Consistency Gate | [01-foundations/N_WAY_CONSISTENCY_GATE.md](./01-foundations/N_WAY_CONSISTENCY_GATE.md) | 복수 SSOT 양방향 정합 strict 게이트 | `check:matrix-table-manifest` 등 |
-| Meta-Gate / Gate Telemetry | [06-automation/META_GATE_TELEMETRY.md](./06-automation/META_GATE_TELEMETRY.md) | 게이트 *검사 건수* 발행 + 공집합 통과 차단 | `check:gate-coverage` (제안) |
+| Meta-Gate / Gate Telemetry | [06-automation/META_GATE_TELEMETRY.md](./06-automation/META_GATE_TELEMETRY.md) | 게이트 *검사 건수* 발행 + 공집합 통과 차단 | `check:gate-coverage` (인스턴스) |
 | Adjacent Debt Rule (Touch-It Type-It) | [02-development-framework/ADJACENT_DEBT_RULE.md](./02-development-framework/ADJACENT_DEBT_RULE.md) | 부채를 전담 스프린트가 아닌 통행료로 정리 | `monitor:lint-baseline` |
 | Execution Authority Alignment | [01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md](./01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md) | 실행 주체 ≠ 정책 주체 · Rule A–D · 5+1 실패 패턴 | 인스턴스 `check:authority-boundary` |
 | Authority Boundary (AB catalog + playbook) | [06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md](./06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md) · [AUTHORITY_BOUNDARY_PLAYBOOK.md](./06-automation/AUTHORITY_BOUNDARY_PLAYBOOK.md) | AB-01~08 · 4단계 성숙도 · inventory | Tier 2 rules · Tier 3 playbook |
+| **Operational Maturity Layers** | [01-foundations/OPERATIONAL_MATURITY_LAYERS.md](./01-foundations/OPERATIONAL_MATURITY_LAYERS.md) | Meaning · Permission · Navigation Graph · Identity Spine | 인스턴스 UX·nav·auth gates |
+| **Host Trust Surface Separation** | [01-foundations/HOST_TRUST_SURFACE_SEPARATION.md](./01-foundations/HOST_TRUST_SURFACE_SEPARATION.md) | 4표면 추상 모델 · plane guard · strangler | plane E2E · `check:nav-discoverability` |
+| **Strangler Promotion** | [01-foundations/STRANGLER_PROMOTION_PLAYBOOK.md](./01-foundations/STRANGLER_PROMOTION_PLAYBOOK.md) | alias·shim·병렬 스트림 무중단 승격 | build · type-check · compat E2E |
+| **Identity Federation Spine** | [04-safety-standards/IDENTITY_FEDERATION_SPINE.md](./04-safety-standards/IDENTITY_FEDERATION_SPINE.md) | central OAuth · signed state · handoff | `check:oauth-redirect-policy` |
+| **Navigation Discoverability** | [07-frontend-ui/NAVIGATION_DISCOVERABILITY.md](./07-frontend-ui/NAVIGATION_DISCOVERABILITY.md) | wayfinding graph · transient exempt | `check:nav-discoverability` |
+| **Indirect UX** | [10-design-flow/INDIRECT_UX_PRINCIPLE.md](./10-design-flow/INDIRECT_UX_PRINCIPLE.md) | structure over telling · UX-02b | `check:ux-state-coverage` |
+
+**Tier 2 신규 (2.18.0 — Inflomatrix 제안)**
+
+| ID | 챕터 | 위치 | 검증 |
+|----|------|------|------|
+| Application Layer Boundary | [01-foundations/APPLICATION_LAYER_BOUNDARY.md](./01-foundations/APPLICATION_LAYER_BOUNDARY.md) | Application↔API↔FE 경계 | `check:application-boundary` |
+| Warn→Strict Ratchet | [06-automation/WARN_TO_STRICT_RATCHET.md](./06-automation/WARN_TO_STRICT_RATCHET.md) | CI 게이트 승격 절차 | — |
+| Check Tier Manifest | [06-automation/CHECK_TIER_MANIFEST.md](./06-automation/CHECK_TIER_MANIFEST.md) | quick/pr/release 레인 SSOT | `check:tiers` |
+| Build Toolchain Alignment | [06-automation/BUILD_TOOLCHAIN_ALIGNMENT.md](./06-automation/BUILD_TOOLCHAIN_ALIGNMENT.md) | JSX runtime · alias parity | `check:jsx-react-scope` |
+| Page Execution Contract Registry | [19-product-ui-architecture/PAGE_EXECUTION_CONTRACT_REGISTRY.md](./19-product-ui-architecture/PAGE_EXECUTION_CONTRACT_REGISTRY.md) | P0↔contract test 1:1 | `check:page-execution-contracts` |
+| Cross-Instance Verification Patterns | [06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md](./06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md) | 인스턴스 check:* 카탈로그 | 인스턴스별 |
 
 ---
 

@@ -15,6 +15,7 @@
 | [UX_FEEDBACK_AND_ACCESSIBILITY.md](./UX_FEEDBACK_AND_ACCESSIBILITY.md) | 피드백(로딩·에러·결과), 접근성 기본 원칙 |
 | [DATA_FETCH_INITIATION.md](./DATA_FETCH_INITIATION.md) | 데이터 조회 시점: 접근 행동(클릭)에서 fetch, 모달/탭 진입 |
 | [IA_NAVIGATION_PRINCIPLES.md](./IA_NAVIGATION_PRINCIPLES.md) | 정보 구조·네비게이션: 3-Depth, Hick's Law(카테고리 3~7개) |
+| [NAVIGATION_DISCOVERABILITY.md](./NAVIGATION_DISCOVERABILITY.md) | **Tier 3 · 2.18.0**: wayfinding graph — inbound/outbound·dead-end·transient exempt·plane parity |
 | [LIST_PAGINATION_STRATEGY.md](./LIST_PAGINATION_STRATEGY.md) | **Tier 2**: 목록 페이징·무한 스크롤 — 목적(탐색/소비/관리)별 권장 패턴, `@pagination-strategy` 주석 규약 |
 | [PAGE_FORM_UX_HEURISTICS.md](./PAGE_FORM_UX_HEURISTICS.md) | **Tier 2**: 설정·긴 폼 화면 공통 UX 검증(결정 밀도·목적 분리·위계·카피 등 7축 + 체크리스트) |
 | [INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md](./INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md) | **필수**: SSOT, mapper 필수(신규/수정), 다중 persistence 부분 실패 정책, allowlist 공유, Round-trip·PR IP-1~6 |

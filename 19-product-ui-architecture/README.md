@@ -2,7 +2,7 @@
 
 > **Synaxion Constitution 19장**  
 > 다역할·Event 기반 제품에서 "누가·어떤 순서로·무엇을 보는가"를 구조화하는 UI 지도 체계.  
-> **버전**: 2.17.0 (Synaxion Constitution)
+> **버전**: 2.18.0 (Synaxion Constitution)
 
 ---
 
@@ -44,6 +44,7 @@ Ch.19  — 제품 전체 UI 지도 (본 챕터)         (제품 아키텍처 레
 | [TIME_ZONES_SCHEMA.md](./TIME_ZONES_SCHEMA.md) | 시간 3구간(TZ-NN) 항목 구조 |
 | [RECOVERY_JOURNEY_SCHEMA.md](./RECOVERY_JOURNEY_SCHEMA.md) | 복구 여정 섹션 구조 |
 | [STATE_MATRIX_SCHEMA.md](./STATE_MATRIX_SCHEMA.md) | 화면 상태 매트릭스 열 정의 |
+| [PAGE_EXECUTION_CONTRACT_REGISTRY.md](./PAGE_EXECUTION_CONTRACT_REGISTRY.md) | **P0 페이지↔contract test** 레지스트리 · Tier 2 · 2.18.0 |
 
 ---
 

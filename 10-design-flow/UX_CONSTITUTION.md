@@ -27,9 +27,16 @@
 - 위반 신호: 한 화면에 행동 목적이 2개 이상 충돌한다
 
 ### UX-02 — State Coverage
-모든 interactive flow는 loading, empty, error, success 4가지 상태를 반드시 정의해야 한다.
+모든 interactive flow는 **최소** loading, empty, error, success 4가지 상태를 반드시 정의해야 한다.
 - 검증: check:ux-state-coverage (컴포넌트 내 loading/error/empty 분기 존재 여부 정적 분석)
 - 위반 신호: data가 없을 때 빈 화면, 에러 시 무반응
+
+### UX-02b — Permission & Configuration Surfaces (2.18.0+)
+권한·설정 미완은 blank와 구분한다. list/detail shell은 아래를 **success와 혼동하지 않는** 별도 surface로 표현한다.
+- **forbidden** — 주체가 해당 리소스·action에 도달 불가 (이유 상세는 기본 비노출 — [INDIRECT_UX_PRINCIPLE.md](./INDIRECT_UX_PRINCIPLE.md))
+- **not-configured** — tenant·subdomain·schema 미설정 (empty와 구분)
+- 검증: check:ux-state-coverage 확장(인스턴스) · PR 체크리스트
+- 위반 신호: 403 시 빈 테이블, 미설정 subdomain에 generic "불러오지 못했습니다"만 표시
 
 ### UX-03 — Form Completeness
 모든 form은 아래 4가지를 정의해야 한다:
@@ -73,6 +80,7 @@
 |------|-----------|-------------|
 | UX-01 | soft check (문서 항목 존재) | No (PR 코멘트) |
 | UX-02 | check:ux-state-coverage | Yes (경고 → 실패) |
+| UX-02b | check:ux-state-coverage (확장) · PR | No → 인스턴스 strict 승격 시 Yes |
 | UX-03 | PR 체크리스트 | No |
 | UX-04 | PR 체크리스트 | No |
 | UX-05 | PR 체크리스트 | No |
@@ -87,5 +95,6 @@
 - [07-frontend-ui/UX_FEEDBACK_AND_ACCESSIBILITY.md](../07-frontend-ui/UX_FEEDBACK_AND_ACCESSIBILITY.md) — 피드백·접근성
 - [04-safety-standards/UX_SAFETY_RULES.md](../04-safety-standards/UX_SAFETY_RULES.md) — UX 안전 규칙
 - [10-design-flow/UX_READINESS_RUBRIC.md](./UX_READINESS_RUBRIC.md) — 완성도 자가 평가
+- [INDIRECT_UX_PRINCIPLE.md](./INDIRECT_UX_PRINCIPLE.md) — 간접 UX · UX-02b 맥락
 
-**최종 업데이트**: 2026-05-24
+**최종 업데이트**: 2026-06-23

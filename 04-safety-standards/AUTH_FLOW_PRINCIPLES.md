@@ -82,6 +82,7 @@ Auth → Identity → Completion → Preference → Redirect
 
 ## 🔗 관련 문서
 
+- [IDENTITY_FEDERATION_SPINE.md](./IDENTITY_FEDERATION_SPINE.md) — 멀티-tenant OAuth central callback · handoff spine (2.18.0+)
 - [CONCEPTUAL_ROT_PREVENTION.md](./CONCEPTUAL_ROT_PREVENTION.md) — 인증·권한은 훅/정책만 사용
 - [UX_SAFETY_RULES.md](./UX_SAFETY_RULES.md) — 네트워크·로딩 안전
 - [SINGLE_SOURCE_MAP.md](../SINGLE_SOURCE_MAP.md) — 결정 축별 단일 소스
@@ -93,4 +94,4 @@ Auth → Identity → Completion → Preference → Redirect
 
 ---
 
-**최종 업데이트**: 2026-04-14 — §6 OAuth·Completion·신원 충돌 체크리스트
+**최종 업데이트**: 2026-06-23 — IDENTITY_FEDERATION_SPINE 링크

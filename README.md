@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.17.0  
+**버전**: 2.18.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -52,6 +52,10 @@
 | [STATE_TRANSITION_CONTRACT.md](./01-foundations/STATE_TRANSITION_CONTRACT.md) | 상태 전이 계약 |
 | [RECURSIVE_LAYERING_PRINCIPLE.md](./01-foundations/RECURSIVE_LAYERING_PRINCIPLE.md) | 재귀적 계층화 — 어휘 불변성·자기 닮음 문법 (Tier 3 · 2.15.0) |
 | [N_WAY_CONSISTENCY_GATE.md](./01-foundations/N_WAY_CONSISTENCY_GATE.md) | N중 정합 게이트 — 복수 SSOT 양방향 정합 strict (Tier 3 · 2.15.0) |
+| [OPERATIONAL_MATURITY_LAYERS.md](./01-foundations/OPERATIONAL_MATURITY_LAYERS.md) | 운영 성숙도 4층 — Meaning · Permission · Navigation Graph · Identity Spine (Tier 3 · 2.18.0) |
+| [HOST_TRUST_SURFACE_SEPARATION.md](./01-foundations/HOST_TRUST_SURFACE_SEPARATION.md) | 호스트 신뢰 표면 분리 — Public/Relationship/Business/Platform 추상 모델 (Tier 3 · 2.18.0) |
+| [APPLICATION_LAYER_BOUNDARY.md](./01-foundations/APPLICATION_LAYER_BOUNDARY.md) | Application 계층 경계 — API↔Application↔Domain (Tier 2 · 2.18.0) |
+| [STRANGLER_PROMOTION_PLAYBOOK.md](./01-foundations/STRANGLER_PROMOTION_PLAYBOOK.md) | Strangler 점진 승격 — alias·shim·병렬 스트림 (Tier 3 · 2.18.0) |
 
 ### 02 — 개발 프레임워크
 
@@ -71,7 +75,7 @@
 
 ### 06 — 자동화
 
-[06-automation/](./06-automation/) — CI/CD, 검증 스크립트, 린트, [Meta-Gate / Gate Telemetry](./06-automation/META_GATE_TELEMETRY.md) (Tier 3 · 2.15.0), [Authority Boundary AB rules](./06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md) (Tier 2 · 2.16.0), [Playbook](./06-automation/AUTHORITY_BOUNDARY_PLAYBOOK.md)
+[06-automation/](./06-automation/) — CI/CD, 검증 스크립트, 린트, [Meta-Gate / Gate Telemetry](./06-automation/META_GATE_TELEMETRY.md) (Tier 3 · 2.15.0), [Warn→Strict Ratchet](./06-automation/WARN_TO_STRICT_RATCHET.md) · [Check Tier Manifest](./06-automation/CHECK_TIER_MANIFEST.md) · [Build Toolchain Alignment](./06-automation/BUILD_TOOLCHAIN_ALIGNMENT.md) · [Cross-Instance Verification Patterns](./06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md) (Tier 2 · 2.18.0), [Authority Boundary AB rules](./06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md) (Tier 2 · 2.16.0), [Playbook](./06-automation/AUTHORITY_BOUNDARY_PLAYBOOK.md)
 
 ### 07 — 프론트엔드·UI
 
@@ -123,7 +127,7 @@
 
 ### 19 — 제품 UI 아키텍처 (Product UI Architecture)
 
-[19-product-ui-architecture/](./19-product-ui-architecture/README.md) — 다역할·Event 기반 제품 UI 지도. **6차원 감사** + **generation-assisted coverage** (Role×Goal matrix · Missing-Journey diff · 3-way drift CI). [GENERATION_ASSISTED_COVERAGE](./19-product-ui-architecture/GENERATION_ASSISTED_COVERAGE.md) · [ROLE_GOAL_MATRIX_SCHEMA](./19-product-ui-architecture/ROLE_GOAL_MATRIX_SCHEMA.md) · [PAGE_DERIVATION_AND_AUDIT](./19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md).
+[19-product-ui-architecture/](./19-product-ui-architecture/README.md) — 다역할·Event 기반 제품 UI 지도. **6차원 감사** + **generation-assisted coverage** (Role×Goal matrix · Missing-Journey diff · 3-way drift CI). [GENERATION_ASSISTED_COVERAGE](./19-product-ui-architecture/GENERATION_ASSISTED_COVERAGE.md) · [ROLE_GOAL_MATRIX_SCHEMA](./19-product-ui-architecture/ROLE_GOAL_MATRIX_SCHEMA.md) · [PAGE_DERIVATION_AND_AUDIT](./19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md) · [PAGE_EXECUTION_CONTRACT_REGISTRY](./19-product-ui-architecture/PAGE_EXECUTION_CONTRACT_REGISTRY.md) (2.18.0).
 
 > **Ch.07·10·15·18과의 관계**: 07=기술 레이어, 10=화면 품질, 15=컴포넌트, 18=인지 구조. **19장**은 이 네 레이어 위에서 **제품 전체의 UI 지도**를 관리한다.  
 > **Reference instance**: [Agrinovation 11-ui-architecture](../Plan/11-ui-architecture/) — 11역할·21 Handoff·12 Recovery Journey, Plan Complete 96%. (인스턴스 레포 `docs/Plan/11-ui-architecture/`)
@@ -200,6 +204,7 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-06-23 | **2.18.0** — Inflomatrix 실증 패턴 흡수: [OPERATIONAL_MATURITY_LAYERS](./01-foundations/OPERATIONAL_MATURITY_LAYERS.md) · [HOST_TRUST_SURFACE_SEPARATION](./01-foundations/HOST_TRUST_SURFACE_SEPARATION.md) · [APPLICATION_LAYER_BOUNDARY](./01-foundations/APPLICATION_LAYER_BOUNDARY.md) · [STRANGLER_PROMOTION_PLAYBOOK](./01-foundations/STRANGLER_PROMOTION_PLAYBOOK.md) · [IDENTITY_FEDERATION_SPINE](./04-safety-standards/IDENTITY_FEDERATION_SPINE.md) · [NAVIGATION_DISCOVERABILITY](./07-frontend-ui/NAVIGATION_DISCOVERABILITY.md) · [INDIRECT_UX_PRINCIPLE](./10-design-flow/INDIRECT_UX_PRINCIPLE.md) · UX-02b forbidden/not-configured · [WARN_TO_STRICT_RATCHET](./06-automation/WARN_TO_STRICT_RATCHET.md) · [CHECK_TIER_MANIFEST](./06-automation/CHECK_TIER_MANIFEST.md) · [BUILD_TOOLCHAIN_ALIGNMENT](./06-automation/BUILD_TOOLCHAIN_ALIGNMENT.md) · [PAGE_EXECUTION_CONTRACT_REGISTRY](./19-product-ui-architecture/PAGE_EXECUTION_CONTRACT_REGISTRY.md) · [CROSS_INSTANCE_VERIFICATION_PATTERNS](./06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md). |
 | 2026-06-18 | **2.17.0** — Ch.19 [GENERATION_ASSISTED_COVERAGE](./19-product-ui-architecture/GENERATION_ASSISTED_COVERAGE.md) · [ROLE_GOAL_MATRIX_SCHEMA](./19-product-ui-architecture/ROLE_GOAL_MATRIX_SCHEMA.md): GAC reframe (assisted not closed), Missing-Journey diff, GOVERNANCE 규칙 6·7. Inflomatrix `role-goal-matrix.json` + `check:role-goal-coverage`. |
 | 2026-06-16 | **2.16.1** — Ch.19 [PAGE_DERIVATION_AND_AUDIT](./19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md) · [PAGE_AUDIT_MATRIX.template](./19-product-ui-architecture/PAGE_AUDIT_MATRIX.template.md): 6차원(Role·Goal·Data·Action·Permission·Workflow Stage) 유도·Frontend Page Audit·판정 코드. GOVERNANCE 규칙 5. Ch.10 체크리스트·UX Rubric 4점 연동. Inflomatrix 제안 · Tier 2. |
 | 2026-06-02 | **2.16.0** — Execution Authority Alignment (Tier 3): [EXECUTION_AUTHORITY_ALIGNMENT.md](./01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md) — 실행 principal ≠ 정책 principal, Rule A–D, 5+1 실패 패턴, 경계 함수 목록. [AUTHORITY_BOUNDARY_CHECK_RULES.md](./06-automation/AUTHORITY_BOUNDARY_CHECK_RULES.md) (Tier 2, AB-01~08). [AUTHORITY_BOUNDARY_PLAYBOOK.md](./06-automation/AUTHORITY_BOUNDARY_PLAYBOOK.md). 7단계 § Authority at boundary, observability Rule C. Itemwiki + Inflomatrix `check:auth-boundary` 실증. ADR [0007](./adr/0007-execution-authority-alignment-2.16.0.md). |

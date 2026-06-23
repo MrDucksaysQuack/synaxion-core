@@ -16,6 +16,11 @@ Single entry point for **Synaxion shared** and **Itemwiki-specific** constitutio
 | Judgment output type | [12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md](./12-judgment-constitution/JUDGMENT_OUTPUT_TYPE.md) |
 | Logging / observability | [09-observability/](./09-observability/) |
 | Frontend UI input/render authority | [07-frontend-ui/UI_INPUT_RENDER_AUTHORITY.md](./07-frontend-ui/UI_INPUT_RENDER_AUTHORITY.md) |
+| Navigation discoverability (2.18) | [07-frontend-ui/NAVIGATION_DISCOVERABILITY.md](./07-frontend-ui/NAVIGATION_DISCOVERABILITY.md) |
+| Indirect UX (2.18) | [10-design-flow/INDIRECT_UX_PRINCIPLE.md](./10-design-flow/INDIRECT_UX_PRINCIPLE.md) |
+| Identity federation spine (2.18) | [04-safety-standards/IDENTITY_FEDERATION_SPINE.md](./04-safety-standards/IDENTITY_FEDERATION_SPINE.md) |
+| Operational maturity layers (2.18) | [01-foundations/OPERATIONAL_MATURITY_LAYERS.md](./01-foundations/OPERATIONAL_MATURITY_LAYERS.md) |
+| Cross-instance verification patterns | [06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md](./06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md) |
 | Input–persistence alignment | [07-frontend-ui/INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md](./07-frontend-ui/INPUT_PERSISTENCE_SCHEMA_ALIGNMENT.md) |
 | Component patterns (15장; FOCUS-R1 Mandatory @ 2.16.0) | [15-component-patterns/README.md](./15-component-patterns/README.md) · [FOCUS_VISIBLE_RING.md](./15-component-patterns/FOCUS_VISIBLE_RING.md) |
 

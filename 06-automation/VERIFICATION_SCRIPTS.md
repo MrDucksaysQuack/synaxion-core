@@ -125,6 +125,22 @@ Synaxion 보펼명: **`check:authority-boundary`**. 인스턴스 예: Itemwiki·
 
 **Tier**: AB catalog **Tier 2** (2.16.0). `check:all` 포함은 인스턴스·Tier 1 승격 시 결정. Meta-Gate: 0 finding + 만료 있는 allowlist — [META_GATE_TELEMETRY.md](./META_GATE_TELEMETRY.md).
 
+#### 🌐 Cross-Instance Patterns (2.18.0+)
+
+Inflomatrix·Itemwiki 등에서 실증된 `check:*` 패턴 인덱스 — [CROSS_INSTANCE_VERIFICATION_PATTERNS.md](./CROSS_INSTANCE_VERIFICATION_PATTERNS.md).
+
+| 패턴 | Synaxion SSOT | Inflomatrix `check:*` |
+|------|---------------|----------------------|
+| Nav discoverability | [NAVIGATION_DISCOVERABILITY.md](../07-frontend-ui/NAVIGATION_DISCOVERABILITY.md) | `check:nav-discoverability` |
+| OAuth redirect SSOT | [IDENTITY_FEDERATION_SPINE.md](../04-safety-standards/IDENTITY_FEDERATION_SPINE.md) | `check:oauth-redirect-policy` |
+| Application boundary | [APPLICATION_LAYER_BOUNDARY.md](../01-foundations/APPLICATION_LAYER_BOUNDARY.md) | `check:application-boundary` |
+| JSX toolchain | [BUILD_TOOLCHAIN_ALIGNMENT.md](./BUILD_TOOLCHAIN_ALIGNMENT.md) | `check:jsx-react-scope` |
+| Page execution contracts | [PAGE_EXECUTION_CONTRACT_REGISTRY.md](../19-product-ui-architecture/PAGE_EXECUTION_CONTRACT_REGISTRY.md) | `check:page-execution-contracts` |
+| Gate telemetry | [META_GATE_TELEMETRY.md](./META_GATE_TELEMETRY.md) | `check:gate-coverage` |
+| Check lanes | [CHECK_TIER_MANIFEST.md](./CHECK_TIER_MANIFEST.md) | `check:tiers` |
+
+승격 절차: [WARN_TO_STRICT_RATCHET.md](./WARN_TO_STRICT_RATCHET.md).
+
 #### 📥 Alignment·입력 보증 (Input Persistence)
 
 `check:constitution-pr`의 IP 게이트 스크립트 군. 상세 원칙은 [INPUT_PERSISTENCE_GUARANTEE.md](../04-safety-standards/INPUT_PERSISTENCE_GUARANTEE.md).
