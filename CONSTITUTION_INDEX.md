@@ -9,7 +9,8 @@ Single entry point for **Synaxion shared** and **Itemwiki-specific** constitutio
 | Need | Path |
 |------|------|
 | Meta / tier-1 principles | [META_CONSTITUTION.md](./META_CONSTITUTION.md) |
-| Chapter map (19 product UI + core) | [README.md](./README.md) |
+| Chapter map (core + Ch.19–20) | [README.md](./README.md) |
+| AI-Operable Codebase (Ch.20 · AICS) | [20-ai-operable-codebase/README.md](./20-ai-operable-codebase/README.md) · [AICS_PRINCIPLES.md](./20-ai-operable-codebase/AICS_PRINCIPLES.md) · [AI_GOVERNANCE.md](./20-ai-operable-codebase/AI_GOVERNANCE.md) |
 | API 7-stage construction | [03-api-standards/7_STAGE_LOGIC_CONSTRUCTION.md](./03-api-standards/7_STAGE_LOGIC_CONSTRUCTION.md) |
 | Verification scripts catalog | [06-automation/VERIFICATION_SCRIPTS.md](./06-automation/VERIFICATION_SCRIPTS.md) |
 | Judgment (ERIC) | [12-judgment-constitution/ERIC_SPEC.md](./12-judgment-constitution/ERIC_SPEC.md) |
@@ -45,4 +46,4 @@ Single entry point for **Synaxion shared** and **Itemwiki-specific** constitutio
 | Local input-persistence bundle | `pnpm run local:input-persistence-contract-gates` |
 | Local FINAL_3 slice | `pnpm run local:final3-constitution-slice` |
 
-**Version:** Synaxion Constitution 2.15.0 (see `CLAUDE.md` header).
+**Version:** Synaxion Constitution 2.19.0 (see [VERSION](./VERSION)).

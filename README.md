@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.18.0  
+**버전**: 2.19.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -132,7 +132,11 @@
 > **Ch.07·10·15·18과의 관계**: 07=기술 레이어, 10=화면 품질, 15=컴포넌트, 18=인지 구조. **19장**은 이 네 레이어 위에서 **제품 전체의 UI 지도**를 관리한다.  
 > **Reference instance**: [Agrinovation 11-ui-architecture](../Plan/11-ui-architecture/) — 11역할·21 Handoff·12 Recovery Journey, Plan Complete 96%. (인스턴스 레포 `docs/Plan/11-ui-architecture/`)
 
-### 20 — 데이터·DB
+### 20 — AI-Operable Codebase (AICS)
+
+[20-ai-operable-codebase/](./20-ai-operable-codebase/README.md) — AI 보조 운용을 위한 코드베이스 **구조·문서·탐색·검증** 원칙 (AICS canonical layer). [AICS_PRINCIPLES](./20-ai-operable-codebase/AICS_PRINCIPLES.md) · [AI_GOVERNANCE](./20-ai-operable-codebase/AI_GOVERNANCE.md) · META §G (2.19.0).
+
+### 데이터·DB (17-data-db)
 
 [17-data-db/](./17-data-db/README.md) — [DATA_CONSTITUTION](./17-data-db/DATA_CONSTITUTION.md), [DB_CONTRACT_TEMPLATE](./17-data-db/DB_CONTRACT_TEMPLATE.md)
 
@@ -204,6 +208,7 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-06-28 | **2.19.0** — 20장 AI-Operable Codebase (AICS) 추가: [20-ai-operable-codebase/](./20-ai-operable-codebase/README.md) · AICS_PRINCIPLES · AI_GOVERNANCE · META §G. Inflomatrix AICS-2/AICS-2B. |
 | 2026-06-23 | **2.18.0** — Inflomatrix 실증 패턴 흡수: [OPERATIONAL_MATURITY_LAYERS](./01-foundations/OPERATIONAL_MATURITY_LAYERS.md) · [HOST_TRUST_SURFACE_SEPARATION](./01-foundations/HOST_TRUST_SURFACE_SEPARATION.md) · [APPLICATION_LAYER_BOUNDARY](./01-foundations/APPLICATION_LAYER_BOUNDARY.md) · [STRANGLER_PROMOTION_PLAYBOOK](./01-foundations/STRANGLER_PROMOTION_PLAYBOOK.md) · [IDENTITY_FEDERATION_SPINE](./04-safety-standards/IDENTITY_FEDERATION_SPINE.md) · [NAVIGATION_DISCOVERABILITY](./07-frontend-ui/NAVIGATION_DISCOVERABILITY.md) · [INDIRECT_UX_PRINCIPLE](./10-design-flow/INDIRECT_UX_PRINCIPLE.md) · UX-02b forbidden/not-configured · [WARN_TO_STRICT_RATCHET](./06-automation/WARN_TO_STRICT_RATCHET.md) · [CHECK_TIER_MANIFEST](./06-automation/CHECK_TIER_MANIFEST.md) · [BUILD_TOOLCHAIN_ALIGNMENT](./06-automation/BUILD_TOOLCHAIN_ALIGNMENT.md) · [PAGE_EXECUTION_CONTRACT_REGISTRY](./19-product-ui-architecture/PAGE_EXECUTION_CONTRACT_REGISTRY.md) · [CROSS_INSTANCE_VERIFICATION_PATTERNS](./06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md). |
 | 2026-06-18 | **2.17.0** — Ch.19 [GENERATION_ASSISTED_COVERAGE](./19-product-ui-architecture/GENERATION_ASSISTED_COVERAGE.md) · [ROLE_GOAL_MATRIX_SCHEMA](./19-product-ui-architecture/ROLE_GOAL_MATRIX_SCHEMA.md): GAC reframe (assisted not closed), Missing-Journey diff, GOVERNANCE 규칙 6·7. Inflomatrix `role-goal-matrix.json` + `check:role-goal-coverage`. |
 | 2026-06-16 | **2.16.1** — Ch.19 [PAGE_DERIVATION_AND_AUDIT](./19-product-ui-architecture/PAGE_DERIVATION_AND_AUDIT.md) · [PAGE_AUDIT_MATRIX.template](./19-product-ui-architecture/PAGE_AUDIT_MATRIX.template.md): 6차원(Role·Goal·Data·Action·Permission·Workflow Stage) 유도·Frontend Page Audit·판정 코드. GOVERNANCE 규칙 5. Ch.10 체크리스트·UX Rubric 4점 연동. Inflomatrix 제안 · Tier 2. |
