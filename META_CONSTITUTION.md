@@ -21,6 +21,8 @@
 | **E. Component Patterns** | UI Constitution(13장)·Experience Constitution(14장)을 구현하는 재사용 패턴 라이브러리. 헌법이 "무엇이어야 하는가"라면, 이 층은 "어떻게 구현하는가"의 검증 가능한 패턴 | [15-component-patterns/README.md](./15-component-patterns/README.md), Pattern Adoption Rule, check:* + Soft review |
 | **F. Cognitive Interface** | 복잡한 논리를 인간의 인지 패턴에 맞춰 인터페이스로 번역하는 설계 언어. 논리 유형 10개(Hierarchical·Sequential·Conditional·Comparative·Causal·Relational·Proportional·Cyclic·Categorical·State-based) × 인지 병목 × UI 패턴 매핑. 컴포넌트 선택 이전 단계의 설계 결정 최상위 레이어. | [18-cognitive-interface/README.md](./18-cognitive-interface/README.md), LOGIC_TYPE_TAXONOMY, COMPOSITE_LOGIC_RULES, EMOTIONAL_STATE_PATTERNS, check:cognitive |
 | **G. AI-Operable Codebase** | Chapter 20 — AI-Operable Codebase. 코드베이스가 AI 보조 운용에 적합하도록 **구조·문서·탐색·검증** 원칙을 정의한다. AICS canonical layer. | [20-ai-operable-codebase/README.md](./20-ai-operable-codebase/README.md), AICS_PRINCIPLES, AI_GOVERNANCE |
+| **H. Information Structure Theory (ISET)** | ISET — 정보 구조 진화 이론. 정보 구조가 환경 피드백 속에서 어떤 방식으로 상태 전이, 선택, 재생산, 진화하는지 정의한다. ISSE(ch.22)의 이론적 기반. Inflomatrix를 1호 실증 인스턴스로 등재한다. | [21-information-structure-theory/README.md](./21-information-structure-theory/README.md), ISET_PRINCIPLES |
+| **I. Information Structure Engine (ISSE)** | ISSE — 정보 구조 시뮬레이션 엔진. ISET 이론을 계산 가능한 형태로 정의한다. 인터페이스 계약, 상태 전이 명세, 평가 모델을 다룬다. 런타임 구현은 별도 스트림이다. | [22-information-structure-engine/README.md](./22-information-structure-engine/README.md), ISSE_SPEC, ISSE_INTERFACE |
 | **0. Planning** | 만들기 **전** 의도·범위·명세·태스크 분해. Engineering Constitution의 입력. | [00-planning/FORWARD_PLANNING_PROTOCOL.md](./00-planning/FORWARD_PLANNING_PROTOCOL.md), PLANNING_DIRECTORY_STANDARD.md, harness/forward-planning/ |
 | **P. Protocols** | "무엇이어야 하는가"가 아닌 "어떤 순서로 무엇을 해야 하는가"를 정의하는 절차 규약. Constitution을 보완. | [11-protocols/REVERSE_PLANNING_PROTOCOL.md](./11-protocols/REVERSE_PLANNING_PROTOCOL.md) (역방향), [00-planning](./00-planning/) (정방향), RECONSTRUCTION_SCORECARD.md, harness/reverse-planning/ |
 
@@ -77,6 +79,8 @@ Synaxion은 *제품 인스턴스*(Itemwiki·Inflomatrix 등)에서 발견된 보
 | **Identity Federation Spine** | [04-safety-standards/IDENTITY_FEDERATION_SPINE.md](./04-safety-standards/IDENTITY_FEDERATION_SPINE.md) | central OAuth · signed state · handoff | `check:oauth-redirect-policy` |
 | **Navigation Discoverability** | [07-frontend-ui/NAVIGATION_DISCOVERABILITY.md](./07-frontend-ui/NAVIGATION_DISCOVERABILITY.md) | wayfinding graph · transient exempt | `check:nav-discoverability` |
 | **Indirect UX** | [10-design-flow/INDIRECT_UX_PRINCIPLE.md](./10-design-flow/INDIRECT_UX_PRINCIPLE.md) | structure over telling · UX-02b | `check:ux-state-coverage` |
+| ISET ch.21 | [21-information-structure-theory/](./21-information-structure-theory/README.md) | Inflomatrix field instance | `check:iset-vocabulary` (proposed) |
+| ISSE ch.22 | [22-information-structure-engine/](./22-information-structure-engine/README.md) | Inflomatrix adapter doc | `check:isse-interface` (proposed) |
 
 **Tier 2 신규 (2.18.0 — Inflomatrix 제안)**
 
