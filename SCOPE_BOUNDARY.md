@@ -67,6 +67,17 @@ Project Guide                     → 판단 기반 품질 기준
 | "이 카피가 설득력 있는가" | ❌ Project Guide | 브랜드·시장 종속 |
 | "rollback 절차가 있는가" | ✅ Core | 운영 피해 직결, check:*로 파일 존재 확인 |
 | "이 인터페이스가 농업인에게 친숙한가" | ❌ Project Guide | 사용자층·도메인 종속 |
+| ISET 구조 원칙이 여러 시스템·필드 인스턴스에서 검증 가능한가 | ✅ Core (ch.21) | 구조적 원칙, 반복 가능, 계층·계약 영향 |
+| ISSE 계산 인터페이스가 둘 이상의 호스트에 적용 가능한가 | ✅ Core (ch.22) | 검증 가능한 스펙·어댑터 계약 |
+| Inflomatrix 필드 인스턴스 문서 (예: `ISET_INFLOMATRIX_INSTANCE`) | ✅ Tier 3 evidence | 필드 증거로 허용; 런타임 구현 지침이 되면 안 됨 |
+| ISSE 런타임 어댑터·`src/` 통합 | ❌ 별도 스트림 | 1차 canonical docs 밖; `ISSE-INFLOMATRIX-RUNTIME-ADAPTER-0` 등 명시적 스코프 필요 |
+
+### ISET / ISSE eligibility (ch.21–22)
+
+- **ISET** is in scope when a structural principle is verifiable across multiple systems or field instances.
+- **ISSE** is in scope when a computable interface/spec can be applied by more than one host system.
+- **Inflomatrix instance docs** are allowed as field-instance evidence but must not become runtime-specific implementation instructions.
+- **Runtime integration** belongs outside the first-tier canonical docs until a separate stream scopes it.
 
 ---
 
@@ -76,4 +87,4 @@ Project Guide                     → 판단 기반 품질 기준
 - [OPERATING_SYSTEM.md](./OPERATING_SYSTEM.md) — OS 진화 방향
 - [DELIVERY_READINESS_RUBRIC.md](./DELIVERY_READINESS_RUBRIC.md) — 완성도 평가
 
-**최종 업데이트**: 2026-05-24
+**최종 업데이트**: 2026-07-03
