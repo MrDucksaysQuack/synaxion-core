@@ -69,7 +69,7 @@ rg "decision_logs|event_store|audit_"
 | 인스턴스 | 경로 |
 |----------|------|
 | Itemwiki | `docs/planning/auth-boundary-hardening/`, `itemwiki-constitution` |
-| Inflomatrix | `.cursor/plans/production-safety/AUTH_PERMISSION_BOUNDARY_FINDINGS.md` |
+| Inflomatrix | `.cursor/plans/archived/2026-q2/production-safety/AUTH_PERMISSION_BOUNDARY_FINDINGS.md` |
 
 ---
 

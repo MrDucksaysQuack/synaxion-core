@@ -49,7 +49,7 @@ Priority when principles tension with speed: **Verification Before Trust** and *
 - Skipping plan/constitution because the task “looks small”
 - Filling the window with archived or superseded plans
 
-Detail patterns: [CONTEXT_WINDOW_OPTIMIZATION.md](./CONTEXT_WINDOW_OPTIMIZATION.md) (skeleton).
+Detail patterns: [CONTEXT_WINDOW_OPTIMIZATION.md](./CONTEXT_WINDOW_OPTIMIZATION.md).
 
 ---
 
@@ -89,7 +89,7 @@ Synaxion map: [SINGLE_SOURCE_MAP.md](../SINGLE_SOURCE_MAP.md).
 
 Alignment with execution authority: [01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md](../01-foundations/EXECUTION_AUTHORITY_ALIGNMENT.md).
 
-Detail workflows: [AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITUTION.md) (skeleton).
+Detail workflows: [AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITUTION.md).
 
 ---
 
@@ -110,7 +110,7 @@ Detail workflows: [AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITU
 2. Silent failure fixes must prove observability — Ch.04.
 3. Skipping hooks (`--no-verify`) requires explicit human request.
 
-Detail lanes: [AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md) (skeleton).
+Detail lanes: [AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md).
 
 ---
 

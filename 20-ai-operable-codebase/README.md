@@ -22,7 +22,7 @@ The goal is not “more prompts.” The goal is a **machine-legible operating su
 | Agent authority & governance **rules** | API 7-stage construction (Ch.03) |
 | Context-window & SSOT **discipline** | Project-specific domain docs |
 | Verification-before-trust **policy** | Harness file contents (instance `.ai/`, `.cursor/rules/`) |
-| Navigation & context **patterns** (skeleton → future) | Runtime code changes |
+| Navigation & context **patterns** (Ch.20 substantive) | Runtime code changes |
 
 **Canonical location**: `synaxion-core/20-ai-operable-codebase/` (this directory).  
 **Do not** mirror-edit `doc/constitution/` in consumer repos — submodule is SSOT.
@@ -68,15 +68,16 @@ Consumer projects (e.g. Inflomatrix) may maintain an **instance AI context tree*
 
 ## Required project-level implementation
 
-Each Synaxion consumer that adopts AICS should eventually provide (instance layer — not part of this skeleton ticket):
+Each Synaxion consumer that adopts AICS should eventually provide (instance layer — separate from Ch.20 canonical docs):
 
 | Artifact | Minimum expectation |
 |----------|---------------------|
 | **Instance context root** | e.g. `docs/ai-context/README.md` — scope, links to Ch.20, local SSOT index |
-| **Navigation map** | Where agents find domain boundaries, plans, verification ([CODEBASE_NAVIGATION_MAP.md](./CODEBASE_NAVIGATION_MAP.md) skeleton) |
-| **Verification recipe** | Which `check:*` / E2E lanes apply per change type ([AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md) skeleton) |
-| **Agent operating rules** | Project-specific constraints that **extend** Ch.20 ([AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITUTION.md) skeleton) |
-| **Promotion register** | Which instance docs were promoted vs experimental |
+| **Navigation map** | Instance maps implementing [CODEBASE_NAVIGATION_MAP.md](./CODEBASE_NAVIGATION_MAP.md) pattern |
+| **Verification recipe** | Which `check:*` / E2E lanes apply per change type ([AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md)) |
+| **Agent operating rules** | Project-specific constraints that **extend** Ch.20 ([AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITUTION.md)) |
+| **Maintenance reports** | Overnight/maintenance runner + reports dir implementing [OVERNIGHT_MAINTENANCE_MODEL.md](./OVERNIGHT_MAINTENANCE_MODEL.md) |
+| **Promotion register** | **Deferred** — track promoted vs experimental instance docs; criteria until register exists: [AI_GOVERNANCE.md §5](./AI_GOVERNANCE.md) |
 
 Until instance artifacts exist, agents rely on Ch.20 principles + existing repo docs — with **explicit verification** on every change.
 
@@ -89,11 +90,15 @@ Until instance artifacts exist, agents rely on Ch.20 principles + existing repo 
 | [README.md](./README.md) | substantive | Chapter overview (this file) |
 | [AICS_PRINCIPLES.md](./AICS_PRINCIPLES.md) | substantive | Five core principles |
 | [AI_GOVERNANCE.md](./AI_GOVERNANCE.md) | substantive | Trust, canonical edit policy, promotion |
-| [CONTEXT_WINDOW_OPTIMIZATION.md](./CONTEXT_WINDOW_OPTIMIZATION.md) | skeleton | Token/context budgeting patterns |
-| [AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITUTION.md) | skeleton | Agent role boundaries & workflows |
-| [CLAUDE_CODE_OPERATING_RULES.md](./CLAUDE_CODE_OPERATING_RULES.md) | skeleton | Claude Code / IDE agent conventions |
-| [AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md) | skeleton | Verification lanes for AI changes |
-| [CODEBASE_NAVIGATION_MAP.md](./CODEBASE_NAVIGATION_MAP.md) | skeleton | Structural map for agent navigation |
+| [CONTEXT_WINDOW_OPTIMIZATION.md](./CONTEXT_WINDOW_OPTIMIZATION.md) | substantive | Task-class read sets · layer order · anti-patterns · stop/split rules |
+| [AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITUTION.md) | substantive | Three-agent model · ticket/closure ritual · deferred · stop conditions |
+| [CLAUDE_CODE_OPERATING_RULES.md](./CLAUDE_CODE_OPERATING_RULES.md) | substantive | IDE harness · shell tiers · CLAUDE.md entrypoint · targeted read |
+| [AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md) | substantive | Change-class verification · report-back · silent-failure rules |
+| [GENERATED_INVENTORY_POLICY.md](./GENERATED_INVENTORY_POLICY.md) | substantive | Generated inventories · freshness · timestamp-only drift |
+| [CODEBASE_NAVIGATION_MAP.md](./CODEBASE_NAVIGATION_MAP.md) | substantive | SSOT layers · decision tree · instance map pattern |
+| [OVERNIGHT_MAINTENANCE_MODEL.md](./OVERNIGHT_MAINTENANCE_MODEL.md) | substantive | Safe maintenance loops · run modes · report contract · morning review |
+
+**Cross-chapter links** (`../` to other Synaxion chapters) resolve only when the full `synaxion-core` checkout is present; sparse consumer checkouts may omit non–Ch.20 paths.
 
 ---
 
@@ -115,4 +120,4 @@ Until instance artifacts exist, agents rely on Ch.20 principles + existing repo 
 | **Ch.12** Judgment | Decision output types — when agents produce judgments |
 | **Ch.19** Product UI | Product maps — separate from codebase operability |
 
-**최종 업데이트**: 2026-06-28 — Ch.20 initial skeleton (AICS-2 · Inflomatrix)
+**최종 업데이트**: 2026-06-29 — SYNAXION-AICS-2E (Ch.20 substantive · hygiene pass)
