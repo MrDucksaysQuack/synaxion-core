@@ -3,7 +3,7 @@
 > **Engineering Constitution + Judgment Constitution** 번들.  
 > 프로젝트 인스턴스(예: Itemwiki)는 이 저장소를 **서브모듈**로 두고, 제품별 규칙은 `docs/<project>-constitution/`에 둔다.
 
-**버전**: 2.20.0  
+**버전**: 2.21.0  
 **VERSION 파일**: [VERSION](./VERSION)  
 **메타·운영 규칙**: [META_CONSTITUTION.md](./META_CONSTITUTION.md)
 
@@ -216,6 +216,7 @@ bash docs/constitution/install.sh "Itemwiki" "packages/lib <- …"
 
 | 날짜 | 요약 |
 |------|------|
+| 2026-08-27 | **2.21.0** — Ch.20 [AICS_PRINCIPLES §6 Verification Integrity](./20-ai-operable-codebase/AICS_PRINCIPLES.md) 추가: universe completeness · falsifiability · independent ground truth · context independence 4대 실패면. Verification Before Trust(§5)를 보완 — 게이트 통과가 실제로 독립적 증거인지 판단하는 원칙. [AI_ASSISTED_VERIFICATION.md](./20-ai-operable-codebase/AI_ASSISTED_VERIFICATION.md) 교차 참조 추가. Inflomatrix 제안 · Tier 3. |
 | 2026-07-03 | **2.20.0** — 21장 ISET · 22장 ISSE 추가: Tier 3 introduction docs-only. Inflomatrix 1호 실증 인스턴스 제안. |
 | 2026-06-28 | **2.19.0** — 20장 AI-Operable Codebase (AICS) 추가: [20-ai-operable-codebase/](./20-ai-operable-codebase/README.md) · AICS_PRINCIPLES · AI_GOVERNANCE · META §G. Inflomatrix AICS-2/AICS-2B. |
 | 2026-06-23 | **2.18.0** — Inflomatrix 실증 패턴 흡수: [OPERATIONAL_MATURITY_LAYERS](./01-foundations/OPERATIONAL_MATURITY_LAYERS.md) · [HOST_TRUST_SURFACE_SEPARATION](./01-foundations/HOST_TRUST_SURFACE_SEPARATION.md) · [APPLICATION_LAYER_BOUNDARY](./01-foundations/APPLICATION_LAYER_BOUNDARY.md) · [STRANGLER_PROMOTION_PLAYBOOK](./01-foundations/STRANGLER_PROMOTION_PLAYBOOK.md) · [IDENTITY_FEDERATION_SPINE](./04-safety-standards/IDENTITY_FEDERATION_SPINE.md) · [NAVIGATION_DISCOVERABILITY](./07-frontend-ui/NAVIGATION_DISCOVERABILITY.md) · [INDIRECT_UX_PRINCIPLE](./10-design-flow/INDIRECT_UX_PRINCIPLE.md) · UX-02b forbidden/not-configured · [WARN_TO_STRICT_RATCHET](./06-automation/WARN_TO_STRICT_RATCHET.md) · [CHECK_TIER_MANIFEST](./06-automation/CHECK_TIER_MANIFEST.md) · [BUILD_TOOLCHAIN_ALIGNMENT](./06-automation/BUILD_TOOLCHAIN_ALIGNMENT.md) · [PAGE_EXECUTION_CONTRACT_REGISTRY](./19-product-ui-architecture/PAGE_EXECUTION_CONTRACT_REGISTRY.md) · [CROSS_INSTANCE_VERIFICATION_PATTERNS](./06-automation/CROSS_INSTANCE_VERIFICATION_PATTERNS.md). |

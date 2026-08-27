@@ -88,7 +88,7 @@ Until instance artifacts exist, agents rely on Ch.20 principles + existing repo 
 | Document | Status | Role |
 |----------|:------:|------|
 | [README.md](./README.md) | substantive | Chapter overview (this file) |
-| [AICS_PRINCIPLES.md](./AICS_PRINCIPLES.md) | substantive | Five core principles |
+| [AICS_PRINCIPLES.md](./AICS_PRINCIPLES.md) | substantive | Six core principles |
 | [AI_GOVERNANCE.md](./AI_GOVERNANCE.md) | substantive | Trust, canonical edit policy, promotion |
 | [CONTEXT_WINDOW_OPTIMIZATION.md](./CONTEXT_WINDOW_OPTIMIZATION.md) | substantive | Task-class read sets · layer order · anti-patterns · stop/split rules |
 | [AGENTS_OPERATING_CONSTITUTION.md](./AGENTS_OPERATING_CONSTITUTION.md) | substantive | Three-agent model · ticket/closure ritual · deferred · stop conditions |
@@ -120,4 +120,4 @@ Until instance artifacts exist, agents rely on Ch.20 principles + existing repo 
 | **Ch.12** Judgment | Decision output types — when agents produce judgments |
 | **Ch.19** Product UI | Product maps — separate from codebase operability |
 
-**최종 업데이트**: 2026-06-29 — SYNAXION-AICS-2E (Ch.20 substantive · hygiene pass)
+**최종 업데이트**: 2026-08-27 — SYNAXION-AICS-3 (doc-index sync: AICS_PRINCIPLES now six principles); previous: 2026-06-29 SYNAXION-AICS-2E (Ch.20 substantive · hygiene pass)

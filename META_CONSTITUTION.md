@@ -81,6 +81,7 @@ Synaxion은 *제품 인스턴스*(Itemwiki·Inflomatrix 등)에서 발견된 보
 | **Indirect UX** | [10-design-flow/INDIRECT_UX_PRINCIPLE.md](./10-design-flow/INDIRECT_UX_PRINCIPLE.md) | structure over telling · UX-02b | `check:ux-state-coverage` |
 | ISET ch.21 | [21-information-structure-theory/](./21-information-structure-theory/README.md) | Inflomatrix field instance | `check:iset-vocabulary` (proposed) |
 | ISSE ch.22 | [22-information-structure-engine/](./22-information-structure-engine/README.md) | Inflomatrix adapter doc | `check:isse-interface` (proposed) |
+| **Verification Integrity** | [20-ai-operable-codebase/AICS_PRINCIPLES.md §6](./20-ai-operable-codebase/AICS_PRINCIPLES.md) | 검증력은 검증 대상과의 독립성을 넘지 못한다 — universe completeness · falsifiability · independent ground truth · context independence | 인스턴스 검증 설계 리뷰 (제안) |
 
 **Tier 2 신규 (2.18.0 — Inflomatrix 제안)**
 

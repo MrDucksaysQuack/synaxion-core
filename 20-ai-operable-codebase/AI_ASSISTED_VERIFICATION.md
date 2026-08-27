@@ -122,6 +122,7 @@ Each change belongs to a **primary class**. Apply the row's minimum verification
 | Single Source of Truth | Status docs updated once; no duplicate completion claims |
 | Agent Authority Boundaries | Verification scope matches allowed-files scope |
 | Verification Before Trust | This document — gates before merge/close |
+| Verification Integrity | Before closing on a pass, confirm what was independent, whether the gate could have failed on the defect it targets, and whether review inherited the artifact's own assumptions ([AICS_PRINCIPLES.md §6](./AICS_PRINCIPLES.md)) |
 
 ---
 
@@ -211,4 +212,4 @@ See [GENERATED_INVENTORY_POLICY.md](./GENERATED_INVENTORY_POLICY.md).
 
 ---
 
-**최종 업데이트**: 2026-06-29 — SYNAXION-AICS-2B substantive verification policy
+**최종 업데이트**: 2026-08-27 — SYNAXION-AICS-3 cross-reference Verification Integrity (§6); previous: 2026-06-29 SYNAXION-AICS-2B substantive verification policy
