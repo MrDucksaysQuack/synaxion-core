@@ -1,7 +1,7 @@
 # AICS Principles — AI Context System Core Principles
 
 > **Synaxion Constitution 20장**  
-> Five principles that govern how codebases are prepared for AI-assisted operation.  
+> Six principles that govern how codebases are prepared for AI-assisted operation.  
 > **Tier**: 3 (introduction) · **Status**: canonical
 
 ---
@@ -114,6 +114,39 @@ Detail lanes: [AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md).
 
 ---
 
+## 6. Verification Integrity
+
+**Statement**: **Verification power is bounded by what is independent of the thing being verified.** A check that shares its assumptions, its universe, or its construction with the thing it checks does not add evidence beyond what already existed.
+
+This principle governs whether a passing gate is meaningful evidence; [Verification Before Trust](#5-verification-before-trust) (§5) governs whether a gate ran at all. Four distinct failure surfaces make up this principle — they must not be collapsed into one vague "be careful" rule:
+
+| Failure surface | Question | Failure pattern |
+|---|---|---|
+| **Universe completeness** | Is the set being evaluated itself exhaustive? | A verifier can only certify coverage over the universe it was given or has independently discovered. Passing every check inside an incomplete universe does not establish overall completeness — enumeration completeness and implementation completeness are different claims. |
+| **Falsifiability** | Can the verification mechanism actually fail on the defect it claims to detect? | An invariant that evaluates true on the current state is not evidence that it guards the claimed property unless its failure path is reachable. A verifier that cannot fail on the defect it claims to catch does not verify that defect. |
+| **Independent ground truth** | Does independently-derived reference information enter the verification chain? | If the designer, generator, scorer, and reviewer all inherit the same assumption or derive their expected truth from the same construction, agreement among them is not independent evidence — it may be circular. |
+| **Context independence** | Is the reviewer inheriting unstated assumptions that hide defects? | A review performed with the same context, artifacts, and assumptions as the work being reviewed inherits that work's blind spots. Reducing inherited context — fixed candidate identity, no mutation of the artifact under review, independently re-deriving conclusions instead of trusting the artifact's own report — reduces shared-assumption leakage. |
+
+**Rules**
+
+1. Before trusting a verification result, identify **what information entered independently** and **where** it entered the chain. If nothing did, the result confirms internal consistency, not correctness.
+2. A completeness claim (schema, capability set, threat model, test corpus, dependency inventory, or any other enumerated universe) must state whether the enumeration was checked against something outside itself. An internally-closed proof does not license a completeness claim.
+3. A gate that has never been observed to fail on a real instance of the defect it targets is a candidate for review, not yet trusted evidence of protection.
+4. None of the above requires a different vendor/model/tool per check, destructive mutation testing where a static argument suffices, or zero inherited context on every review. Apply the sub-principle that fits the risk — do not scale every check to the maximum bar by default.
+
+**Anti-patterns**
+
+- Treating "all tests pass" as proof of completeness when the test set's own completeness was never independently checked
+- An invariant whose failure condition has never been shown reachable, carried forward release after release as protection
+- A scorer, judge, or reviewer whose expected answer is derived from the same generation process it is scoring
+- A review that re-reads the author's own summary of a change instead of independently deriving what changed and why it is safe
+
+**Observed field instances** (Tier 3, proposer: Inflomatrix): complete internal evaluation over an incomplete enumerated universe; an invariant whose failure path had never been demonstrated reachable; a completeness metric derived from the same construction it was meant to check; independent review surfacing omissions an internally-consistent verification pass had missed.
+
+Detail lanes: [AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md) · [META_CONSTITUTION.md §0.3](../META_CONSTITUTION.md).
+
+---
+
 ## Summary table
 
 | # | Principle | One-line test |
@@ -123,5 +156,6 @@ Detail lanes: [AI_ASSISTED_VERIFICATION.md](./AI_ASSISTED_VERIFICATION.md).
 | 3 | Single Source of Truth | Is there exactly one canonical source per axis? |
 | 4 | Agent Authority Boundaries | Did the agent stay inside edit/run authority? |
 | 5 | Verification Before Trust | Did verification run and pass? |
+| 6 | Verification Integrity | Did independent information, a reachable failure path, or reduced inherited context actually enter this verification? |
 
-**최종 업데이트**: 2026-06-28 — initial principles (AICS-2)
+**최종 업데이트**: 2026-08-27 — add Principle 6 Verification Integrity (SYNAXION-AICS-3); previous: 2026-06-28 initial principles (AICS-2)
